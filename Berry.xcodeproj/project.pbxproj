@@ -14,6 +14,13 @@
 		206CC38C2B6DB51F002D0511 /* BerryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206CC38B2B6DB51F002D0511 /* BerryTests.swift */; };
 		206CC3962B6DB51F002D0511 /* BerryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206CC3952B6DB51F002D0511 /* BerryUITests.swift */; };
 		206CC3982B6DB51F002D0511 /* BerryUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206CC3972B6DB51F002D0511 /* BerryUITestsLaunchTests.swift */; };
+		206CC3A82B704222002D0511 /* TicketsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206CC3A72B704222002D0511 /* TicketsListView.swift */; };
+		206CC3AB2B704838002D0511 /* ScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206CC3AA2B704838002D0511 /* ScannerView.swift */; };
+		206CC3AD2B704EE3002D0511 /* ScannerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206CC3AC2B704EE3002D0511 /* ScannerViewModel.swift */; };
+		206CC3B02B7052CB002D0511 /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206CC3AF2B7052CB002D0511 /* Ticket.swift */; };
+		206CC3B62B70582A002D0511 /* TicketItems+Recognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206CC3B52B70582A002D0511 /* TicketItems+Recognizer.swift */; };
+		206CC3B82B70639F002D0511 /* TicketItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206CC3B72B70639F002D0511 /* TicketItems.swift */; };
+		206CC3BA2B706462002D0511 /* TicketItems+Analyser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206CC3B92B706462002D0511 /* TicketItems+Analyser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +52,13 @@
 		206CC3912B6DB51F002D0511 /* BerryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BerryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		206CC3952B6DB51F002D0511 /* BerryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BerryUITests.swift; sourceTree = "<group>"; };
 		206CC3972B6DB51F002D0511 /* BerryUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BerryUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		206CC3A72B704222002D0511 /* TicketsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketsListView.swift; sourceTree = "<group>"; };
+		206CC3AA2B704838002D0511 /* ScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerView.swift; sourceTree = "<group>"; };
+		206CC3AC2B704EE3002D0511 /* ScannerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewModel.swift; sourceTree = "<group>"; };
+		206CC3AF2B7052CB002D0511 /* Ticket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
+		206CC3B52B70582A002D0511 /* TicketItems+Recognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TicketItems+Recognizer.swift"; sourceTree = "<group>"; };
+		206CC3B72B70639F002D0511 /* TicketItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketItems.swift; sourceTree = "<group>"; };
+		206CC3B92B706462002D0511 /* TicketItems+Analyser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TicketItems+Analyser.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +109,7 @@
 		206CC3782B6DB51E002D0511 /* Berry */ = {
 			isa = PBXGroup;
 			children = (
+				206CC3A42B7041DF002D0511 /* Clean */,
 				206CC3792B6DB51E002D0511 /* BerryApp.swift */,
 				206CC37B2B6DB51E002D0511 /* ContentView.swift */,
 				206CC37D2B6DB51F002D0511 /* Assets.xcassets */,
@@ -127,6 +142,76 @@
 				206CC3972B6DB51F002D0511 /* BerryUITestsLaunchTests.swift */,
 			);
 			path = BerryUITests;
+			sourceTree = "<group>";
+		};
+		206CC3A42B7041DF002D0511 /* Clean */ = {
+			isa = PBXGroup;
+			children = (
+				206CC3B12B7054D6002D0511 /* Domain */,
+				206CC3A52B7041EE002D0511 /* Presentation */,
+			);
+			path = Clean;
+			sourceTree = "<group>";
+		};
+		206CC3A52B7041EE002D0511 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				206CC3A62B7041F8002D0511 /* Tickets */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		206CC3A62B7041F8002D0511 /* Tickets */ = {
+			isa = PBXGroup;
+			children = (
+				206CC3A92B704829002D0511 /* Scanner */,
+				206CC3A72B704222002D0511 /* TicketsListView.swift */,
+			);
+			path = Tickets;
+			sourceTree = "<group>";
+		};
+		206CC3A92B704829002D0511 /* Scanner */ = {
+			isa = PBXGroup;
+			children = (
+				206CC3B42B70580F002D0511 /* TicketItemsRecognizer */,
+				206CC3AA2B704838002D0511 /* ScannerView.swift */,
+				206CC3AC2B704EE3002D0511 /* ScannerViewModel.swift */,
+			);
+			path = Scanner;
+			sourceTree = "<group>";
+		};
+		206CC3B12B7054D6002D0511 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				206CC3B22B7054DE002D0511 /* Tickets */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		206CC3B22B7054DE002D0511 /* Tickets */ = {
+			isa = PBXGroup;
+			children = (
+				206CC3B32B7054E6002D0511 /* Model */,
+			);
+			path = Tickets;
+			sourceTree = "<group>";
+		};
+		206CC3B32B7054E6002D0511 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				206CC3AF2B7052CB002D0511 /* Ticket.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		206CC3B42B70580F002D0511 /* TicketItemsRecognizer */ = {
+			isa = PBXGroup;
+			children = (
+				206CC3B72B70639F002D0511 /* TicketItems.swift */,
+				206CC3B92B706462002D0511 /* TicketItems+Analyser.swift */,
+				206CC3B52B70582A002D0511 /* TicketItems+Recognizer.swift */,
+			);
+			path = TicketItemsRecognizer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,8 +344,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				206CC3AD2B704EE3002D0511 /* ScannerViewModel.swift in Sources */,
 				206CC37C2B6DB51E002D0511 /* ContentView.swift in Sources */,
+				206CC3B82B70639F002D0511 /* TicketItems.swift in Sources */,
+				206CC3BA2B706462002D0511 /* TicketItems+Analyser.swift in Sources */,
+				206CC3AB2B704838002D0511 /* ScannerView.swift in Sources */,
+				206CC3A82B704222002D0511 /* TicketsListView.swift in Sources */,
 				206CC37A2B6DB51E002D0511 /* BerryApp.swift in Sources */,
+				206CC3B62B70582A002D0511 /* TicketItems+Recognizer.swift in Sources */,
+				206CC3B02B7052CB002D0511 /* Ticket.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
