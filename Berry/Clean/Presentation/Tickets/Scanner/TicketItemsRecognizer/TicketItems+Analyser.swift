@@ -22,13 +22,16 @@ extension TicketItems {
         private func buildItem(from text: String) -> Ticket.Item? {
             let regex = /(?<name>.+?) +(?<price>[\d,]+) +(?<quantity>\d+) +(?<totalPrice>[\d,]+)/
 
-            guard let result = try? regex.wholeMatch(in: text) else { return nil }
+            guard let result = try? regex.wholeMatch(in: text),
+                  let quantity = Int(result.output.quantity),
+                  let price = Double(result.output.price),
+                  let totalPrice = Double(result.output.totalPrice) else { return nil }
             
             return .init(
                 name: "\(result.output.name)",
-                quantity: "\(result.output.quantity)",
-                price: "\(result.output.price)",
-                totalPrice: "\(result.output.totalPrice)"
+                quantity: quantity,
+                price: price,
+                totalPrice: totalPrice
             )
         }
     }
