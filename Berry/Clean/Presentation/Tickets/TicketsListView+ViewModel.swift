@@ -6,11 +6,7 @@ extension TicketsListView {
         var showScanner = false
         
         func didTapOnScannerButton() {
-            showScanner = requestCameraAuthorization()
-        }
-        
-        private func requestCameraAuthorization() -> Bool {
-            return true
+            showScanner = true
         }
     }
 }
