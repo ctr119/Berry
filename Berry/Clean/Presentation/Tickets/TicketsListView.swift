@@ -16,15 +16,16 @@ struct TicketsListView: View {
             .sheet(isPresented: $shouldOpenScanner, onDismiss: {
                 shouldOpenScanner = false
             }) {
-                Text("Hello")
-    //            ScannerView()
-    //                .edgesIgnoringSafeArea(.bottom)
+                ScannerView()
+                    .edgesIgnoringSafeArea(.bottom)
             }
         }
         
     }
 }
 
+#if DEBUG
 #Preview {
     TicketsListView()
 }
+#endif
