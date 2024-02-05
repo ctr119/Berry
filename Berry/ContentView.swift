@@ -1,21 +1,8 @@
-//
-//  ContentView.swift
-//  Berry
-//
-//  Created by Víctor Barrios Sánchez on 3/2/24.
-//
-
 import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
+        TicketsListView.Factory.make()
     }
 }
 

@@ -1,7 +1,11 @@
 import SwiftUI
 
 struct TicketsListView: View {
-    @State private var shouldOpenScanner = false
+    @State private var viewModel: ViewModel
+    
+    init(viewModel: ViewModel) {
+        self.viewModel = viewModel
+    }
     
     var body: some View {
         NavigationStack {
@@ -10,12 +14,10 @@ struct TicketsListView: View {
             }
             .toolbar {
                 Button("Scan") {
-                    shouldOpenScanner = true
+                    viewModel.didTapOnScannerButton()
                 }
             }
-            .sheet(isPresented: $shouldOpenScanner, onDismiss: {
-                shouldOpenScanner = false
-            }) {
+            .sheet(isPresented: $viewModel.showScanner) {
                 ScannerView()
                     .edgesIgnoringSafeArea(.bottom)
             }
@@ -26,6 +28,6 @@ struct TicketsListView: View {
 
 #if DEBUG
 #Preview {
-    TicketsListView()
+    TicketsListView(viewModel: .previewMock)
 }
 #endif
