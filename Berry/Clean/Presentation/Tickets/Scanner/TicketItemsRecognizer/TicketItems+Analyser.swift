@@ -7,11 +7,31 @@ extension TicketItems {
         func process(observations: [VNRecognizedTextObservation]) -> [Ticket.Item] {
             let maximumCandidates = 1
             var items = [Ticket.Item]()
+            var accumulatedTextPieces: [String] = []
             
             for observation in observations {
-                guard let text = observation.topCandidates(maximumCandidates).first?.string else { continue }
+                guard let text = observation.topCandidates(maximumCandidates).first?
+                    .string
+                    .trimmingCharacters(in: .whitespacesAndNewlines)
+                else { continue }
                 
-                if let item = buildItem(from: text) {
+                var textToProcess = text
+                let textPieces = textToProcess
+                    .components(separatedBy: .whitespaces)
+                    .filter { !$0.isEmpty }
+                
+                if textPieces.count != 4 {
+                    accumulatedTextPieces.append(contentsOf: textPieces)
+                    
+                    if accumulatedTextPieces.count == 4 {
+                        textToProcess = accumulatedTextPieces.joined(separator: " ")
+                        accumulatedTextPieces.removeAll()
+                    } else {
+                        continue
+                    }
+                }
+                
+                if let item = buildItem(from: textToProcess) {
                     items.append(item)
                 }
             }
@@ -20,9 +40,10 @@ extension TicketItems {
         }
         
         private func buildItem(from text: String) -> Ticket.Item? {
-            let regex = /(?<name>.+?) +(?<price>[\d,]+) +(?<quantity>\d+) +(?<totalPrice>[\d,]+)/
-
-            guard let result = try? regex.wholeMatch(in: text),
+            let regex = /(?<name>.+?) +(?<price>[\d.]+) +(?<quantity>\d+) +(?<totalPrice>[\d.]+)/
+            let replacedText = text.replacingOccurrences(of: ",", with: ".")
+            
+            guard let result = try? regex.wholeMatch(in: replacedText),
                   let quantity = Int(result.output.quantity),
                   let price = Double(result.output.price),
                   let totalPrice = Double(result.output.totalPrice) else { return nil }
