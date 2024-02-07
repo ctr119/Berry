@@ -3,7 +3,7 @@ import VisionKit
 import Vision
 
 extension Ticket {
-    struct Recognizer {
+    struct Scanner {
         enum RecognizerError: Error {
             case failToCastObservations
         }

@@ -3,10 +3,10 @@ import SwiftUI
 
 @Observable
 class ScannerViewModel {
-    private let recognizer: Ticket.Recognizer
+    private let scanner: Ticket.Scanner
     
-    init(recognizer: Ticket.Recognizer) {
-        self.recognizer = recognizer
+    init(scanner: Ticket.Scanner) {
+        self.scanner = scanner
     }
     
     func generateTicket(from images: [CGImage]) async -> Ticket {
@@ -14,7 +14,7 @@ class ScannerViewModel {
         
         for image in images {
             do {
-                let items = try await recognizer.items(in: image)
+                let items = try await scanner.items(in: image)
                 ticket.add(items: items)
             } catch {
                 continue
