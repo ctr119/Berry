@@ -8,9 +8,14 @@ extension TicketItems {
             case failToCastObservations
         }
         
+        private let groceryAnalyser: GroceryAnalyser
         private let analyser: TicketItems.Analyser
         
-        init(analyser: TicketItems.Analyser) {
+        init(
+            groceryAnalyser: GroceryAnalyser,
+            analyser: TicketItems.Analyser
+        ) {
+            self.groceryAnalyser = groceryAnalyser
             self.analyser = analyser
         }
         
@@ -29,13 +34,17 @@ extension TicketItems {
                         return
                     }
                     
-                    let topToBottomObservations = observations.sorted { lhs, rhs in
+                    var topToBottomObservations = observations.sorted { lhs, rhs in
                         lhs.boundingBox.minY > rhs.boundingBox.minY
                     }
+                    
+                    let grocery = groceryAnalyser.title(topToBottomObservations.removeFirst())
                     
                     let items = analyser.process(observations: topToBottomObservations)
                     continuation.resume(returning: items)
                 }
+                
+                request.recognitionLevel = .accurate
                 
                 do {
                     try requestHandler.perform([request])
