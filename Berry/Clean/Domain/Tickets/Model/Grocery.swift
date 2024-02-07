@@ -1,5 +1,5 @@
 import Foundation
 
-enum SupportedGrocery: String {
+enum Grocery: String {
     case rewe = "REWE"
 }

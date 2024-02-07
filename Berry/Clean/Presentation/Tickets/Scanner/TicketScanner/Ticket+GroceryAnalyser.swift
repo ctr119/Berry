@@ -3,13 +3,13 @@ import Vision
 
 extension Ticket {
     struct GroceryAnalyser {
-        func title(_ observation: VNRecognizedTextObservation) -> SupportedGrocery? {
+        func title(_ observation: VNRecognizedTextObservation) -> Grocery? {
             guard let text = observation.topCandidates(1).first?
                 .string
                 .trimmingCharacters(in: .whitespacesAndNewlines)
             else { return nil }
             
-            return SupportedGrocery(rawValue: text)
+            return Grocery(rawValue: text)
         }
     }
 }
