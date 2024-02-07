@@ -4,7 +4,7 @@ import Vision
 
 extension Ticket {
     struct ItemsAnalyser {
-        func process(observations: [VNRecognizedTextObservation]) -> [Item] {
+        func process(observations: [VNRecognizedTextObservation], for grocery: Grocery) -> [Item] {
             let maximumCandidates = 1
             var items = [Item]()
             var accumulatedTextPieces: [String] = []

@@ -6,17 +6,18 @@ extension Ticket {
     struct Scanner {
         enum ScannerError: Error {
             case failToCastObservations
+            case nonSupportedGrocery
         }
         
         private let groceryAnalyser: GroceryAnalyser
-        private let analyser: ItemsAnalyser
+        private let itemsAnalyser: ItemsAnalyser
         
         init(
             groceryAnalyser: GroceryAnalyser,
-            analyser: ItemsAnalyser
+            itemsAnalyser: ItemsAnalyser
         ) {
             self.groceryAnalyser = groceryAnalyser
-            self.analyser = analyser
+            self.itemsAnalyser = itemsAnalyser
         }
         
         func items(in cgImage: CGImage) async throws -> [Item] {
@@ -38,9 +39,12 @@ extension Ticket {
                         lhs.boundingBox.minY > rhs.boundingBox.minY
                     }
                     
-                    let grocery = groceryAnalyser.title(topToBottomObservations.removeFirst())
+                    guard let grocery = groceryAnalyser.title(topToBottomObservations.removeFirst()) else {
+                        continuation.resume(throwing: ScannerError.nonSupportedGrocery)
+                        return
+                    }
                     
-                    let items = analyser.process(observations: topToBottomObservations)
+                    let items = itemsAnalyser.process(observations: topToBottomObservations, for: grocery)
                     continuation.resume(returning: items)
                 }
                 
