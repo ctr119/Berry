@@ -9,11 +9,11 @@ extension Ticket {
         }
         
         private let groceryAnalyser: GroceryAnalyser
-        private let analyser: Analyser
+        private let analyser: ItemsAnalyser
         
         init(
             groceryAnalyser: GroceryAnalyser,
-            analyser: Analyser
+            analyser: ItemsAnalyser
         ) {
             self.groceryAnalyser = groceryAnalyser
             self.analyser = analyser

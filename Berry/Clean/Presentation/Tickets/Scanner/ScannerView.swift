@@ -17,7 +17,7 @@ struct ScannerView: UIViewControllerRepresentable {
     
     func makeCoordinator() -> Coordinator {
         let groceryAnalyser = Ticket.GroceryAnalyser()
-        let analyser = Ticket.Analyser()
+        let analyser = Ticket.ItemsAnalyser()
         let scanner = Ticket.Scanner(groceryAnalyser: groceryAnalyser, analyser: analyser)
         let viewModel = ScannerViewModel(scanner: scanner)
         

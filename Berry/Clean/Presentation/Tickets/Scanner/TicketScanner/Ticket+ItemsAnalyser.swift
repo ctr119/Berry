@@ -3,7 +3,7 @@ import VisionKit
 import Vision
 
 extension Ticket {
-    struct Analyser {
+    struct ItemsAnalyser {
         func process(observations: [VNRecognizedTextObservation]) -> [Item] {
             let maximumCandidates = 1
             var items = [Item]()
