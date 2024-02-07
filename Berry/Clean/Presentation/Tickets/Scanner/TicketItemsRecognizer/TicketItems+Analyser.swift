@@ -20,12 +20,12 @@ extension TicketItems {
                     .components(separatedBy: .whitespaces)
                     .filter { !$0.isEmpty }
                 
-                if textPieces.count != 4 {
+                if textPieces.count != 4 || accumulatedTextPieces.count > 0 {
                     accumulatedTextPieces.append(contentsOf: textPieces)
                     
-                    if accumulatedTextPieces.count == 4 {
-                        textToProcess = accumulatedTextPieces.joined(separator: " ")
-                        accumulatedTextPieces.removeAll()
+                    if accumulatedTextPieces.count >= 4 {
+                        textToProcess = accumulatedTextPieces.prefix(4).joined(separator: " ")
+                        accumulatedTextPieces.removeFirst(4)
                     } else {
                         continue
                     }
