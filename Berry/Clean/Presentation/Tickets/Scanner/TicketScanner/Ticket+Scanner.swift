@@ -4,7 +4,7 @@ import Vision
 
 extension Ticket {
     struct Scanner {
-        enum RecognizerError: Error {
+        enum ScannerError: Error {
             case failToCastObservations
         }
         
@@ -30,7 +30,7 @@ extension Ticket {
                     }
                     
                     guard let observations = request.results as? [VNRecognizedTextObservation] else {
-                        continuation.resume(throwing: RecognizerError.failToCastObservations)
+                        continuation.resume(throwing: ScannerError.failToCastObservations)
                         return
                     }
                     
