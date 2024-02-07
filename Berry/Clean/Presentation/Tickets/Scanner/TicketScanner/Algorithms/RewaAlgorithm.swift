@@ -2,6 +2,7 @@ import Foundation
 import Vision
 
 struct RewaAlgorithm: ItemsAlgorithm {
+    // TODO: Focus on Re-do this entire algorithm
     func process(observations: [VNRecognizedTextObservation]) -> [Ticket.Item] {
         let maximumCandidates = 1
         var items = [Ticket.Item]()
@@ -27,8 +28,6 @@ struct RewaAlgorithm: ItemsAlgorithm {
                     continue
                 }
             }
-            
-            // TODO: Sort the pieces here (textPieces)
             
             if let item = buildItem(from: textPieces.joined(separator: " ")) {
                 items.append(item)
