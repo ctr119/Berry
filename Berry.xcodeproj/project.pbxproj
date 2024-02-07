@@ -25,6 +25,8 @@
 		206CC3C12B71A565002D0511 /* TicketsListView+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206CC3C02B71A565002D0511 /* TicketsListView+Factory.swift */; };
 		20F950D22B74418F00386876 /* Ticket+GroceryAnalyser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F950D12B74418F00386876 /* Ticket+GroceryAnalyser.swift */; };
 		20F950D42B7442B300386876 /* Grocery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F950D32B7442B300386876 /* Grocery.swift */; };
+		20F950D82B74499D00386876 /* RewaAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F950D72B74499D00386876 /* RewaAlgorithm.swift */; };
+		20F950DA2B7449BB00386876 /* ItemsAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F950D92B7449BB00386876 /* ItemsAlgorithm.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +69,8 @@
 		206CC3C02B71A565002D0511 /* TicketsListView+Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TicketsListView+Factory.swift"; sourceTree = "<group>"; };
 		20F950D12B74418F00386876 /* Ticket+GroceryAnalyser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ticket+GroceryAnalyser.swift"; sourceTree = "<group>"; };
 		20F950D32B7442B300386876 /* Grocery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grocery.swift; sourceTree = "<group>"; };
+		20F950D72B74499D00386876 /* RewaAlgorithm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewaAlgorithm.swift; sourceTree = "<group>"; };
+		20F950D92B7449BB00386876 /* ItemsAlgorithm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsAlgorithm.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -222,7 +226,7 @@
 				20F950D12B74418F00386876 /* Ticket+GroceryAnalyser.swift */,
 				206CC3B92B706462002D0511 /* Ticket+ItemsAnalyser.swift */,
 				206CC3B52B70582A002D0511 /* Ticket+Scanner.swift */,
-				20F950D62B74481100386876 /* ItemsAnalyser */,
+				20F950D62B74481100386876 /* Algorithms */,
 			);
 			path = TicketScanner;
 			sourceTree = "<group>";
@@ -235,11 +239,13 @@
 			path = Results;
 			sourceTree = "<group>";
 		};
-		20F950D62B74481100386876 /* ItemsAnalyser */ = {
+		20F950D62B74481100386876 /* Algorithms */ = {
 			isa = PBXGroup;
 			children = (
+				20F950D92B7449BB00386876 /* ItemsAlgorithm.swift */,
+				20F950D72B74499D00386876 /* RewaAlgorithm.swift */,
 			);
-			path = ItemsAnalyser;
+			path = Algorithms;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -376,6 +382,7 @@
 				206CC3C12B71A565002D0511 /* TicketsListView+Factory.swift in Sources */,
 				206CC37C2B6DB51E002D0511 /* ContentView.swift in Sources */,
 				20F950D22B74418F00386876 /* Ticket+GroceryAnalyser.swift in Sources */,
+				20F950D82B74499D00386876 /* RewaAlgorithm.swift in Sources */,
 				206CC3BD2B719798002D0511 /* ResultsView.swift in Sources */,
 				206CC3BA2B706462002D0511 /* Ticket+ItemsAnalyser.swift in Sources */,
 				206CC3AB2B704838002D0511 /* ScannerView.swift in Sources */,
@@ -384,6 +391,7 @@
 				20F950D42B7442B300386876 /* Grocery.swift in Sources */,
 				206CC37A2B6DB51E002D0511 /* BerryApp.swift in Sources */,
 				206CC3B62B70582A002D0511 /* Ticket+Scanner.swift in Sources */,
+				20F950DA2B7449BB00386876 /* ItemsAlgorithm.swift in Sources */,
 				206CC3B02B7052CB002D0511 /* Ticket.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
