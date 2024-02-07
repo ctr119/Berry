@@ -15,9 +15,7 @@ extension TicketItems {
                     .trimmingCharacters(in: .whitespacesAndNewlines)
                 else { continue }
                 
-                var textToProcess = text
-                // TODO: Use textPieces to hold the text to process later, instead of the string just above
-                let textPieces = textToProcess
+                var textPieces = text
                     .components(separatedBy: .whitespaces)
                     .filter { !$0.isEmpty }
                 
@@ -25,8 +23,7 @@ extension TicketItems {
                     accumulatedTextPieces.append(contentsOf: textPieces)
                     
                     if accumulatedTextPieces.count >= 4 {
-                        // TODO: Assign the first 4 pieces to `textPieces` instead
-                        textToProcess = accumulatedTextPieces.prefix(4).joined(separator: " ")
+                        textPieces = Array(accumulatedTextPieces.prefix(4))
                         accumulatedTextPieces.removeFirst(4)
                     } else {
                         continue
@@ -34,9 +31,8 @@ extension TicketItems {
                 }
                 
                 // TODO: Sort the pieces here (textPieces)
-                // TODO: Get the joined string and pass it to the function below
                 
-                if let item = buildItem(from: textToProcess) {
+                if let item = buildItem(from: textPieces.joined(separator: " ")) {
                     items.append(item)
                 }
             }
