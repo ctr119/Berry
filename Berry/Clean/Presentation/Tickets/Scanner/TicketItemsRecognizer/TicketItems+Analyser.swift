@@ -2,11 +2,11 @@ import Foundation
 import VisionKit
 import Vision
 
-extension TicketItems {
+extension Ticket {
     struct Analyser {
-        func process(observations: [VNRecognizedTextObservation]) -> [Ticket.Item] {
+        func process(observations: [VNRecognizedTextObservation]) -> [Item] {
             let maximumCandidates = 1
-            var items = [Ticket.Item]()
+            var items = [Item]()
             var accumulatedTextPieces: [String] = []
             
             for observation in observations {
@@ -40,7 +40,7 @@ extension TicketItems {
             return items
         }
         
-        private func buildItem(from text: String) -> Ticket.Item? {
+        private func buildItem(from text: String) -> Item? {
             let regex = /(?<name>.+?) +(?<price>[\d.]+) +(?<quantity>\d+) +(?<totalPrice>[\d.]+)/
             let replacedText = text.replacingOccurrences(of: ",", with: ".")
             

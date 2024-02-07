@@ -3,9 +3,9 @@ import SwiftUI
 
 @Observable
 class ScannerViewModel {
-    private let recognizer: TicketItems.Recognizer
+    private let recognizer: Ticket.Recognizer
     
-    init(recognizer: TicketItems.Recognizer) {
+    init(recognizer: Ticket.Recognizer) {
         self.recognizer = recognizer
     }
     

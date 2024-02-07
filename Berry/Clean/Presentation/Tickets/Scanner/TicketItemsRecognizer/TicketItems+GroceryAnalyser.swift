@@ -1,7 +1,7 @@
 import Foundation
 import Vision
 
-extension TicketItems {
+extension Ticket {
     struct GroceryAnalyser {
         func title(_ observation: VNRecognizedTextObservation) -> SupportedGrocery? {
             guard let text = observation.topCandidates(1).first?

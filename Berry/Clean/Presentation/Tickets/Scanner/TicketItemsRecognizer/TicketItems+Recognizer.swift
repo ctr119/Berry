@@ -2,24 +2,24 @@ import Foundation
 import VisionKit
 import Vision
 
-extension TicketItems {
+extension Ticket {
     struct Recognizer {
         enum RecognizerError: Error {
             case failToCastObservations
         }
         
         private let groceryAnalyser: GroceryAnalyser
-        private let analyser: TicketItems.Analyser
+        private let analyser: Analyser
         
         init(
             groceryAnalyser: GroceryAnalyser,
-            analyser: TicketItems.Analyser
+            analyser: Analyser
         ) {
             self.groceryAnalyser = groceryAnalyser
             self.analyser = analyser
         }
         
-        func items(in cgImage: CGImage) async throws -> [Ticket.Item] {
+        func items(in cgImage: CGImage) async throws -> [Item] {
             let requestHandler = VNImageRequestHandler(cgImage: cgImage)
             
             return try await withCheckedThrowingContinuation { continuation in

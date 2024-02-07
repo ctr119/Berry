@@ -19,7 +19,6 @@
 		206CC3AD2B704EE3002D0511 /* ScannerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206CC3AC2B704EE3002D0511 /* ScannerViewModel.swift */; };
 		206CC3B02B7052CB002D0511 /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206CC3AF2B7052CB002D0511 /* Ticket.swift */; };
 		206CC3B62B70582A002D0511 /* TicketItems+Recognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206CC3B52B70582A002D0511 /* TicketItems+Recognizer.swift */; };
-		206CC3B82B70639F002D0511 /* TicketItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206CC3B72B70639F002D0511 /* TicketItems.swift */; };
 		206CC3BA2B706462002D0511 /* TicketItems+Analyser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206CC3B92B706462002D0511 /* TicketItems+Analyser.swift */; };
 		206CC3BD2B719798002D0511 /* ResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206CC3BC2B719798002D0511 /* ResultsView.swift */; };
 		206CC3BF2B71A331002D0511 /* TicketsListView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206CC3BE2B71A331002D0511 /* TicketsListView+ViewModel.swift */; };
@@ -62,7 +61,6 @@
 		206CC3AC2B704EE3002D0511 /* ScannerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewModel.swift; sourceTree = "<group>"; };
 		206CC3AF2B7052CB002D0511 /* Ticket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
 		206CC3B52B70582A002D0511 /* TicketItems+Recognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TicketItems+Recognizer.swift"; sourceTree = "<group>"; };
-		206CC3B72B70639F002D0511 /* TicketItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketItems.swift; sourceTree = "<group>"; };
 		206CC3B92B706462002D0511 /* TicketItems+Analyser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TicketItems+Analyser.swift"; sourceTree = "<group>"; };
 		206CC3BC2B719798002D0511 /* ResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsView.swift; sourceTree = "<group>"; };
 		206CC3BE2B71A331002D0511 /* TicketsListView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TicketsListView+ViewModel.swift"; sourceTree = "<group>"; };
@@ -221,7 +219,6 @@
 		206CC3B42B70580F002D0511 /* TicketItemsRecognizer */ = {
 			isa = PBXGroup;
 			children = (
-				206CC3B72B70639F002D0511 /* TicketItems.swift */,
 				206CC3B92B706462002D0511 /* TicketItems+Analyser.swift */,
 				20F950D12B74418F00386876 /* TicketItems+GroceryAnalyser.swift */,
 				206CC3B52B70582A002D0511 /* TicketItems+Recognizer.swift */,
@@ -370,7 +367,6 @@
 				206CC3AD2B704EE3002D0511 /* ScannerViewModel.swift in Sources */,
 				206CC3C12B71A565002D0511 /* TicketsListView+Factory.swift in Sources */,
 				206CC37C2B6DB51E002D0511 /* ContentView.swift in Sources */,
-				206CC3B82B70639F002D0511 /* TicketItems.swift in Sources */,
 				20F950D22B74418F00386876 /* TicketItems+GroceryAnalyser.swift in Sources */,
 				206CC3BD2B719798002D0511 /* ResultsView.swift in Sources */,
 				206CC3BA2B706462002D0511 /* TicketItems+Analyser.swift in Sources */,
