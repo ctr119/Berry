@@ -4,13 +4,11 @@ import Vision
 
 extension Ticket {
     struct ItemsAnalyser {
-        let rewaAlgorithm: RewaAlgorithm
+        let algorithmProvider: (Grocery) -> ItemsAlgorithm
         
         func process(observations: [VNRecognizedTextObservation], for grocery: Grocery) -> [Item] {
-            switch grocery {
-            case .rewe:
-                return rewaAlgorithm.process(observations: observations)
-            }
+            let algorithm = algorithmProvider(grocery)
+            return algorithm.process(observations: observations)
         }
     }
 }
