@@ -1,7 +1,11 @@
 import Foundation
 import Vision
 
-struct RewaAlgorithm: ItemsAlgorithm {
+class RewaAlgorithm: ItemsAlgorithm {
+    private let itemsSectionStart = "EUR"
+    private let itemsSectionEnd = "-------"
+    private var inItemsSection = false
+    
     // TODO: Focus on Re-do this entire algorithm
     func process(observations: [VNRecognizedTextObservation]) -> [Ticket.Item] {
         let maximumCandidates = 1
@@ -11,7 +15,8 @@ struct RewaAlgorithm: ItemsAlgorithm {
         for observation in observations {
             guard let text = observation.topCandidates(maximumCandidates).first?
                 .string
-                .trimmingCharacters(in: .whitespacesAndNewlines)
+                .trimmingCharacters(in: .whitespacesAndNewlines),
+                  isInItemsSection(text: text)
             else { continue }
             
             var textPieces = text
@@ -35,6 +40,14 @@ struct RewaAlgorithm: ItemsAlgorithm {
         }
         
         return items
+    }
+    
+    private func isInItemsSection(text: String) -> Bool {
+        if !inItemsSection && text.contains(itemsSectionStart) {
+            inItemsSection = true
+            return false // skip this one as it contains the starting indicator
+        }
+        return inItemsSection
     }
     
     private func buildItem(from text: String) -> Ticket.Item? {
