@@ -22,6 +22,7 @@ class RewaAlgorithm: ItemsAlgorithm {
         var itemStartingPointX: CGFloat?
         
         var itemName = ""
+        var itemTotalPrice: Double = -1
         
         var accumulatedTextPieces: [String] = []
         
@@ -35,7 +36,16 @@ class RewaAlgorithm: ItemsAlgorithm {
             if let previousObservation {
                 let doesBelongToTheSameBaseline = abs(observation.boundingBox.minY - previousObservation.boundingBox.minY) < observationBaselineThreshold
                 if doesBelongToTheSameBaseline {
-                    // TODO: Subtotal price!
+                    let totalPriceComponents = text
+                        .replacingOccurrences(of: ",", with: ".")
+                        .components(separatedBy: .whitespaces)
+                    
+                    guard let totalPriceString = totalPriceComponents.first,
+                          let totalPrice = Double(totalPriceString) else {
+                        continue // Error
+                    }
+                    
+                    itemTotalPrice = totalPrice
                 } else {
                     // TODO: It's another row, but then... another item name or the previous quantity's one? Let's check the X!
                 }
