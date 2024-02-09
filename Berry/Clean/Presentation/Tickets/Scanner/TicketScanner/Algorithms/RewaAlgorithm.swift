@@ -23,11 +23,9 @@ class RewaAlgorithm: ItemsAlgorithm {
         let observationIdentationThreshold: CGFloat = 3
         
         for observation in observations {
-            guard let text = observation.topCandidates(maximumCandidates).first?
-                .string
-                .trimmingCharacters(in: .whitespacesAndNewlines),
-                  isInItemsSection(text: text)
-            else { continue }
+            guard let text = observation.topCandidates(maximumCandidates).first?.string.trimmingCharacters(in: .whitespacesAndNewlines),
+                  isInItemsSection(text: text) else { continue }
+            guard !isTheEndOfTheSection(text: text) else { break }
             
             if let previousObservation {
                 let doesBelongToTheSameBaseline = abs(observation.boundingBox.minY - previousObservation.boundingBox.minY) < observationBaselineThreshold
@@ -68,6 +66,10 @@ class RewaAlgorithm: ItemsAlgorithm {
             return false // skip this one as it contains the starting indicator
         }
         return inItemsSection
+    }
+    
+    private func isTheEndOfTheSection(text: String) -> Bool {
+        text.contains(itemsSectionEnd)
     }
     
     private func totalPrice(from text: String) -> Double? {
