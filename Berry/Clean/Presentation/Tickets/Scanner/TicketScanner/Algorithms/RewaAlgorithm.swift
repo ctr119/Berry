@@ -2,29 +2,25 @@ import Foundation
 import Vision
 
 class RewaAlgorithm: ItemsAlgorithm {
-    private enum ItemType {
-        case simple
-    }
-    
     private let itemsSectionStart = "EUR"
     private let itemsSectionEnd = "-------"
     private var inItemsSection = false
     
-    // TODO: Focus on Re-do this entire algorithm
+    private var items = [Ticket.Item]()
+    
+    private var auxName: String?
+    private var auxTotalPrice: Double?
+    private var auxPrice: Double?
+    private var auxQuantity: Int?
+    private var auxWeight: String?
+    
     func process(observations: [VNRecognizedTextObservation]) -> [Ticket.Item] {
         let maximumCandidates = 1
-        var items = [Ticket.Item]()
         
         let observationBaselineThreshold = 0.04
         var previousObservation: VNRecognizedTextObservation?
         
-//        let itemStartingThreshold: CGFloat = 0.04
-        var itemStartingPointX: CGFloat?
-        
-        var itemName = ""
-        var itemTotalPrice: Double = -1
-        
-        var accumulatedTextPieces: [String] = []
+        let observationIdentationThreshold: CGFloat = 3
         
         for observation in observations {
             guard let text = observation.topCandidates(maximumCandidates).first?
@@ -36,45 +32,31 @@ class RewaAlgorithm: ItemsAlgorithm {
             if let previousObservation {
                 let doesBelongToTheSameBaseline = abs(observation.boundingBox.minY - previousObservation.boundingBox.minY) < observationBaselineThreshold
                 if doesBelongToTheSameBaseline {
-                    let totalPriceComponents = text
-                        .replacingOccurrences(of: ",", with: ".")
-                        .components(separatedBy: .whitespaces)
-                    
-                    guard let totalPriceString = totalPriceComponents.first,
-                          let totalPrice = Double(totalPriceString) else {
-                        continue // Error
+                    if let totalPrice = totalPrice(from: text) {
+                        auxTotalPrice = totalPrice
                     }
-                    
-                    itemTotalPrice = totalPrice
-                } else {
-                    // TODO: It's another row, but then... another item name or the previous quantity's one? Let's check the X!
-                }
-            } else {
-                itemStartingPointX = observation.boundingBox.minX
-                itemName = text
-            }
-            
-            previousObservation = observation
-            // END
-            
-            var textPieces = text
-                .components(separatedBy: .whitespaces)
-                .filter { !$0.isEmpty }
-            
-            if textPieces.count != 4 || accumulatedTextPieces.count > 0 {
-                accumulatedTextPieces.append(contentsOf: textPieces)
-                
-                if accumulatedTextPieces.count >= 4 {
-                    textPieces = Array(accumulatedTextPieces.prefix(4))
-                    accumulatedTextPieces.removeFirst(4)
-                } else {
                     continue
+                } else {
+                    let hasIdentation = abs(observation.boundingBox.minX - previousObservation.boundingBox.minX) > observationIdentationThreshold
+                    if hasIdentation {
+                        if let tuple = weightTuple(from: text) {
+                            auxPrice = tuple.price
+                            auxWeight = tuple.weight
+                        } else if let tuple = quantityTuple(from: text) {
+                            auxPrice = tuple.price
+                            auxQuantity = tuple.quantity
+                        }
+                        
+                        saveItem()
+                        continue
+                    } else {
+                        saveItem()
+                    }
                 }
             }
             
-            if let item = buildItem(from: textPieces.joined(separator: " ")) {
-                items.append(item)
-            }
+            auxName = text
+            previousObservation = observation
         }
         
         return items
@@ -88,24 +70,62 @@ class RewaAlgorithm: ItemsAlgorithm {
         return inItemsSection
     }
     
-    private func itemType() {
+    private func totalPrice(from text: String) -> Double? {
+        let totalPriceComponents = text
+            .replacingOccurrences(of: ",", with: ".")
+            .components(separatedBy: .whitespaces)
         
+        guard let totalPriceString = totalPriceComponents.first else {
+            return nil
+        }
+        
+        return Double(totalPriceString)
     }
     
-    private func buildItem(from text: String) -> Ticket.Item? {
-        let regex = /(?<name>.+?) +(?<price>[\d.]+) +(?<quantity>\d+) +(?<totalPrice>[\d.]+)/
+    private func weightTuple(from text: String) -> (weight: String, price: Double)? {
+        let regex = /(?<weight>[\d.]+ kg) +x +(?<price>[\d.]+)/
+        let replacedText = text.replacingOccurrences(of: ",", with: ".")
+        
+        guard let result = try? regex.wholeMatch(in: replacedText),
+              let price = Double(result.output.price) else { return nil }
+        
+        return (String(result.output.weight), price)
+    }
+    
+    private func quantityTuple(from text: String) -> (quantity: Int, price: Double)? {
+        let regex = /(?<quantity>[\d]+) +\w+ x +(?<price>[\d.]+)/
         let replacedText = text.replacingOccurrences(of: ",", with: ".")
         
         guard let result = try? regex.wholeMatch(in: replacedText),
               let quantity = Int(result.output.quantity),
-              let price = Double(result.output.price),
-              let totalPrice = Double(result.output.totalPrice) else { return nil }
+              let price = Double(result.output.price) else { return nil }
         
-        return .init(
-            name: "\(result.output.name)",
-            quantity: quantity,
-            price: price,
-            totalPrice: totalPrice
+        return (quantity, price)
+    }
+    
+    private func saveItem() {
+        guard let auxName, let auxTotalPrice, let auxPrice else {
+            clearState()
+            return
+        }
+        
+        let item = Ticket.Item(
+            name: auxName,
+            quantity: auxQuantity,
+            weight: auxWeight,
+            price: auxPrice,
+            totalPrice: auxTotalPrice
         )
+        
+        items.append(item)
+        clearState()
+    }
+    
+    private func clearState() {
+        auxName = nil
+        auxTotalPrice = nil
+        auxPrice = nil
+        auxQuantity = nil
+        auxWeight = nil
     }
 }
