@@ -25,7 +25,7 @@ class Ticket {
         }
     }
     
-    private let groceryName: String
+    let groceryName: String
     private(set) var items: [Item] = []
     
     init(groceryName: String) {
@@ -44,7 +44,8 @@ extension Ticket {
         ticket.add(items: [
             .init(name: "Milk", quantity: 1, weight: nil, price: 6.45, totalPrice: 6.45),
             .init(name: "Chocolate", quantity: 3, weight: nil, price: 1.99, totalPrice: 5.97),
-            .init(name: "Tomato sauce", quantity: 3, weight: nil, price: 1.75, totalPrice: 5.25)
+            .init(name: "Tomato sauce", quantity: 3, weight: nil, price: 1.75, totalPrice: 5.25),
+            .init(name: "Oranges", quantity: nil, weight: "1,00 Kg", price: 2.99, totalPrice: 5.98)
         ])
         return ticket
     }()

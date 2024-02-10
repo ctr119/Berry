@@ -5,13 +5,22 @@ struct ResultsView: View {
     let formatStyle: any FormatStyle = FloatingPointFormatStyle<Double>.number.precision(.fractionLength(2))
     
     var body: some View {
-        ScrollView {
-            LazyVStack(spacing: 16) {
-                ForEach(ticket.items, id: \.name) {
-                    rowItem(item: $0)
+        NavigationStack {
+            ZStack {
+                Color.gray
+                    .opacity(0.2)
+                    .ignoresSafeArea()
+                
+                ScrollView {
+                    LazyVStack(spacing: 16) {
+                        ForEach(ticket.items, id: \.name) {
+                            rowItem(item: $0)
+                        }
+                    }
+                    .padding()
                 }
             }
-            .padding(.horizontal)
+            .navigationTitle(ticket.groceryName)
         }
     }
     
@@ -24,7 +33,7 @@ struct ResultsView: View {
             
             Text(item.price, format: .currency(code: "EUR").precision(.fractionLength(2)))
             Text("x")
-            Text(item.quantity, format: .number)
+            Text(quantityOrWeight(item: item))
             Text("=")
             Text(item.totalPrice, format: .currency(code: "EUR").precision(.fractionLength(2)))
                 .fontWeight(.bold)
@@ -32,18 +41,27 @@ struct ResultsView: View {
                 .background(Color.gray.opacity(0.4))
                 .clipShape(RoundedRectangle(cornerRadius: 10))
         }
+        .monospaced()
         .padding()
         .background(.white)
         .clipShape(RoundedRectangle(cornerRadius: 10))
+    }
+    
+    private func quantityOrWeight(item: Ticket.Item) -> String {
+        if let quantity = item.quantity {
+            return "\(quantity)"
+        }
+        
+        if let weight = item.weight {
+            return weight
+        }
+        
+        return ""
     }
 }
 
 #if DEBUG
 #Preview {
-    ZStack {
-        Color.gray.opacity(0.6).ignoresSafeArea()
-        
-        ResultsView(ticket: .previewMock)
-    }
+    ResultsView(ticket: .previewMock)
 }
 #endif
