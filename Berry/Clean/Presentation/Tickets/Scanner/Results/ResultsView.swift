@@ -26,25 +26,35 @@ struct ResultsView: View {
     
     @ViewBuilder
     private func rowItem(item: Ticket.Item) -> some View {
-        HStack {
+        VStack(alignment: .leading) {
             Text(item.name)
+                .font(.headline)
             
-            Spacer()
-            
-            Text(item.price, format: .currency(code: "EUR").precision(.fractionLength(2)))
-            Text("x")
-            Text(quantityOrWeight(item: item))
-            Text("=")
-            Text(item.totalPrice, format: .currency(code: "EUR").precision(.fractionLength(2)))
-                .fontWeight(.bold)
-                .padding(10)
-                .background(Color.gray.opacity(0.4))
-                .clipShape(RoundedRectangle(cornerRadius: 10))
+            HStack {
+                Spacer()
+                
+                priceSection(for: item)
+            }
+            .font(.subheadline)
+            .frame(maxWidth: 400)
         }
         .monospaced()
         .padding()
         .background(.white)
         .clipShape(RoundedRectangle(cornerRadius: 10))
+    }
+    
+    @ViewBuilder
+    private func priceSection(for item: Ticket.Item) -> some View {
+        Text(item.price, format: .currency(code: "EUR").precision(.fractionLength(2)))
+        Text("x")
+        Text(quantityOrWeight(item: item))
+        Text("=")
+        Text(item.totalPrice, format: .currency(code: "EUR").precision(.fractionLength(2)))
+            .fontWeight(.bold)
+            .padding(10)
+            .background(Color.gray.opacity(0.4))
+            .clipShape(RoundedRectangle(cornerRadius: 10))
     }
     
     private func quantityOrWeight(item: Ticket.Item) -> String {
