@@ -25,7 +25,12 @@ class Ticket {
         }
     }
     
+    private let groceryName: String
     private(set) var items: [Item] = []
+    
+    init(groceryName: String) {
+        self.groceryName = groceryName
+    }
     
     func add(items: [Item]) {
         self.items.append(contentsOf: items)
@@ -35,7 +40,7 @@ class Ticket {
 #if DEBUG
 extension Ticket {
     static var previewMock: Ticket = {
-        let ticket = Ticket()
+        let ticket = Ticket(groceryName: "Mercadona")
         ticket.add(items: [
             .init(name: "Milk", quantity: 1, weight: nil, price: 6.45, totalPrice: 6.45),
             .init(name: "Chocolate", quantity: 3, weight: nil, price: 1.99, totalPrice: 5.97),

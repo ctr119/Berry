@@ -44,7 +44,7 @@ struct ScannerView: UIViewControllerRepresentable {
         
         func documentCameraViewController(_ controller: VNDocumentCameraViewController, didFinishWith scan: VNDocumentCameraScan) {
             Task {
-                let ticket = await viewModel.generateTicket(from: scan.images())
+                guard let ticket = await viewModel.generateTicket(from: scan.images()) else { return }
                 
                 await MainActor.run {
                     let resultsView = ResultsView(ticket: ticket)

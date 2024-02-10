@@ -20,7 +20,7 @@ extension Ticket {
             self.itemsAnalyser = itemsAnalyser
         }
         
-        func items(in cgImage: CGImage) async throws -> [Item] {
+        func ticket(from cgImage: CGImage) async throws -> Ticket {
             let requestHandler = VNImageRequestHandler(cgImage: cgImage)
             
             return try await withCheckedThrowingContinuation { continuation in
@@ -45,7 +45,11 @@ extension Ticket {
                     }
                     
                     let items = itemsAnalyser.process(observations: topToBottomObservations, for: grocery)
-                    continuation.resume(returning: items)
+                    
+                    let ticket = Ticket(groceryName: grocery.rawValue)
+                    ticket.add(items: items)
+                    
+                    continuation.resume(returning: ticket)
                 }
                 
                 request.recognitionLevel = .accurate

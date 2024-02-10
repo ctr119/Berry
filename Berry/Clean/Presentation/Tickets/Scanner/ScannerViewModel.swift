@@ -9,18 +9,8 @@ class ScannerViewModel {
         self.scanner = scanner
     }
     
-    func generateTicket(from images: [CGImage]) async -> Ticket {
-        let ticket = Ticket()
-        
-        for image in images {
-            do {
-                let items = try await scanner.items(in: image)
-                ticket.add(items: items)
-            } catch {
-                continue
-            }
-        }
-        
-        return ticket
+    func generateTicket(from images: [CGImage]) async -> Ticket? {
+        guard let image = images.first else { return nil }
+        return try? await scanner.ticket(from: image)
     }
 }
