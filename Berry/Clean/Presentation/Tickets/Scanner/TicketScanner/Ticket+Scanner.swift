@@ -35,16 +35,18 @@ extension Ticket {
                         return
                     }
                     
-                    var topToBottomObservations = observations.sorted { lhs, rhs in
-                        lhs.boundingBox.minY > rhs.boundingBox.minY
+                    // Sorted from top to bottom, and leading to trailing
+                    var sortedObservations = observations.sorted { lhs, rhs in
+                        lhs.boundingBox.minY > rhs.boundingBox.minY &&
+                        lhs.boundingBox.minX > rhs.boundingBox.minX
                     }
                     
-                    guard let grocery = groceryAnalyser.title(topToBottomObservations.removeFirst()) else {
+                    guard let grocery = groceryAnalyser.title(sortedObservations.removeFirst()) else {
                         continuation.resume(throwing: ScannerError.nonSupportedGrocery)
                         return
                     }
                     
-                    let items = itemsAnalyser.process(observations: topToBottomObservations, for: grocery)
+                    let items = itemsAnalyser.process(observations: sortedObservations, for: grocery)
                     
                     let ticket = Ticket(groceryName: grocery.rawValue)
                     ticket.add(items: items)
