@@ -51,39 +51,31 @@ struct ResultsView: View {
             
             if dynamicTypeSize >= dynamicTypeSizeThreshold {
                 VStack(alignment: .trailing) {
-                    verticalPriceRow(for: item)
+                    priceRow(for: item)
                 }
             } else {
-                horizontalPriceRow(for: item)
+                priceRow(for: item)
             }
         }
     }
     
     @ViewBuilder
-    private func verticalPriceRow(for item: Ticket.Item) -> some View {
+    private func priceRow(for item: Ticket.Item) -> some View {
         Text(item.price, format: .currency(code: "EUR").precision(.fractionLength(2)))
         
-        HStack {
+        if dynamicTypeSize >= dynamicTypeSizeThreshold {
+            HStack {
+                Text("x")
+                Spacer()
+                Text(quantityOrWeight(item: item))
+            }
+            Divider()
+        } else {
             Text("x")
-            Spacer()
             Text(quantityOrWeight(item: item))
+            Text("=")
         }
         
-        Divider()
-        
-        Text(item.totalPrice, format: .currency(code: "EUR").precision(.fractionLength(2)))
-            .fontWeight(.bold)
-            .padding(10)
-            .background(Color.gray.opacity(0.4))
-            .clipShape(RoundedRectangle(cornerRadius: 10))
-    }
-    
-    @ViewBuilder
-    private func horizontalPriceRow(for item: Ticket.Item) -> some View {
-        Text(item.price, format: .currency(code: "EUR").precision(.fractionLength(2)))
-        Text("x")
-        Text(quantityOrWeight(item: item))
-        Text("=")
         Text(item.totalPrice, format: .currency(code: "EUR").precision(.fractionLength(2)))
             .fontWeight(.bold)
             .padding(10)
