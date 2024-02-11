@@ -17,14 +17,14 @@ class RewaAlgorithm: ItemsAlgorithm {
     func process(observations: [VNRecognizedTextObservation]) -> [Ticket.Item] {
         let maximumCandidates = 1
         
-        let observationBaselineThreshold = 0.04
+        let observationBaselineThreshold = 0.01
         var previousObservation: VNRecognizedTextObservation?
         
-        let observationIdentationThreshold: CGFloat = 3
+        let observationIdentationThreshold: CGFloat = 0.2
         
         for observation in observations {
             guard let text = observation.topCandidates(maximumCandidates).first?.string.trimmingCharacters(in: .whitespacesAndNewlines),
-                  isInItemsSection(text: text) else { continue }
+                  isInItemsSection(text: text) == true else { continue }
             guard !isTheEndOfTheSection(text: text) else { break }
             
             if let previousObservation {
@@ -48,6 +48,8 @@ class RewaAlgorithm: ItemsAlgorithm {
                         saveItem()
                         continue
                     } else {
+                        auxPrice = auxTotalPrice
+                        auxQuantity = 1
                         saveItem()
                     }
                 }
