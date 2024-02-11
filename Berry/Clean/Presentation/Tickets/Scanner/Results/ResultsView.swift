@@ -1,6 +1,10 @@
 import SwiftUI
 
 struct ResultsView: View {
+    @Environment(\.dynamicTypeSize) var dynamicTypeSize
+    
+    private let dynamicTypeSizeThreshold: DynamicTypeSize = .xxxLarge
+    
     let ticket: Ticket
     let formatStyle: any FormatStyle = FloatingPointFormatStyle<Double>.number.precision(.fractionLength(2))
     
@@ -30,13 +34,9 @@ struct ResultsView: View {
             Text(item.name)
                 .font(.headline)
             
-            HStack {
-                Spacer()
-                
-                priceSection(for: item)
-            }
-            .font(.subheadline)
-            .frame(maxWidth: 400)
+            priceSection(for: item)
+                .font(.subheadline)
+                .frame(maxWidth: 400)
         }
         .monospaced()
         .padding()
@@ -46,6 +46,40 @@ struct ResultsView: View {
     
     @ViewBuilder
     private func priceSection(for item: Ticket.Item) -> some View {
+        HStack {
+            Spacer()
+            
+            if dynamicTypeSize >= dynamicTypeSizeThreshold {
+                VStack(alignment: .trailing) {
+                    verticalPriceRow(for: item)
+                }
+            } else {
+                horizontalPriceRow(for: item)
+            }
+        }
+    }
+    
+    @ViewBuilder
+    private func verticalPriceRow(for item: Ticket.Item) -> some View {
+        Text(item.price, format: .currency(code: "EUR").precision(.fractionLength(2)))
+        
+        HStack {
+            Text("x")
+            Spacer()
+            Text(quantityOrWeight(item: item))
+        }
+        
+        Divider()
+        
+        Text(item.totalPrice, format: .currency(code: "EUR").precision(.fractionLength(2)))
+            .fontWeight(.bold)
+            .padding(10)
+            .background(Color.gray.opacity(0.4))
+            .clipShape(RoundedRectangle(cornerRadius: 10))
+    }
+    
+    @ViewBuilder
+    private func horizontalPriceRow(for item: Ticket.Item) -> some View {
         Text(item.price, format: .currency(code: "EUR").precision(.fractionLength(2)))
         Text("x")
         Text(quantityOrWeight(item: item))
