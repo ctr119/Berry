@@ -6,57 +6,61 @@ class RewaAlgorithm: ItemsAlgorithm {
     private let itemsSectionEnd = "-------"
     private var inItemsSection = false
     
-    private var items = [Ticket.Item]()
-    
-    private var auxName: String?
-    private var auxTotalPrice: Double?
-    private var auxPrice: Double?
-    private var auxQuantity: Int?
-    private var auxWeight: String?
-    
-    func process(observations: [VNRecognizedTextObservation]) -> [Ticket.Item] {
-        let maximumCandidates = 1
+    func process(lines: [String]) -> [Ticket.Item] {
+        var items = [Ticket.Item]()
         
-        let observationBaselineThreshold = 0.01
-        var previousObservation: VNRecognizedTextObservation?
+        var auxName: String?
+        var auxTotalPrice: Double?
+        var auxPrice: Double?
+        var auxQuantity: Int = 1
+        var auxWeight: String?
         
-        let observationIdentationThreshold: CGFloat = 0.2
+        func clearState() {
+            auxName = nil
+            auxTotalPrice = nil
+            auxPrice = nil
+            auxQuantity = 1
+            auxWeight = nil
+        }
         
-        for observation in observations {
-            guard let text = observation.topCandidates(maximumCandidates).first?.string.trimmingCharacters(in: .whitespacesAndNewlines),
-                  isInItemsSection(text: text) == true else { continue }
-            guard !isTheEndOfTheSection(text: text) else { break }
-            
-            if let previousObservation {
-                let doesBelongToTheSameBaseline = abs(observation.boundingBox.minY - previousObservation.boundingBox.minY) < observationBaselineThreshold
-                if doesBelongToTheSameBaseline {
-                    if let totalPrice = totalPrice(from: text) {
-                        auxTotalPrice = totalPrice
-                    }
-                    continue
-                } else {
-                    let hasIdentation = abs(observation.boundingBox.minX - previousObservation.boundingBox.minX) > observationIdentationThreshold
-                    if hasIdentation {
-                        if let tuple = weightTuple(from: text) {
-                            auxPrice = tuple.price
-                            auxWeight = tuple.weight
-                        } else if let tuple = quantityTuple(from: text) {
-                            auxPrice = tuple.price
-                            auxQuantity = tuple.quantity
-                        }
-                        
-                        saveItem()
-                        continue
-                    } else {
-                        auxPrice = auxTotalPrice
-                        auxQuantity = 1
-                        saveItem()
-                    }
-                }
+        func saveItem() {
+            guard let auxName, let auxTotalPrice else {
+                clearState()
+                return
             }
             
-            auxName = text
-            previousObservation = observation
+            let item = Ticket.Item(
+                name: auxName,
+                quantity: auxQuantity,
+                weight: auxWeight,
+                price: auxPrice ?? auxTotalPrice,
+                totalPrice: auxTotalPrice
+            )
+            
+            items.append(item)
+            clearState()
+        }
+        
+        for line in lines {
+            guard isInItemsSection(text: line) else { continue }
+            guard !isTheEndOfTheSection(text: line) else { break }
+            
+            if let singleItem = singleItem(from: line) {
+                if auxName != nil, auxTotalPrice != nil {
+                    saveItem()
+                }
+                
+                auxName = singleItem.name
+                auxTotalPrice = singleItem.totalPrice
+                
+            } else if let quantityItem = quantityTuple(from: line) {
+                auxQuantity = quantityItem.quantity
+                auxPrice = quantityItem.price
+                
+            } else if let weightItem = weightTuple(from: line) {
+                auxWeight = weightItem.weight
+                auxPrice = weightItem.price
+            }
         }
         
         return items
@@ -74,30 +78,18 @@ class RewaAlgorithm: ItemsAlgorithm {
         text.contains(itemsSectionEnd)
     }
     
-    private func totalPrice(from text: String) -> Double? {
-        let totalPriceComponents = text
-            .replacingOccurrences(of: ",", with: ".")
-            .components(separatedBy: .whitespaces)
-        
-        guard let totalPriceString = totalPriceComponents.first else {
-            return nil
-        }
-        
-        return Double(totalPriceString)
-    }
-    
-    private func weightTuple(from text: String) -> (weight: String, price: Double)? {
-        let regex = /(?<weight>[\d.]+ kg) +x +(?<price>[\d.]+)/
+    private func singleItem(from text: String) -> (name: String, totalPrice: Double)? {
+        let regex = /(?<name>[^\d\n]+) +(?<totalPrice>[\d.]+) (?!EUR\/kg)/
         let replacedText = text.replacingOccurrences(of: ",", with: ".")
         
-        guard let result = try? regex.wholeMatch(in: replacedText),
-              let price = Double(result.output.price) else { return nil }
+        guard let result = try? regex.firstMatch(in: replacedText),
+              let totalPrice = Double(result.output.totalPrice) else { return nil }
         
-        return (String(result.output.weight), price)
+        return (String(result.output.name), totalPrice)
     }
     
     private func quantityTuple(from text: String) -> (quantity: Int, price: Double)? {
-        let regex = /(?<quantity>[\d]+) +\w+ x +(?<price>[\d.]+)/
+        let regex = /(?<quantity>\d+?) +Stk x +(?<price>[\d.]+)/
         let replacedText = text.replacingOccurrences(of: ",", with: ".")
         
         guard let result = try? regex.wholeMatch(in: replacedText),
@@ -107,29 +99,13 @@ class RewaAlgorithm: ItemsAlgorithm {
         return (quantity, price)
     }
     
-    private func saveItem() {
-        guard let auxName, let auxTotalPrice, let auxPrice else {
-            clearState()
-            return
-        }
+    private func weightTuple(from text: String) -> (weight: String, price: Double)? {
+        let regex = /(?<weight>[\d.]+ [\D]+) +x +(?<price>[\d.]+) +[\D]+/
+        let replacedText = text.replacingOccurrences(of: ",", with: ".")
         
-        let item = Ticket.Item(
-            name: auxName,
-            quantity: auxQuantity,
-            weight: auxWeight,
-            price: auxPrice,
-            totalPrice: auxTotalPrice
-        )
+        guard let result = try? regex.wholeMatch(in: replacedText),
+              let price = Double(result.output.price) else { return nil }
         
-        items.append(item)
-        clearState()
-    }
-    
-    private func clearState() {
-        auxName = nil
-        auxTotalPrice = nil
-        auxPrice = nil
-        auxQuantity = nil
-        auxWeight = nil
+        return (String(result.output.weight), price)
     }
 }

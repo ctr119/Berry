@@ -1,6 +1,5 @@
 import Foundation
-import Vision
 
 protocol ItemsAlgorithm {
-    func process(observations: [VNRecognizedTextObservation]) -> [Ticket.Item]
+    func process(lines: [String]) -> [Ticket.Item]
 }

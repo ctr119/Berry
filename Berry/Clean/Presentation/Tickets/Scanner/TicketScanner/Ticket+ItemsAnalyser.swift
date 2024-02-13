@@ -7,7 +7,6 @@ extension Ticket {
         let algorithmProvider: (Grocery) -> ItemsAlgorithm
         
         func process(observations: [VNRecognizedTextObservation], for grocery: Grocery) -> [Item] {
-            // Start of Pre-processing
             let maximumCandidates = 1
             let observationBaselineThreshold = 0.01
             
@@ -36,11 +35,9 @@ extension Ticket {
                 print(line)
             }
             print("\n*** END ***")
-            // End of Pre-processing
             
-            // TODO: Pass the lines to the algorithm
             let algorithm = algorithmProvider(grocery)
-            return algorithm.process(observations: observations)
+            return algorithm.process(lines: lines)
         }
     }
 }
