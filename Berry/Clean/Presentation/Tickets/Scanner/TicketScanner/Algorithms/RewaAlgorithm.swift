@@ -12,7 +12,7 @@ class RewaAlgorithm: ItemsAlgorithm {
         var auxName: String?
         var auxTotalPrice: Double?
         var auxPrice: Double?
-        var auxQuantity: Int = 1
+        var auxQuantity: Int? = 1
         var auxWeight: String?
         
         func clearState() {
@@ -58,6 +58,7 @@ class RewaAlgorithm: ItemsAlgorithm {
                 auxPrice = quantityItem.price
                 
             } else if let weightItem = weightTuple(from: line) {
+                auxQuantity = nil
                 auxWeight = weightItem.weight
                 auxPrice = weightItem.price
             }
