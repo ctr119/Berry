@@ -37,9 +37,11 @@ extension Ticket {
                     
                     // Sorted from top to bottom, and leading to trailing
                     var sortedObservations = observations.sorted { lhs, rhs in
-                        lhs.boundingBox.minY > rhs.boundingBox.minY 
-//                        &&
-//                        lhs.boundingBox.minX > rhs.boundingBox.minX
+                        if lhs.doesBelongToTheSameBaseline(as: rhs) {
+                            return lhs.boundingBox.minX < rhs.boundingBox.minX
+                        } else {
+                            return lhs.boundingBox.minY > rhs.boundingBox.minY
+                        }
                     }
                     
                     guard let grocery = groceryAnalyser.title(sortedObservations.removeFirst()) else {
