@@ -51,8 +51,7 @@ extension Ticket {
                     
                     let items = itemsAnalyser.process(observations: sortedObservations, for: grocery)
                     
-                    let ticket = Ticket(groceryName: grocery.rawValue)
-                    ticket.add(items: items)
+                    let ticket = Ticket(groceryName: grocery.rawValue, items: items)
                     
                     continuation.resume(returning: ticket)
                 }
