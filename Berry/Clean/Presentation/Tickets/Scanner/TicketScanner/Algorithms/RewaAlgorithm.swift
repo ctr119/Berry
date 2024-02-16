@@ -107,6 +107,8 @@ class RewaAlgorithm: ItemsAlgorithm {
         guard let result = try? regex.wholeMatch(in: replacedText),
               let price = Double(result.output.price) else { return nil }
         
-        return (String(result.output.weight), price)
+        let weight = String(result.output.weight).replacingOccurrences(of: ".", with: ",")
+        
+        return (weight, price)
     }
 }
