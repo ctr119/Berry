@@ -80,7 +80,7 @@ class RewaAlgorithm: ItemsAlgorithm {
     }
     
     private func singleItem(from text: String) -> (name: String, totalPrice: Double)? {
-        let regex = /(?<name>[^\d\n]+) +(?<totalPrice>[\d.]+) (?!EUR\/kg)/
+        let regex = /(?<name>[^\d\n]+.*) +(?<totalPrice>-?[\d.]+) (?!EUR\/kg)/
         let replacedText = text.replacingOccurrences(of: ",", with: ".")
         
         guard let result = try? regex.firstMatch(in: replacedText),
