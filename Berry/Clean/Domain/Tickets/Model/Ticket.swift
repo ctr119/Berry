@@ -72,4 +72,14 @@ extension Ticket {
         )
     }()
 }
+
+extension Ticket.Item {
+    static var previewMock: Ticket.Item = .init(
+        name: "Milk",
+        quantity: 1,
+        weight: nil,
+        price: 6.45,
+        totalPrice: 6.45
+    )
+}
 #endif

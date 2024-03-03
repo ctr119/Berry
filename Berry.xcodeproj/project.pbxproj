@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		202E87AA2B953512008DC53A /* ResultsView+Row.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202E87A92B953512008DC53A /* ResultsView+Row.swift */; };
 		206BB0AA2B7ED65400F01604 /* VNRecognizedTextObservation+Baseline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206BB0A92B7ED65400F01604 /* VNRecognizedTextObservation+Baseline.swift */; };
 		206BB0AD2B93E7B600F01604 /* Food+Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206BB0AC2B93E7B600F01604 /* Food+Category.swift */; };
 		206BB0AF2B93EDBD00F01604 /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206BB0AE2B93EDBD00F01604 /* Food.swift */; };
@@ -50,6 +51,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		202E87A92B953512008DC53A /* ResultsView+Row.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ResultsView+Row.swift"; sourceTree = "<group>"; };
 		206BB0A92B7ED65400F01604 /* VNRecognizedTextObservation+Baseline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VNRecognizedTextObservation+Baseline.swift"; sourceTree = "<group>"; };
 		206BB0AC2B93E7B600F01604 /* Food+Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Food+Category.swift"; sourceTree = "<group>"; };
 		206BB0AE2B93EDBD00F01604 /* Food.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 			isa = PBXGroup;
 			children = (
 				206CC3BC2B719798002D0511 /* ResultsView.swift */,
+				202E87A92B953512008DC53A /* ResultsView+Row.swift */,
 			);
 			path = Results;
 			sourceTree = "<group>";
@@ -404,6 +407,7 @@
 				206CC3BD2B719798002D0511 /* ResultsView.swift in Sources */,
 				206CC3BA2B706462002D0511 /* Ticket+ItemsAnalyser.swift in Sources */,
 				206CC3AB2B704838002D0511 /* ScannerView.swift in Sources */,
+				202E87AA2B953512008DC53A /* ResultsView+Row.swift in Sources */,
 				206CC3BF2B71A331002D0511 /* TicketsListView+ViewModel.swift in Sources */,
 				206CC3A82B704222002D0511 /* TicketsListView.swift in Sources */,
 				20F950D42B7442B300386876 /* Grocery.swift in Sources */,
