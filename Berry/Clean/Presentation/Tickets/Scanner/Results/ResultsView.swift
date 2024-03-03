@@ -38,14 +38,7 @@ struct ResultsView: View {
                     
                     Divider()
                     
-                    ScrollView {
-                        LazyVStack(spacing: 16) {
-                            ForEach(ticket.items, id: \.name) {
-                                Row(item: $0)
-                            }
-                        }
-                        .padding()
-                    }
+                    ticketListItems()
                 }
             }
             .navigationTitle(ticket.groceryName)
@@ -59,6 +52,18 @@ struct ResultsView: View {
                     })
                 }
             }
+        }
+    }
+    
+    @ViewBuilder
+    private func ticketListItems() -> some View {
+        ScrollView {
+            LazyVStack(spacing: 16) {
+                ForEach(ticket.items, id: \.name) {
+                    Row(item: $0)
+                }
+            }
+            .padding()
         }
     }
 }
