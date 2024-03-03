@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		206BB0AA2B7ED65400F01604 /* VNRecognizedTextObservation+Baseline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206BB0A92B7ED65400F01604 /* VNRecognizedTextObservation+Baseline.swift */; };
+		206BB0AD2B93E7B600F01604 /* Food+Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206BB0AC2B93E7B600F01604 /* Food+Category.swift */; };
+		206BB0AF2B93EDBD00F01604 /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206BB0AE2B93EDBD00F01604 /* Food.swift */; };
 		206CC37A2B6DB51E002D0511 /* BerryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206CC3792B6DB51E002D0511 /* BerryApp.swift */; };
 		206CC37C2B6DB51E002D0511 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206CC37B2B6DB51E002D0511 /* ContentView.swift */; };
 		206CC37E2B6DB51F002D0511 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 206CC37D2B6DB51F002D0511 /* Assets.xcassets */; };
@@ -49,6 +51,8 @@
 
 /* Begin PBXFileReference section */
 		206BB0A92B7ED65400F01604 /* VNRecognizedTextObservation+Baseline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VNRecognizedTextObservation+Baseline.swift"; sourceTree = "<group>"; };
+		206BB0AC2B93E7B600F01604 /* Food+Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Food+Category.swift"; sourceTree = "<group>"; };
+		206BB0AE2B93EDBD00F01604 /* Food.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
 		206CC3762B6DB51E002D0511 /* Berry.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Berry.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		206CC3792B6DB51E002D0511 /* BerryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BerryApp.swift; sourceTree = "<group>"; };
 		206CC37B2B6DB51E002D0511 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -100,6 +104,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		206BB0AB2B93E7A300F01604 /* Food */ = {
+			isa = PBXGroup;
+			children = (
+				206BB0AE2B93EDBD00F01604 /* Food.swift */,
+				206BB0AC2B93E7B600F01604 /* Food+Category.swift */,
+			);
+			path = Food;
+			sourceTree = "<group>";
+		};
 		206CC36D2B6DB51E002D0511 = {
 			isa = PBXGroup;
 			children = (
@@ -200,6 +213,7 @@
 		206CC3B12B7054D6002D0511 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				206BB0AB2B93E7A300F01604 /* Food */,
 				206CC3B22B7054DE002D0511 /* Tickets */,
 			);
 			path = Domain;
@@ -386,12 +400,14 @@
 				206CC37C2B6DB51E002D0511 /* ContentView.swift in Sources */,
 				20F950D22B74418F00386876 /* Ticket+GroceryAnalyser.swift in Sources */,
 				20F950D82B74499D00386876 /* RewaAlgorithm.swift in Sources */,
+				206BB0AF2B93EDBD00F01604 /* Food.swift in Sources */,
 				206CC3BD2B719798002D0511 /* ResultsView.swift in Sources */,
 				206CC3BA2B706462002D0511 /* Ticket+ItemsAnalyser.swift in Sources */,
 				206CC3AB2B704838002D0511 /* ScannerView.swift in Sources */,
 				206CC3BF2B71A331002D0511 /* TicketsListView+ViewModel.swift in Sources */,
 				206CC3A82B704222002D0511 /* TicketsListView.swift in Sources */,
 				20F950D42B7442B300386876 /* Grocery.swift in Sources */,
+				206BB0AD2B93E7B600F01604 /* Food+Category.swift in Sources */,
 				206CC37A2B6DB51E002D0511 /* BerryApp.swift in Sources */,
 				206CC3B62B70582A002D0511 /* Ticket+Scanner.swift in Sources */,
 				206BB0AA2B7ED65400F01604 /* VNRecognizedTextObservation+Baseline.swift in Sources */,
