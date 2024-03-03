@@ -1,12 +1,7 @@
 import SwiftUI
 
 struct ResultsView: View {
-    @Environment(\.dynamicTypeSize) var dynamicTypeSize
-    
-    private let dynamicTypeSizeThreshold: DynamicTypeSize = .xxxLarge
-    
     let ticket: Ticket
-    let formatStyle: any FormatStyle = FloatingPointFormatStyle<Double>.number.precision(.fractionLength(2))
     
     var body: some View {
         NavigationStack {
