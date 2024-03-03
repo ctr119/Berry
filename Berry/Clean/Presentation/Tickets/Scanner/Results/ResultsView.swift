@@ -25,6 +25,16 @@ struct ResultsView: View {
                 }
             }
             .navigationTitle(ticket.groceryName)
+            .toolbar {
+                ToolbarItem(id: "add-category-item", placement: .primaryAction) {
+                    Button(action: {}, label: {
+                        Image(systemName: "plus.square.on.square")
+                            .rotationEffect(.degrees(90))
+                            .symbolRenderingMode(.hierarchical)
+                            .foregroundStyle(.pink)
+                    })
+                }
+            }
         }
     }
     
