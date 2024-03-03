@@ -15,13 +15,37 @@ struct ResultsView: View {
                     .opacity(0.2)
                     .ignoresSafeArea()
                 
-                ScrollView {
-                    LazyVStack(spacing: 16) {
-                        ForEach(ticket.items, id: \.name) {
-                            rowItem(item: $0)
+                VStack {
+                    ScrollView(.horizontal) {
+                        HStack {
+                            Rectangle()
+                                .frame(width: 50, height: 50)
+                                .foregroundStyle(.red)
+                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                            
+                            Rectangle()
+                                .frame(width: 50, height: 50)
+                                .foregroundStyle(.green)
+                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                            
+                            Rectangle()
+                                .frame(width: 50, height: 50)
+                                .foregroundStyle(.blue)
+                                .clipShape(RoundedRectangle(cornerRadius: 10))
                         }
+                        .padding()
                     }
-                    .padding()
+                    
+                    Divider()
+                    
+                    ScrollView {
+                        LazyVStack(spacing: 16) {
+                            ForEach(ticket.items, id: \.name) {
+                                rowItem(item: $0)
+                            }
+                        }
+                        .padding()
+                    }
                 }
             }
             .navigationTitle(ticket.groceryName)
