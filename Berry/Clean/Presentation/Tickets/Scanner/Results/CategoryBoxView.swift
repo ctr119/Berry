@@ -17,17 +17,28 @@ struct CategoryBoxView<Content: View>: View {
                 .foregroundStyle(.white)
                 .padding(.top, 10)
             
-            ScrollView {
-                VStack(spacing: 16) {
-                    ForEach(items, id: \.name) { item in
-                        rowContent(item)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 10)
-                                    .stroke(Color.gray)
-                            )
+            VStack {
+                if items.isEmpty {
+                    Text("Drag items here to assign them a category")
+                        .italic()
+                        .foregroundStyle(Color.gray)
+                        .frame(maxWidth: 150, maxHeight: .infinity)
+                        .multilineTextAlignment(.center)
+                        .padding()
+                } else {
+                    ScrollView {
+                        VStack(spacing: 16) {
+                            ForEach(items, id: \.name) { item in
+                                rowContent(item)
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 10)
+                                            .stroke(Color.gray)
+                                    )
+                            }
+                        }
+                        .padding()
                     }
                 }
-                .padding()
             }
             .frame(minWidth: 150)
             .background(
