@@ -29,6 +29,7 @@ struct CategoryBoxView<Content: View>: View {
                 }
                 .padding()
             }
+            .frame(minWidth: 150)
             .background(
                 RoundedRectangle(cornerRadius: 10)
                     .fill(.white)
@@ -44,7 +45,7 @@ struct CategoryBoxView<Content: View>: View {
 
 #if DEBUG
 #Preview {
-    CategoryBoxView(category: .other, items: [.previewMock, .previewMock]) { item in
+    CategoryBoxView(category: .other, items: []) { item in
         ResultsView.Row(item: item)
     }
 }

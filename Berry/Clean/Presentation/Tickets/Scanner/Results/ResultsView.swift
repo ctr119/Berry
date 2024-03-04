@@ -11,24 +11,21 @@ struct ResultsView: View {
                     .opacity(0.2)
                     .ignoresSafeArea()
                 
-                GeometryReader { geometry in
-                    VStack {
-                        ScrollView(.horizontal) {
-                            HStack {
-                                ForEach(viewModel.categories, id: \.code) { category in
-                                    CategoryBoxView(category: category, items: [.previewMock]) { item in
-                                        Row(item: item)
-                                    }
-                                    .frame(width: geometry.size.width - 32)
+                VStack {
+                    ScrollView(.horizontal) {
+                        HStack {
+                            ForEach(viewModel.categories, id: \.code) { category in
+                                CategoryBoxView(category: category, items: []) { item in
+                                    Row(item: item)
                                 }
                             }
-                            .padding()
                         }
-                        
-                        Divider()
-                        
-                        ticketListItems()
+                        .padding()
                     }
+                    
+                    Divider()
+                    
+                    ticketListItems()
                 }
             }
             .navigationTitle(ticket.groceryName)
