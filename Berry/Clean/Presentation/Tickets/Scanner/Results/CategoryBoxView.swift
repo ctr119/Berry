@@ -13,8 +13,9 @@ struct CategoryBoxView<Content: View>: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            Text(category.title.uppercased())
+            Text(category.title)
                 .foregroundStyle(.white)
+                .padding(.top, 10)
             
             ScrollView {
                 VStack(spacing: 16) {
@@ -34,7 +35,10 @@ struct CategoryBoxView<Content: View>: View {
             )
             .padding()
         }
-        .background(Color.gray)
+        .background(
+            RoundedRectangle(cornerRadius: 10)
+                .fill(.gray)
+        )
     }
 }
 
