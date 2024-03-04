@@ -1,7 +1,7 @@
 import Foundation
 
 extension Food {
-    enum Category: Equatable, CaseIterable {
+    enum Category: Hashable, CaseIterable {
         static var allCases: [Category] {
             leafCategories +
             Beverages.allCases.map(Category.beverages)

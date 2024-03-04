@@ -2,6 +2,7 @@ import SwiftUI
 
 struct ResultsView: View {
     let ticket: Ticket
+    let viewModel: ViewModel = .init()
     
     var body: some View {
         NavigationStack {
@@ -13,20 +14,16 @@ struct ResultsView: View {
                 VStack {
                     ScrollView(.horizontal) {
                         HStack {
-                            Rectangle()
-                                .frame(width: 50, height: 50)
-                                .foregroundStyle(.red)
-                                .clipShape(RoundedRectangle(cornerRadius: 10))
-                            
-                            Rectangle()
-                                .frame(width: 50, height: 50)
-                                .foregroundStyle(.green)
-                                .clipShape(RoundedRectangle(cornerRadius: 10))
-                            
-                            Rectangle()
-                                .frame(width: 50, height: 50)
-                                .foregroundStyle(.blue)
-                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                            ForEach(viewModel.categories, id: \.code) { category in
+                                Rectangle()
+                                    .frame(width: 100, height: 50)
+                                    .foregroundStyle(.pink)
+                                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                                    .overlay {
+                                        Text(category.title)
+                                            .foregroundStyle(.white)
+                                    }
+                            }
                         }
                         .padding()
                     }
@@ -39,7 +36,7 @@ struct ResultsView: View {
             .navigationTitle(ticket.groceryName)
             .toolbar {
                 ToolbarItem(id: "add-category-item", placement: .primaryAction) {
-                    Button(action: {}, label: {
+                    Button(action: viewModel.didTapOnAddCategory, label: {
                         Image(systemName: "plus.square.on.square")
                             .rotationEffect(.degrees(90))
                             .symbolRenderingMode(.hierarchical)
