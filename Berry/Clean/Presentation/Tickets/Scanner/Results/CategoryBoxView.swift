@@ -22,7 +22,7 @@ struct CategoryBoxView<Content: View>: View {
                         rowContent(item)
                             .overlay(
                                 RoundedRectangle(cornerRadius: 10)
-                                    .stroke(Color.gray, lineWidth: 2)
+                                    .stroke(Color.gray)
                             )
                     }
                 }
