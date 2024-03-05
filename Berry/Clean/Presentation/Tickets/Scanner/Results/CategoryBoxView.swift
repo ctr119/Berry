@@ -19,25 +19,9 @@ struct CategoryBoxView<Content: View>: View {
             
             VStack {
                 if items.isEmpty {
-                    Text("Drag items here to assign them a category")
-                        .italic()
-                        .foregroundStyle(Color.gray)
-                        .frame(maxWidth: 150, maxHeight: .infinity)
-                        .multilineTextAlignment(.center)
-                        .padding()
+                    emptyMessageView
                 } else {
-                    ScrollView {
-                        VStack(spacing: 16) {
-                            ForEach(items, id: \.name) { item in
-                                rowContent(item)
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: 10)
-                                            .stroke(Color.gray)
-                                    )
-                            }
-                        }
-                        .padding()
-                    }
+                    itemsList
                 }
             }
             .frame(minWidth: 150)
@@ -51,6 +35,30 @@ struct CategoryBoxView<Content: View>: View {
             RoundedRectangle(cornerRadius: 10)
                 .fill(.gray)
         )
+    }
+    
+    private var emptyMessageView: some View {
+        Text("Drag items here to assign them a category")
+            .italic()
+            .foregroundStyle(Color.gray)
+            .frame(maxWidth: 150, maxHeight: .infinity)
+            .multilineTextAlignment(.center)
+            .padding()
+    }
+    
+    private var itemsList: some View {
+        ScrollView {
+            VStack(spacing: 16) {
+                ForEach(items, id: \.name) { item in
+                    rowContent(item)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 10)
+                                .stroke(Color.gray)
+                        )
+                }
+            }
+            .padding()
+        }
     }
 }
 
