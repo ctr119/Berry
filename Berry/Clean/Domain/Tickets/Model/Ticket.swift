@@ -1,7 +1,8 @@
 import Foundation
+import SwiftUI
 
 class Ticket {
-    struct Item: Hashable {
+    struct Item: Hashable, Codable {
         let name: String
         let quantity: Int?
         let weight: String?

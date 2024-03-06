@@ -11,7 +11,8 @@ import SwiftUI
 struct BerryApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+//            ContentView()
+            ResultsView(ticket: .previewMock)
         }
     }
 }

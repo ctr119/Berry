@@ -10,6 +10,7 @@
 		202E87AA2B953512008DC53A /* ResultsView+Row.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202E87A92B953512008DC53A /* ResultsView+Row.swift */; };
 		202E87AC2B95384B008DC53A /* ResultsView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202E87AB2B95384B008DC53A /* ResultsView+ViewModel.swift */; };
 		202E87AE2B95AE11008DC53A /* CategoryBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202E87AD2B95AE11008DC53A /* CategoryBoxView.swift */; };
+		202E87B12B9858E3008DC53A /* TicketItem+Transferable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202E87B02B9858E3008DC53A /* TicketItem+Transferable.swift */; };
 		206BB0AA2B7ED65400F01604 /* VNRecognizedTextObservation+Baseline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206BB0A92B7ED65400F01604 /* VNRecognizedTextObservation+Baseline.swift */; };
 		206BB0AD2B93E7B600F01604 /* Food+Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206BB0AC2B93E7B600F01604 /* Food+Category.swift */; };
 		206BB0AF2B93EDBD00F01604 /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206BB0AE2B93EDBD00F01604 /* Food.swift */; };
@@ -56,6 +57,7 @@
 		202E87A92B953512008DC53A /* ResultsView+Row.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ResultsView+Row.swift"; sourceTree = "<group>"; };
 		202E87AB2B95384B008DC53A /* ResultsView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ResultsView+ViewModel.swift"; sourceTree = "<group>"; };
 		202E87AD2B95AE11008DC53A /* CategoryBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryBoxView.swift; sourceTree = "<group>"; };
+		202E87B02B9858E3008DC53A /* TicketItem+Transferable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TicketItem+Transferable.swift"; sourceTree = "<group>"; };
 		206BB0A92B7ED65400F01604 /* VNRecognizedTextObservation+Baseline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VNRecognizedTextObservation+Baseline.swift"; sourceTree = "<group>"; };
 		206BB0AC2B93E7B600F01604 /* Food+Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Food+Category.swift"; sourceTree = "<group>"; };
 		206BB0AE2B93EDBD00F01604 /* Food.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
@@ -110,6 +112,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		202E87AF2B9858BF008DC53A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				202E87B02B9858E3008DC53A /* TicketItem+Transferable.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		206BB0AB2B93E7A300F01604 /* Food */ = {
 			isa = PBXGroup;
 			children = (
@@ -257,6 +267,7 @@
 		206CC3BB2B7194B3002D0511 /* Results */ = {
 			isa = PBXGroup;
 			children = (
+				202E87AF2B9858BF008DC53A /* Model */,
 				206CC3BC2B719798002D0511 /* ResultsView.swift */,
 				202E87A92B953512008DC53A /* ResultsView+Row.swift */,
 				202E87AB2B95384B008DC53A /* ResultsView+ViewModel.swift */,
@@ -405,6 +416,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				206CC3AD2B704EE3002D0511 /* ScannerViewModel.swift in Sources */,
+				202E87B12B9858E3008DC53A /* TicketItem+Transferable.swift in Sources */,
 				206CC3C12B71A565002D0511 /* TicketsListView+Factory.swift in Sources */,
 				206CC37C2B6DB51E002D0511 /* ContentView.swift in Sources */,
 				20F950D22B74418F00386876 /* Ticket+GroceryAnalyser.swift in Sources */,

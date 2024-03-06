@@ -3,6 +3,7 @@ import SwiftUI
 struct ResultsView: View {
     let ticket: Ticket
     let viewModel: ViewModel = .init()
+    @State var localItems: [Ticket.Item] = []
     
     var body: some View {
         NavigationStack {
@@ -12,16 +13,7 @@ struct ResultsView: View {
                     .ignoresSafeArea()
                 
                 VStack {
-                    ScrollView(.horizontal) {
-                        HStack {
-                            ForEach(viewModel.categories, id: \.code) { category in
-                                CategoryBoxView(category: category, items: []) { item in
-                                    Row(item: item)
-                                }
-                            }
-                        }
-                        .padding()
-                    }
+                    categoriesSection()
                     
                     Divider()
                     
@@ -43,11 +35,30 @@ struct ResultsView: View {
     }
     
     @ViewBuilder
+    private func categoriesSection() -> some View {
+        ScrollView(.horizontal) {
+            HStack {
+                ForEach(viewModel.categories, id: \.code) { category in
+                    CategoryBoxView(category: category, items: localItems) { item in
+                        Row(item: item)
+                    }
+                    .dropDestination(for: Ticket.Item.self) { items, location in
+                        localItems.append(contentsOf: items)
+                        return true
+                    }
+                }
+            }
+            .padding()
+        }
+    }
+    
+    @ViewBuilder
     private func ticketListItems() -> some View {
         ScrollView {
             LazyVStack(spacing: 16) {
                 ForEach(ticket.items, id: \.name) {
                     Row(item: $0)
+                        .draggable($0)
                 }
             }
             .padding()
