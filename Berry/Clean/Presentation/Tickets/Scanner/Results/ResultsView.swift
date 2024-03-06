@@ -23,12 +23,18 @@ struct ResultsView: View {
             .navigationTitle(ticket.groceryName)
             .toolbar {
                 ToolbarItem(id: "add-category-item", placement: .primaryAction) {
-                    Button(action: viewModel.didTapOnAddCategory, label: {
+                    Menu {
+                        ForEach(Food.Category.allCases, id: \.self) { category in
+                            Button(category.title) {
+                                viewModel.add(category: category)
+                            }
+                        }
+                    } label: {
                         Image(systemName: "plus.square.on.square")
                             .rotationEffect(.degrees(90))
                             .symbolRenderingMode(.hierarchical)
                             .foregroundStyle(.pink)
-                    })
+                    }
                 }
             }
         }

@@ -4,10 +4,11 @@ extension ResultsView {
     @Observable
     class ViewModel {
         var categories: [Food.Category] = []
-        var categoryBoxes: [Food.Category: [Ticket.Item]] = [:]
+        var itemsPerCategory: [Food.Category: [Ticket.Item]] = [:]
         
-        func didTapOnAddCategory() {
-            categories.append(.bakery)
+        func add(category: Food.Category) {
+            guard !categories.contains(category) else { return }
+            categories.append(category)
         }
     }
 }
