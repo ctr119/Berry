@@ -45,11 +45,12 @@ struct ResultsView: View {
         ScrollView(.horizontal) {
             HStack {
                 ForEach(viewModel.categories, id: \.code) { category in
-                    CategoryBoxView(category: category, items: localItems) { item in
+                    CategoryBoxView(category: category, items: viewModel.itemsPerCategory[category] ?? []) { item in
                         Row(item: item)
                     }
                     .dropDestination(for: Ticket.Item.self) { items, location in
-                        localItems.append(contentsOf: items)
+                        guard let droppedItem = items.first else { return false }
+                        viewModel.move(item: droppedItem, to: category)
                         return true
                     }
                 }
