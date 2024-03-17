@@ -33,6 +33,10 @@ class Ticket {
         self.groceryName = groceryName
         self.items = items
     }
+    
+    func remove(item: Item) {
+        items.removeAll(where: { $0.name == item.name })
+    }
 }
 
 #if DEBUG

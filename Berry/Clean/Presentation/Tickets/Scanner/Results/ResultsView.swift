@@ -1,9 +1,11 @@
 import SwiftUI
 
 struct ResultsView: View {
-    let ticket: Ticket
-    let viewModel: ViewModel = .init()
-    @State var localItems: [Ticket.Item] = []
+    @State private var viewModel: ViewModel
+    
+    init(ticket: Ticket) {
+        viewModel = ViewModel(ticket: ticket)
+    }
     
     var body: some View {
         NavigationStack {
@@ -20,7 +22,7 @@ struct ResultsView: View {
                     ticketListItems()
                 }
             }
-            .navigationTitle(ticket.groceryName)
+            .navigationTitle(viewModel.ticket.groceryName)
             .toolbar {
                 ToolbarItem(id: "add-category-item", placement: .primaryAction) {
                     Menu {
@@ -63,7 +65,7 @@ struct ResultsView: View {
     private func ticketListItems() -> some View {
         ScrollView {
             LazyVStack(spacing: 16) {
-                ForEach(ticket.items, id: \.name) {
+                ForEach(viewModel.ticket.items, id: \.name) {
                     Row(item: $0)
                         .draggable($0)
                 }
