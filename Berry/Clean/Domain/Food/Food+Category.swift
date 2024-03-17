@@ -69,6 +69,8 @@ extension Food {
             }
         }
         
+        // TODO: Add color in order to customize the Category Box
+        
         init?(code: String) {
             for category in Category.allCases where category.code == code.uppercased() {
                 self = category
