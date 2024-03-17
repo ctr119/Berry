@@ -22,7 +22,7 @@ struct ResultsView: View {
                     ticketListItems()
                 }
             }
-            .navigationTitle(viewModel.ticket.groceryName)
+            .navigationTitle(viewModel.groceryName)
             .toolbar {
                 ToolbarItem(id: "add-category-item", placement: .primaryAction) {
                     Menu {
@@ -51,13 +51,16 @@ struct ResultsView: View {
                         Row(item: item)
                     }
                     .dropDestination(for: Ticket.Item.self) { items, location in
-                        guard let droppedItem = items.first else { return false }
-                        viewModel.move(item: droppedItem, to: category)
-                        return true
+                        withAnimation {
+                            guard let droppedItem = items.first else { return false }
+                            viewModel.move(item: droppedItem, to: category)
+                            return true
+                        }
                     }
                 }
             }
             .padding()
+            .animation(.easeInOut, value: viewModel.categories)
         }
     }
     
@@ -65,7 +68,7 @@ struct ResultsView: View {
     private func ticketListItems() -> some View {
         ScrollView {
             LazyVStack(spacing: 16) {
-                ForEach(viewModel.ticket.items, id: \.name) {
+                ForEach(viewModel.ticketItems, id: \.name) {
                     Row(item: $0)
                         .draggable($0)
                 }
