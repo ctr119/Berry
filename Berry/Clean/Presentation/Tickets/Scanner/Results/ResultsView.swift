@@ -49,10 +49,12 @@ struct ResultsView: View {
                 ForEach(viewModel.categories, id: \.code) { category in
                     CategoryBoxView(category: category, items: viewModel.itemsPerCategory[category] ?? []) { item in
                         Row(item: item)
+                        // TODO: Work on a new Row view for the Category Box
                     }
                     .dropDestination(for: Ticket.Item.self) { items, location in
                         withAnimation {
                             guard let droppedItem = items.first else { return false }
+                            // TODO: Move from category to category
                             viewModel.move(item: droppedItem, to: category)
                             return true
                         }
@@ -67,6 +69,7 @@ struct ResultsView: View {
     @ViewBuilder
     private func ticketListItems() -> some View {
         ScrollView {
+            // TODO: Change for a Grid and vary the columns based on Device
             LazyVStack(spacing: 16) {
                 ForEach(viewModel.ticketItems, id: \.name) {
                     Row(item: $0)
