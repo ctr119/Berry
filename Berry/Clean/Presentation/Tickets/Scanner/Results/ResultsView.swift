@@ -9,6 +9,9 @@ struct ResultsView: View {
     
     var body: some View {
         NavigationStack {
+            /// TODO: If the width of the Boxes is not ideal,
+            /// embed the ZStack into a Geometry Reader and
+            /// pass the proxy to calculate a proper size
             ZStack {
                 Color.gray
                     .opacity(0.2)
