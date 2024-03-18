@@ -1,6 +1,6 @@
 import Foundation
-import SwiftUI
 
+// TODO: Move to Presentation
 class Ticket {
     struct Item: Hashable, Codable {
         let name: String
