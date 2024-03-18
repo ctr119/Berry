@@ -9,7 +9,8 @@
 /* Begin PBXBuildFile section */
 		201D7F1D2BA85CE20062954E /* CompactedItemRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201D7F1C2BA85CE20062954E /* CompactedItemRow.swift */; };
 		201D7F1F2BA882800062954E /* CategoryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201D7F1E2BA882800062954E /* CategoryRow.swift */; };
-		201D7F232BA885F70062954E /* Category+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201D7F222BA885F70062954E /* Category+Color.swift */; };
+		201D7F232BA885F70062954E /* FoodCategory+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201D7F222BA885F70062954E /* FoodCategory+Color.swift */; };
+		201D7F262BA88A1F0062954E /* FoodCategoryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201D7F252BA88A1F0062954E /* FoodCategoryListView.swift */; };
 		202E87AA2B953512008DC53A /* DetailedItemRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202E87A92B953512008DC53A /* DetailedItemRow.swift */; };
 		202E87AC2B95384B008DC53A /* ResultsView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202E87AB2B95384B008DC53A /* ResultsView+ViewModel.swift */; };
 		202E87AE2B95AE11008DC53A /* CategoryBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202E87AD2B95AE11008DC53A /* CategoryBoxView.swift */; };
@@ -59,7 +60,8 @@
 /* Begin PBXFileReference section */
 		201D7F1C2BA85CE20062954E /* CompactedItemRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompactedItemRow.swift; sourceTree = "<group>"; };
 		201D7F1E2BA882800062954E /* CategoryRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryRow.swift; sourceTree = "<group>"; };
-		201D7F222BA885F70062954E /* Category+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Category+Color.swift"; sourceTree = "<group>"; };
+		201D7F222BA885F70062954E /* FoodCategory+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FoodCategory+Color.swift"; sourceTree = "<group>"; };
+		201D7F252BA88A1F0062954E /* FoodCategoryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCategoryListView.swift; sourceTree = "<group>"; };
 		202E87A92B953512008DC53A /* DetailedItemRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedItemRow.swift; sourceTree = "<group>"; };
 		202E87AB2B95384B008DC53A /* ResultsView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ResultsView+ViewModel.swift"; sourceTree = "<group>"; };
 		202E87AD2B95AE11008DC53A /* CategoryBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryBoxView.swift; sourceTree = "<group>"; };
@@ -127,13 +129,14 @@
 			path = Rows;
 			sourceTree = "<group>";
 		};
-		201D7F202BA885BD0062954E /* Categories */ = {
+		201D7F202BA885BD0062954E /* FoodCategories */ = {
 			isa = PBXGroup;
 			children = (
-				201D7F222BA885F70062954E /* Category+Color.swift */,
+				201D7F222BA885F70062954E /* FoodCategory+Color.swift */,
+				201D7F252BA88A1F0062954E /* FoodCategoryListView.swift */,
 				201D7F242BA889110062954E /* Rows */,
 			);
-			path = Categories;
+			path = FoodCategories;
 			sourceTree = "<group>";
 		};
 		201D7F242BA889110062954E /* Rows */ = {
@@ -231,7 +234,7 @@
 		206CC3A52B7041EE002D0511 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				201D7F202BA885BD0062954E /* Categories */,
+				201D7F202BA885BD0062954E /* FoodCategories */,
 				206CC3A62B7041F8002D0511 /* Tickets */,
 			);
 			path = Presentation;
@@ -451,7 +454,7 @@
 				206CC3AD2B704EE3002D0511 /* ScannerViewModel.swift in Sources */,
 				202E87B12B9858E3008DC53A /* TicketItem+Transferable.swift in Sources */,
 				206CC3C12B71A565002D0511 /* TicketsListView+Factory.swift in Sources */,
-				201D7F232BA885F70062954E /* Category+Color.swift in Sources */,
+				201D7F232BA885F70062954E /* FoodCategory+Color.swift in Sources */,
 				201D7F1D2BA85CE20062954E /* CompactedItemRow.swift in Sources */,
 				206CC37C2B6DB51E002D0511 /* ContentView.swift in Sources */,
 				20F950D22B74418F00386876 /* Ticket+GroceryAnalyser.swift in Sources */,
@@ -464,6 +467,7 @@
 				206CC3AB2B704838002D0511 /* ScannerView.swift in Sources */,
 				202E87AA2B953512008DC53A /* DetailedItemRow.swift in Sources */,
 				206CC3BF2B71A331002D0511 /* TicketsListView+ViewModel.swift in Sources */,
+				201D7F262BA88A1F0062954E /* FoodCategoryListView.swift in Sources */,
 				206CC3A82B704222002D0511 /* TicketsListView.swift in Sources */,
 				20F950D42B7442B300386876 /* Grocery.swift in Sources */,
 				206BB0AD2B93E7B600F01604 /* Food+Category.swift in Sources */,

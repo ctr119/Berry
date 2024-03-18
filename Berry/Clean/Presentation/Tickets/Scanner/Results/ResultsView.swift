@@ -40,26 +40,14 @@ struct ResultsView: View {
                 }
             }
             .sheet(isPresented: $showCategorySheet) {
-                VStack(alignment: .leading, spacing: 20) {
-                    Text("Add a category...")
-                        .font(.headline)
-                    
-                    ScrollView {
-                        LazyVGrid(
-                            columns: Array(repeating: GridItem(.flexible()), count: 2)
-                        ) {
-                            ForEach(Food.Category.allCases, id: \.self) { category in
-                                CategoryRow(category: category) {
-                                    viewModel.add(category: category)
-                                    showCategorySheet = false
-                                }
-                            }
-                        }
+                FoodCategoryListView(
+                    title: "Add a category...",
+                    onTappedCategory: { category in
+                        viewModel.add(category: category)
+                        showCategorySheet = false
                     }
-                    .scrollIndicators(.hidden)
-                }
+                )
                 .padding(.top, 15)
-                .padding(20)
                 .presentationDetents([.medium, .fraction(0.85)])
                 .presentationDragIndicator(.visible)
                 .ignoresSafeArea(.container, edges: .bottom)
