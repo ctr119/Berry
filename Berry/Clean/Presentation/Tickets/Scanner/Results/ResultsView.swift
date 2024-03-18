@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct ResultsView: View {
+    @State private var showCategorySheet = false
     @State private var viewModel: ViewModel
     
     init(ticket: Ticket) {
@@ -28,19 +29,40 @@ struct ResultsView: View {
             .navigationTitle(viewModel.groceryName)
             .toolbar {
                 ToolbarItem(id: "add-category-item", placement: .primaryAction) {
-                    Menu {
-                        ForEach(Food.Category.allCases, id: \.self) { category in
-                            Button(category.title) {
-                                viewModel.add(category: category)
-                            }
-                        }
-                    } label: {
+                    Button(action: {
+                        showCategorySheet = true
+                    }, label: {
                         Image(systemName: "plus.square.on.square")
                             .rotationEffect(.degrees(90))
                             .symbolRenderingMode(.hierarchical)
                             .foregroundStyle(.pink)
-                    }
+                    })
                 }
+            }
+            .sheet(isPresented: $showCategorySheet) {
+                VStack(alignment: .leading, spacing: 20) {
+                    Text("Add a category...")
+                        .font(.headline)
+                    
+                    ScrollView {
+                        LazyVGrid(
+                            columns: Array(repeating: GridItem(.flexible()), count: 2)
+                        ) {
+                            ForEach(Food.Category.allCases, id: \.self) { category in
+                                CategoryRow(category: category) {
+                                    viewModel.add(category: category)
+                                    showCategorySheet = false
+                                }
+                            }
+                        }
+                    }
+                    .scrollIndicators(.hidden)
+                }
+                .padding(.top, 15)
+                .padding(20)
+                .presentationDetents([.medium, .fraction(0.85)])
+                .presentationDragIndicator(.visible)
+                .ignoresSafeArea(.container, edges: .bottom)
             }
         }
     }

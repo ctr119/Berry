@@ -33,7 +33,7 @@ struct CategoryBoxView<Content: View>: View {
         }
         .background(
             RoundedRectangle(cornerRadius: 10)
-                .fill(Color(category.colorName, bundle: nil))
+                .fill(category.backgroundColor)
         )
     }
     

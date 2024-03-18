@@ -9,7 +9,7 @@ struct CompactedItemRow: View {
             .padding(8)
             .background(
                 RoundedRectangle(cornerRadius: 4)
-                    .stroke(Color(category.colorName, bundle: nil), lineWidth: 2)
+                    .stroke(category.backgroundColor, lineWidth: 2)
             )
     }
 }

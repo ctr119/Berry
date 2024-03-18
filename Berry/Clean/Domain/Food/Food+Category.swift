@@ -61,24 +61,13 @@ extension Food {
         var title: String {
             return switch self {
             case .beverages(let subcategory):
-                "Beverages/\(subcategory.rawValue.capitalized)"
+                subcategory.rawValue.capitalized
             case .herbsAndSpices:
                 "Herbs & Spices"
             default:
                 "\(self)".capitalized
             }
         }
-        
-        var colorName: String {
-            switch self {
-            case .beverages:
-                "Colors/beverages"
-            default:
-                "Colors/\(self)"
-            }
-        }
-        
-        // TODO: Add color in order to customize the Category Box
         
         init?(code: String) {
             for category in Category.allCases where category.code == code.uppercased() {
