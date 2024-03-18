@@ -9,8 +9,7 @@ struct CompactedItemRow: View {
             .padding(8)
             .background(
                 RoundedRectangle(cornerRadius: 4)
-                    // TODO: Apply the color based on the category
-                    .stroke(Color.blue, lineWidth: 2)
+                    .stroke(Color(category.colorName, bundle: nil), lineWidth: 2)
             )
     }
 }

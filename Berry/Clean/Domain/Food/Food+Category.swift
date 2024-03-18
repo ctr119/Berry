@@ -69,6 +69,15 @@ extension Food {
             }
         }
         
+        var colorName: String {
+            switch self {
+            case .beverages:
+                "Colors/beverages"
+            default:
+                "Colors/\(self)"
+            }
+        }
+        
         // TODO: Add color in order to customize the Category Box
         
         init?(code: String) {
