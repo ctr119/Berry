@@ -303,11 +303,11 @@
 		206CC3BB2B7194B3002D0511 /* Results */ = {
 			isa = PBXGroup;
 			children = (
-				201D7F1B2BA85CC60062954E /* Rows */,
-				202E87AF2B9858BF008DC53A /* Model */,
+				202E87AD2B95AE11008DC53A /* CategoryBoxView.swift */,
 				206CC3BC2B719798002D0511 /* ResultsView.swift */,
 				202E87AB2B95384B008DC53A /* ResultsView+ViewModel.swift */,
-				202E87AD2B95AE11008DC53A /* CategoryBoxView.swift */,
+				202E87AF2B9858BF008DC53A /* Model */,
+				201D7F1B2BA85CC60062954E /* Rows */,
 			);
 			path = Results;
 			sourceTree = "<group>";
