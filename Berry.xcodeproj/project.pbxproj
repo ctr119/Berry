@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		201D7F1D2BA85CE20062954E /* CompactedItemRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201D7F1C2BA85CE20062954E /* CompactedItemRow.swift */; };
-		202E87AA2B953512008DC53A /* ResultsView+Row.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202E87A92B953512008DC53A /* ResultsView+Row.swift */; };
+		202E87AA2B953512008DC53A /* DetailedItemRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202E87A92B953512008DC53A /* DetailedItemRow.swift */; };
 		202E87AC2B95384B008DC53A /* ResultsView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202E87AB2B95384B008DC53A /* ResultsView+ViewModel.swift */; };
 		202E87AE2B95AE11008DC53A /* CategoryBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202E87AD2B95AE11008DC53A /* CategoryBoxView.swift */; };
 		202E87B12B9858E3008DC53A /* TicketItem+Transferable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202E87B02B9858E3008DC53A /* TicketItem+Transferable.swift */; };
@@ -56,7 +56,7 @@
 
 /* Begin PBXFileReference section */
 		201D7F1C2BA85CE20062954E /* CompactedItemRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompactedItemRow.swift; sourceTree = "<group>"; };
-		202E87A92B953512008DC53A /* ResultsView+Row.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ResultsView+Row.swift"; sourceTree = "<group>"; };
+		202E87A92B953512008DC53A /* DetailedItemRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedItemRow.swift; sourceTree = "<group>"; };
 		202E87AB2B95384B008DC53A /* ResultsView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ResultsView+ViewModel.swift"; sourceTree = "<group>"; };
 		202E87AD2B95AE11008DC53A /* CategoryBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryBoxView.swift; sourceTree = "<group>"; };
 		202E87B02B9858E3008DC53A /* TicketItem+Transferable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TicketItem+Transferable.swift"; sourceTree = "<group>"; };
@@ -118,7 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				201D7F1C2BA85CE20062954E /* CompactedItemRow.swift */,
-				202E87A92B953512008DC53A /* ResultsView+Row.swift */,
+				202E87A92B953512008DC53A /* DetailedItemRow.swift */,
 			);
 			path = Rows;
 			sourceTree = "<group>";
@@ -438,7 +438,7 @@
 				206CC3BD2B719798002D0511 /* ResultsView.swift in Sources */,
 				206CC3BA2B706462002D0511 /* Ticket+ItemsAnalyser.swift in Sources */,
 				206CC3AB2B704838002D0511 /* ScannerView.swift in Sources */,
-				202E87AA2B953512008DC53A /* ResultsView+Row.swift in Sources */,
+				202E87AA2B953512008DC53A /* DetailedItemRow.swift in Sources */,
 				206CC3BF2B71A331002D0511 /* TicketsListView+ViewModel.swift in Sources */,
 				206CC3A82B704222002D0511 /* TicketsListView.swift in Sources */,
 				20F950D42B7442B300386876 /* Grocery.swift in Sources */,

@@ -61,7 +61,7 @@ struct CategoryBoxView<Content: View>: View {
 #if DEBUG
 #Preview {
     CategoryBoxView(category: .other, items: []) { item in
-        ResultsView.Row(item: item)
+        Text(item.name)
     }
 }
 #endif

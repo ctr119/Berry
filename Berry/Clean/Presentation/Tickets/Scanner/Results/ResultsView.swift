@@ -74,7 +74,7 @@ struct ResultsView: View {
             // TODO: Change for a Grid and vary the columns based on Device
             LazyVStack(spacing: 16) {
                 ForEach(viewModel.ticketItems, id: \.name) {
-                    Row(item: $0)
+                    DetailedItemRow(item: $0)
                         .draggable($0)
                 }
             }
