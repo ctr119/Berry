@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		201D7F1D2BA85CE20062954E /* CompactedItemRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201D7F1C2BA85CE20062954E /* CompactedItemRow.swift */; };
 		202E87AA2B953512008DC53A /* ResultsView+Row.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202E87A92B953512008DC53A /* ResultsView+Row.swift */; };
 		202E87AC2B95384B008DC53A /* ResultsView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202E87AB2B95384B008DC53A /* ResultsView+ViewModel.swift */; };
 		202E87AE2B95AE11008DC53A /* CategoryBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202E87AD2B95AE11008DC53A /* CategoryBoxView.swift */; };
@@ -54,6 +55,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		201D7F1C2BA85CE20062954E /* CompactedItemRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompactedItemRow.swift; sourceTree = "<group>"; };
 		202E87A92B953512008DC53A /* ResultsView+Row.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ResultsView+Row.swift"; sourceTree = "<group>"; };
 		202E87AB2B95384B008DC53A /* ResultsView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ResultsView+ViewModel.swift"; sourceTree = "<group>"; };
 		202E87AD2B95AE11008DC53A /* CategoryBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryBoxView.swift; sourceTree = "<group>"; };
@@ -112,6 +114,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		201D7F1B2BA85CC60062954E /* Rows */ = {
+			isa = PBXGroup;
+			children = (
+				201D7F1C2BA85CE20062954E /* CompactedItemRow.swift */,
+				202E87A92B953512008DC53A /* ResultsView+Row.swift */,
+			);
+			path = Rows;
+			sourceTree = "<group>";
+		};
 		202E87AF2B9858BF008DC53A /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -267,9 +278,9 @@
 		206CC3BB2B7194B3002D0511 /* Results */ = {
 			isa = PBXGroup;
 			children = (
+				201D7F1B2BA85CC60062954E /* Rows */,
 				202E87AF2B9858BF008DC53A /* Model */,
 				206CC3BC2B719798002D0511 /* ResultsView.swift */,
-				202E87A92B953512008DC53A /* ResultsView+Row.swift */,
 				202E87AB2B95384B008DC53A /* ResultsView+ViewModel.swift */,
 				202E87AD2B95AE11008DC53A /* CategoryBoxView.swift */,
 			);
@@ -418,6 +429,7 @@
 				206CC3AD2B704EE3002D0511 /* ScannerViewModel.swift in Sources */,
 				202E87B12B9858E3008DC53A /* TicketItem+Transferable.swift in Sources */,
 				206CC3C12B71A565002D0511 /* TicketsListView+Factory.swift in Sources */,
+				201D7F1D2BA85CE20062954E /* CompactedItemRow.swift in Sources */,
 				206CC37C2B6DB51E002D0511 /* ContentView.swift in Sources */,
 				20F950D22B74418F00386876 /* Ticket+GroceryAnalyser.swift in Sources */,
 				20F950D82B74499D00386876 /* RewaAlgorithm.swift in Sources */,

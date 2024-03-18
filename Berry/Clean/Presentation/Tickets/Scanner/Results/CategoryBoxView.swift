@@ -51,10 +51,6 @@ struct CategoryBoxView<Content: View>: View {
             VStack(spacing: 16) {
                 ForEach(items, id: \.name) { item in
                     rowContent(item)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 10)
-                                .stroke(Color.gray)
-                        )
                 }
             }
             .padding()

@@ -51,8 +51,7 @@ struct ResultsView: View {
             HStack {
                 ForEach(viewModel.categories, id: \.code) { category in
                     CategoryBoxView(category: category, items: viewModel.itemsPerCategory[category] ?? []) { item in
-                        Row(item: item)
-                        // TODO: Work on a new Row view for the Category Box
+                        CompactedItemRow(item: item, category: category)
                     }
                     .dropDestination(for: Ticket.Item.self) { items, location in
                         withAnimation {
