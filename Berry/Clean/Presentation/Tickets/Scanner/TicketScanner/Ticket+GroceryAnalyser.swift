@@ -1,6 +1,7 @@
 import Foundation
 import Vision
 
+// TODO: Rename all these classes under `TicketScanner` to `TicketProcessor`
 extension Ticket {
     struct GroceryAnalyser {
         func title(_ observation: VNRecognizedTextObservation) -> Grocery? {
