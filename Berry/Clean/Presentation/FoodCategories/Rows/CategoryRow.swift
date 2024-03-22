@@ -15,6 +15,7 @@ struct CategoryRow: View {
             
             Spacer()
         }
+        .foregroundStyle(category.foregroundColor)
         .padding(10)
         .background(
             RoundedRectangle(cornerRadius: 5)

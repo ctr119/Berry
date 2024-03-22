@@ -2,26 +2,26 @@ import Foundation
 import SwiftUI
 
 extension Food.Category {
-    var color: Color {
-        let colorName = switch self {
-        case .beverages:
-            "Colors/beverages"
+    var foregroundColor: Color {
+        switch self {
+        case .frozen, .herbsAndSpices, .meat, .legumes, .seafood, .other:
+            Color.white
         default:
-            "Colors/\(self)"
+            Color.black
         }
-        
-        return Color(colorName, bundle: nil)
     }
     
-    // TODO: Update the structure of the xcassets to hold both background and foreground
     var backgroundColor: Color {
         let colorName = switch self {
-        case .beverages:
-            "Colors/beverages"
+        case .beverages(let bev):
+            "beverages/\(bev)"
         default:
-            "Colors/\(self)"
+            "\(self)"
         }
         
-        return Color(colorName, bundle: nil)
+        return Color(
+            "Colors/\(colorName)",
+            bundle: nil
+        )
     }
 }

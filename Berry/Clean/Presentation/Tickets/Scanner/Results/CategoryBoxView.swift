@@ -14,7 +14,7 @@ struct CategoryBoxView<Content: View>: View {
     var body: some View {
         VStack(spacing: 0) {
             Text(category.title)
-                .foregroundStyle(.white)
+                .foregroundStyle(category.foregroundColor)
                 .padding(.top, 10)
             
             VStack {
