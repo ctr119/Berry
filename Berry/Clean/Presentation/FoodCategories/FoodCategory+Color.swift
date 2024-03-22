@@ -4,7 +4,7 @@ import SwiftUI
 extension Food.Category {
     var foregroundColor: Color {
         switch self {
-        case .frozen, .herbsAndSpices, .meat, .legumes, .seafood, .other:
+        case .frozen, .legumes, .meat, .sauces, .seafood, .other:
             Color.white
         default:
             Color.black
@@ -12,16 +12,6 @@ extension Food.Category {
     }
     
     var backgroundColor: Color {
-        let colorName = switch self {
-        case .beverages(let bev):
-            "beverages/\(bev)"
-        default:
-            "\(self)"
-        }
-        
-        return Color(
-            "Colors/\(colorName)",
-            bundle: nil
-        )
+        Color("Colors/\(self)", bundle: nil)
     }
 }
