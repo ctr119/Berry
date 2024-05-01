@@ -1,7 +1,7 @@
 import Foundation
 import Vision
 
-class RewaAlgorithm: ItemsAlgorithm {
+class RewaAlgorithm: TicketAlgorithm {
     private let itemsSectionStart = "EUR"
     private let itemsSectionEnd = "-------"
     private var inItemsSection = false

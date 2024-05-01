@@ -16,15 +16,15 @@ struct ScannerView: UIViewControllerRepresentable {
     func updateUIViewController(_ uiViewController: UINavigationController, context: Context) {}
     
     func makeCoordinator() -> Coordinator {
-        let itemsAnalyser = Ticket.ItemsAnalyser(algorithmProvider: { grocery in
+        let itemsAnalyser = ItemsAnalyser(algorithmProvider: { grocery in
             switch grocery {
             case .rewe:
                 return RewaAlgorithm()
             }
         })
         
-        let groceryAnalyser = Ticket.GroceryAnalyser()
-        let scanner = Ticket.Scanner(groceryAnalyser: groceryAnalyser, itemsAnalyser: itemsAnalyser)
+        let groceryAnalyser = GroceryAnalyser()
+        let scanner = Scanner(groceryAnalyser: groceryAnalyser, itemsAnalyser: itemsAnalyser)
         let viewModel = ScannerViewModel(scanner: scanner)
         
         return Coordinator(viewModel: viewModel, parent: self)

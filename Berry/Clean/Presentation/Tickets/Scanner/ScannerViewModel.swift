@@ -3,9 +3,9 @@ import SwiftUI
 
 @Observable
 class ScannerViewModel {
-    private let scanner: Ticket.Scanner
+    private let scanner: Scanner
     
-    init(scanner: Ticket.Scanner) {
+    init(scanner: Scanner) {
         self.scanner = scanner
     }
     
