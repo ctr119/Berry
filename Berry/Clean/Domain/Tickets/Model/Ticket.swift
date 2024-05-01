@@ -1,6 +1,10 @@
 import Foundation
 
-// TODO: Move to Presentation
+/// TODO: Move to Presentation
+/// - This object will need a category field.
+/// - Right now, this is being created from the Presentation layer, and from there we cannot assign a category directly.
+/// - That's something manual for the time being by the user.
+/// - That's why this will serve as a `TicketDisplay`, and later we will have a proper `Ticket` object to get passed to our repo.
 class Ticket {
     struct Item: Hashable, Codable {
         let name: String
