@@ -58,7 +58,7 @@ struct ResultsView: View {
     @ViewBuilder
     private func categoriesSection() -> some View {
         ScrollView(.horizontal) {
-            HStack {
+            HStack(spacing: 18) {
                 ForEach(viewModel.categories, id: \.code) { category in
                     CategoryBoxView(category: category, items: viewModel.itemsPerCategory[category] ?? []) { item in
                         CompactedItemRow(item: item, category: category)
