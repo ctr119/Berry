@@ -1,12 +1,11 @@
 import SwiftUI
 
 struct ResultsView: View {
-    @State private var showCategorySheet = false
-    @State private var viewModel: ViewModel
+    @Environment(\.dynamicTypeSize) var dynamicTypeSize
+    private let dynamicTypeSizeThreshold: DynamicTypeSize = .xxLarge
     
-    init(ticket: TicketDisplay) {
-        viewModel = ViewModel(ticket: ticket)
-    }
+    @State var viewModel: ViewModel
+    @State private var showCategorySheet = false
     
     var body: some View {
         NavigationStack {
@@ -23,7 +22,9 @@ struct ResultsView: View {
                     
                     Divider()
                     
-                    ticketListItems()
+                    GeometryReader { proxy in
+                        ticketListItems(geometryProxy: proxy)
+                    }
                 }
             }
             .navigationTitle(viewModel.groceryName)
@@ -79,10 +80,14 @@ struct ResultsView: View {
     }
     
     @ViewBuilder
-    private func ticketListItems() -> some View {
+    private func ticketListItems(geometryProxy: GeometryProxy) -> some View {
         ScrollView {
-            // TODO: Change for a Grid and vary the columns based on Device
-            LazyVStack(spacing: 16) {
+            LazyVGrid(
+                columns: Array(
+                    repeating: GridItem(.flexible()),
+                    count: geometryProxy.size.width >= 900 ? 2 : 1
+                )
+            ) {
                 ForEach(viewModel.ticketItems, id: \.name) {
                     DetailedItemRow(item: $0)
                         .draggable($0)
@@ -95,6 +100,8 @@ struct ResultsView: View {
 
 #if DEBUG
 #Preview {
-    ResultsView(ticket: .previewMock)
+    ResultsView(
+        viewModel: .init(ticket: .previewMock)
+    )
 }
 #endif

@@ -34,6 +34,7 @@
 		206CC3BD2B719798002D0511 /* ResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206CC3BC2B719798002D0511 /* ResultsView.swift */; };
 		206CC3BF2B71A331002D0511 /* TicketsListView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206CC3BE2B71A331002D0511 /* TicketsListView+ViewModel.swift */; };
 		206CC3C12B71A565002D0511 /* TicketsListView+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206CC3C02B71A565002D0511 /* TicketsListView+Factory.swift */; };
+		20E542982BE3AA2C00CD7E52 /* ResultsViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E542972BE3AA2C00CD7E52 /* ResultsViewFactory.swift */; };
 		20F950D22B74418F00386876 /* GroceryAnalyser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F950D12B74418F00386876 /* GroceryAnalyser.swift */; };
 		20F950D42B7442B300386876 /* Grocery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F950D32B7442B300386876 /* Grocery.swift */; };
 		20F950D82B74499D00386876 /* RewaAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F950D72B74499D00386876 /* RewaAlgorithm.swift */; };
@@ -89,6 +90,7 @@
 		206CC3BC2B719798002D0511 /* ResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsView.swift; sourceTree = "<group>"; };
 		206CC3BE2B71A331002D0511 /* TicketsListView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TicketsListView+ViewModel.swift"; sourceTree = "<group>"; };
 		206CC3C02B71A565002D0511 /* TicketsListView+Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TicketsListView+Factory.swift"; sourceTree = "<group>"; };
+		20E542972BE3AA2C00CD7E52 /* ResultsViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewFactory.swift; sourceTree = "<group>"; };
 		20F950D12B74418F00386876 /* GroceryAnalyser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryAnalyser.swift; sourceTree = "<group>"; };
 		20F950D32B7442B300386876 /* Grocery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grocery.swift; sourceTree = "<group>"; };
 		20F950D72B74499D00386876 /* RewaAlgorithm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewaAlgorithm.swift; sourceTree = "<group>"; };
@@ -304,6 +306,7 @@
 			children = (
 				202E87AD2B95AE11008DC53A /* CategoryBoxView.swift */,
 				206CC3BC2B719798002D0511 /* ResultsView.swift */,
+				20E542972BE3AA2C00CD7E52 /* ResultsViewFactory.swift */,
 				202E87AB2B95384B008DC53A /* ResultsView+ViewModel.swift */,
 				202E87AF2B9858BF008DC53A /* Model */,
 				201D7F1B2BA85CC60062954E /* Rows */,
@@ -489,6 +492,7 @@
 				206BB0AD2B93E7B600F01604 /* Food+Category.swift in Sources */,
 				206CC37A2B6DB51E002D0511 /* BerryApp.swift in Sources */,
 				206CC3B62B70582A002D0511 /* Scanner.swift in Sources */,
+				20E542982BE3AA2C00CD7E52 /* ResultsViewFactory.swift in Sources */,
 				206BB0AA2B7ED65400F01604 /* VNRecognizedTextObservation+Baseline.swift in Sources */,
 				20F950DA2B7449BB00386876 /* TicketAlgorithm.swift in Sources */,
 				202E87AC2B95384B008DC53A /* ResultsView+ViewModel.swift in Sources */,

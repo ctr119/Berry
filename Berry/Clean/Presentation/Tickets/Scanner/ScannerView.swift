@@ -47,7 +47,7 @@ struct ScannerView: UIViewControllerRepresentable {
                 guard let ticket = await viewModel.generateTicket(from: scan.images()) else { return }
                 
                 await MainActor.run {
-                    let resultsView = ResultsView(ticket: ticket)
+                    let resultsView = ResultsViewFactory.make(with: ticket)
                     let hostingController = UIHostingController(rootView: resultsView)
                     controller.navigationController?.pushViewController(hostingController, animated: true)
                 }

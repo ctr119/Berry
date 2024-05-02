@@ -12,7 +12,7 @@ struct BerryApp: App {
     var body: some Scene {
         WindowGroup {
 //            ContentView()
-            ResultsView(ticket: .previewMock)
+            ResultsView(viewModel: .init(ticket: .previewMock))
         }
     }
 }
