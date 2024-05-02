@@ -4,11 +4,11 @@ extension ResultsView {
     @Observable
     class ViewModel {
         var categories: [Food.Category] = []
-        var itemsPerCategory: [Food.Category: [Ticket.Item]] = [:]
+        var itemsPerCategory: [Food.Category: [TicketDisplay.Item]] = [:]
         let groceryName: String
-        var ticketItems: [Ticket.Item] = []
+        var ticketItems: [TicketDisplay.Item] = []
         
-        init(ticket: Ticket) {
+        init(ticket: TicketDisplay) {
             self.groceryName = ticket.groceryName
             self.ticketItems = ticket.items
         }
@@ -19,7 +19,7 @@ extension ResultsView {
             itemsPerCategory[category] = []
         }
         
-        func move(item: Ticket.Item, to category: Food.Category) {
+        func move(item: TicketDisplay.Item, to category: Food.Category) {
             guard var items = itemsPerCategory[category],
                   !items.contains(item) else { return }
             

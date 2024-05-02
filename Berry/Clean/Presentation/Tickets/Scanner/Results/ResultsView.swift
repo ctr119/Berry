@@ -4,7 +4,7 @@ struct ResultsView: View {
     @State private var showCategorySheet = false
     @State private var viewModel: ViewModel
     
-    init(ticket: Ticket) {
+    init(ticket: TicketDisplay) {
         viewModel = ViewModel(ticket: ticket)
     }
     
@@ -63,7 +63,7 @@ struct ResultsView: View {
                     CategoryBoxView(category: category, items: viewModel.itemsPerCategory[category] ?? []) { item in
                         CompactedItemRow(item: item, category: category)
                     }
-                    .dropDestination(for: Ticket.Item.self) { items, location in
+                    .dropDestination(for: TicketDisplay.Item.self) { items, location in
                         withAnimation {
                             guard let droppedItem = items.first else { return false }
                             // TODO: Move from category to category

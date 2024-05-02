@@ -2,7 +2,7 @@ import Foundation
 import SwiftUI
 import UniformTypeIdentifiers
 
-extension Ticket.Item: Transferable {
+extension TicketDisplay.Item: Transferable {
     static var transferRepresentation: some TransferRepresentation {
         CodableRepresentation(contentType: .ticketItem)
     }

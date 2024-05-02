@@ -1,11 +1,7 @@
 import Foundation
 
-/// TODO: Move to Presentation
-/// - This object will need a category field.
-/// - Right now, this is being created from the Presentation layer, and from there we cannot assign a category directly.
-/// - That's something manual for the time being by the user.
-/// - That's why this will serve as a `TicketDisplay`, and later we will have a proper `Ticket` object to get passed to our repo.
-class Ticket {
+// TODO: Add @Observable and review ResultsViewModel
+class TicketDisplay {
     struct Item: Hashable, Codable {
         let name: String
         let quantity: Int?
@@ -40,9 +36,9 @@ class Ticket {
 }
 
 #if DEBUG
-extension Ticket {
-    static var previewMock: Ticket = {
-        return Ticket(
+extension TicketDisplay {
+    static var previewMock: TicketDisplay = {
+        return TicketDisplay(
             groceryName: "Mercadona",
             items: [
                 .init(
@@ -78,8 +74,8 @@ extension Ticket {
     }()
 }
 
-extension Ticket.Item {
-    static var previewMock: Ticket.Item = .init(
+extension TicketDisplay.Item {
+    static var previewMock: TicketDisplay.Item = .init(
         name: "Milk",
         quantity: 1,
         weight: nil,

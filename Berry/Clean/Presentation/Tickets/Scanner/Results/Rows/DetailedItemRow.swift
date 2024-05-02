@@ -4,8 +4,7 @@ struct DetailedItemRow: View {
     @Environment(\.dynamicTypeSize) var dynamicTypeSize
     
     private let dynamicTypeSizeThreshold: DynamicTypeSize = .xxxLarge
-    
-    let item: Ticket.Item
+    let item: TicketDisplay.Item
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -23,7 +22,7 @@ struct DetailedItemRow: View {
     }
     
     @ViewBuilder
-    private func priceSection(for item: Ticket.Item) -> some View {
+    private func priceSection(for item: TicketDisplay.Item) -> some View {
         HStack {
             Spacer()
             
@@ -38,7 +37,7 @@ struct DetailedItemRow: View {
     }
     
     @ViewBuilder
-    private func priceRow(for item: Ticket.Item) -> some View {
+    private func priceRow(for item: TicketDisplay.Item) -> some View {
         Text(item.price, format: .currency(code: "EUR").precision(.fractionLength(2)))
         
         if dynamicTypeSize >= dynamicTypeSizeThreshold {
@@ -61,7 +60,7 @@ struct DetailedItemRow: View {
             .clipShape(RoundedRectangle(cornerRadius: 10))
     }
     
-    private func quantityOrWeight(item: Ticket.Item) -> String {
+    private func quantityOrWeight(item: TicketDisplay.Item) -> String {
         if let quantity = item.quantity {
             return "\(quantity)"
         }

@@ -2,10 +2,10 @@ import SwiftUI
 
 struct CategoryBoxView<Content: View>: View {
     let category: Food.Category
-    let items: [Ticket.Item]
-    @ViewBuilder var rowContent: (Ticket.Item) -> Content
+    let items: [TicketDisplay.Item]
+    @ViewBuilder var rowContent: (TicketDisplay.Item) -> Content
     
-    init(category: Food.Category, items: [Ticket.Item], rowContent: @escaping (Ticket.Item) -> Content) {
+    init(category: Food.Category, items: [TicketDisplay.Item], rowContent: @escaping (TicketDisplay.Item) -> Content) {
         self.category = category
         self.items = items
         self.rowContent = rowContent

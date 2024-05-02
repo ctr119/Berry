@@ -28,7 +28,7 @@
 		206CC3A82B704222002D0511 /* TicketsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206CC3A72B704222002D0511 /* TicketsListView.swift */; };
 		206CC3AB2B704838002D0511 /* ScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206CC3AA2B704838002D0511 /* ScannerView.swift */; };
 		206CC3AD2B704EE3002D0511 /* ScannerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206CC3AC2B704EE3002D0511 /* ScannerViewModel.swift */; };
-		206CC3B02B7052CB002D0511 /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206CC3AF2B7052CB002D0511 /* Ticket.swift */; };
+		206CC3B02B7052CB002D0511 /* TicketDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206CC3AF2B7052CB002D0511 /* TicketDisplay.swift */; };
 		206CC3B62B70582A002D0511 /* Scanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206CC3B52B70582A002D0511 /* Scanner.swift */; };
 		206CC3BA2B706462002D0511 /* ItemsAnalyser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206CC3B92B706462002D0511 /* ItemsAnalyser.swift */; };
 		206CC3BD2B719798002D0511 /* ResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206CC3BC2B719798002D0511 /* ResultsView.swift */; };
@@ -83,7 +83,7 @@
 		206CC3A72B704222002D0511 /* TicketsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketsListView.swift; sourceTree = "<group>"; };
 		206CC3AA2B704838002D0511 /* ScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerView.swift; sourceTree = "<group>"; };
 		206CC3AC2B704EE3002D0511 /* ScannerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewModel.swift; sourceTree = "<group>"; };
-		206CC3AF2B7052CB002D0511 /* Ticket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
+		206CC3AF2B7052CB002D0511 /* TicketDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketDisplay.swift; sourceTree = "<group>"; };
 		206CC3B52B70582A002D0511 /* Scanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scanner.swift; sourceTree = "<group>"; };
 		206CC3B92B706462002D0511 /* ItemsAnalyser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsAnalyser.swift; sourceTree = "<group>"; };
 		206CC3BC2B719798002D0511 /* ResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsView.swift; sourceTree = "<group>"; };
@@ -246,6 +246,7 @@
 				206CC3A72B704222002D0511 /* TicketsListView.swift */,
 				206CC3C02B71A565002D0511 /* TicketsListView+Factory.swift */,
 				206CC3BE2B71A331002D0511 /* TicketsListView+ViewModel.swift */,
+				20E542962BE398AD00CD7E52 /* Model */,
 				206CC3A92B704829002D0511 /* Scanner */,
 			);
 			path = Tickets;
@@ -282,7 +283,6 @@
 		206CC3B32B7054E6002D0511 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				206CC3AF2B7052CB002D0511 /* Ticket.swift */,
 				20F950D32B7442B300386876 /* Grocery.swift */,
 			);
 			path = Model;
@@ -318,6 +318,14 @@
 				206CC3B92B706462002D0511 /* ItemsAnalyser.swift */,
 			);
 			path = Analysers;
+			sourceTree = "<group>";
+		};
+		20E542962BE398AD00CD7E52 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				206CC3AF2B7052CB002D0511 /* TicketDisplay.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		20F950D62B74481100386876 /* Algorithms */ = {
@@ -484,7 +492,7 @@
 				206BB0AA2B7ED65400F01604 /* VNRecognizedTextObservation+Baseline.swift in Sources */,
 				20F950DA2B7449BB00386876 /* TicketAlgorithm.swift in Sources */,
 				202E87AC2B95384B008DC53A /* ResultsView+ViewModel.swift in Sources */,
-				206CC3B02B7052CB002D0511 /* Ticket.swift in Sources */,
+				206CC3B02B7052CB002D0511 /* TicketDisplay.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

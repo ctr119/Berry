@@ -6,8 +6,8 @@ class RewaAlgorithm: TicketAlgorithm {
     private let itemsSectionEnd = "-------"
     private var inItemsSection = false
     
-    func process(lines: [String]) -> [Ticket.Item] {
-        var items = [Ticket.Item]()
+    func process(lines: [String]) -> [TicketDisplay.Item] {
+        var items = [TicketDisplay.Item]()
         
         var auxName: String?
         var auxTotalPrice: Double?
@@ -29,7 +29,7 @@ class RewaAlgorithm: TicketAlgorithm {
                 return
             }
             
-            let item = Ticket.Item(
+            let item = TicketDisplay.Item(
                 name: auxName,
                 quantity: auxQuantity,
                 weight: auxWeight,

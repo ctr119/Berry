@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct CompactedItemRow: View {
-    let item: Ticket.Item
+    let item: TicketDisplay.Item
     let category: Food.Category
     
     var body: some View {
