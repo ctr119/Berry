@@ -269,6 +269,7 @@
 			isa = PBXGroup;
 			children = (
 				206BB0AB2B93E7A300F01604 /* Food */,
+				20E542992BE3F8FB00CD7E52 /* ScannerEngine */,
 				206CC3B22B7054DE002D0511 /* Tickets */,
 			);
 			path = Domain;
@@ -329,6 +330,13 @@
 				206CC3AF2B7052CB002D0511 /* TicketDisplay.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		20E542992BE3F8FB00CD7E52 /* ScannerEngine */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ScannerEngine;
 			sourceTree = "<group>";
 		};
 		20F950D62B74481100386876 /* Algorithms */ = {

@@ -2,6 +2,14 @@ import Foundation
 import VisionKit
 import Vision
 
+/// TODO: Everything related to the Engine can be migrated to Domain
+/// as it is basically a business logic: scanning & analysing the ticket.
+///
+/// However, the Object it returns, it's not a domain one...Let's start by
+/// creating one!
+///
+/// TODO: Add another step into this use case: classify the items
+
 struct Scanner {
     enum ScannerError: Error {
         case failToCastObservations
