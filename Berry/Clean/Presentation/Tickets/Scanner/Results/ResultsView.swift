@@ -62,11 +62,11 @@ struct ResultsView: View {
                 ForEach(viewModel.categories, id: \.code) { category in
                     CategoryBoxView(category: category, items: viewModel.itemsPerCategory[category] ?? []) { item in
                         CompactedItemRow(item: item, category: category)
+                            .draggable(item)
                     }
                     .dropDestination(for: TicketDisplay.Item.self) { items, location in
                         withAnimation {
                             guard let droppedItem = items.first else { return false }
-                            // TODO: Move from category to category
                             viewModel.move(item: droppedItem, to: category)
                             return true
                         }

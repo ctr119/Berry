@@ -1,6 +1,5 @@
 import Foundation
 
-// TODO: Add @Observable and review ResultsViewModel
 class TicketDisplay {
     struct Item: Hashable, Codable {
         let name: String

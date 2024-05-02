@@ -24,9 +24,18 @@ extension ResultsView {
                   !items.contains(item) else { return }
             
             ticketItems.removeAll(where: { $0.name == item.name })
+            removeFromAllCategories(item: item)
             
             items.append(item)
             itemsPerCategory[category] = items
+        }
+        
+        private func removeFromAllCategories(item: TicketDisplay.Item) {
+            for (category, items) in itemsPerCategory where items.contains(item) {
+                var categoryItems = items
+                categoryItems.removeAll(where: { $0.name == item.name })
+                itemsPerCategory[category] = categoryItems
+            }
         }
     }
 }
