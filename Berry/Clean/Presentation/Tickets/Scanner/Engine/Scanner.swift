@@ -15,7 +15,8 @@ import Vision
 /// - The ViewModel should parse the data to the Display the view needs
 /// - The simply uses it, and is able to change the `category` from a picker, individually
 ///
-/// - Remove the drag & drop functionality and move it possibily to another repo, just to keep the code.
+/// - Remove the drag & drop functionality
+/// - and move it possibily to another repo (DONE)
 ///
 /// TODO: Add another step into this use case: classify the items
 
