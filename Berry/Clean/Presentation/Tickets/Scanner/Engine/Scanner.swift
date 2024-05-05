@@ -6,7 +6,16 @@ import Vision
 /// as it is basically a business logic: scanning & analysing the ticket.
 ///
 /// However, the Object it returns, it's not a domain one...Let's start by
-/// creating one!
+/// creating one! .... But the domain object should contain a category field!"!!!!!
+///
+/// NEW IDEA:
+///
+/// - Create a replica of the TicketDisplay without all the SwiftUI stuff
+/// - Make the scanner to work with this and return the Domain object instead
+/// - The ViewModel should parse the data to the Display the view needs
+/// - The simply uses it, and is able to change the `category` from a picker, individually
+///
+/// - Remove the drag & drop functionality and move it possibily to another repo, just to keep the code.
 ///
 /// TODO: Add another step into this use case: classify the items
 
