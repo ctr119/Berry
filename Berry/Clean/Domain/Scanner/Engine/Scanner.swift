@@ -10,7 +10,6 @@ import Vision
 ///
 /// NEW IDEA:
 ///
-/// - The ViewModel should parse the data to the Display the view needs
 /// - The simply uses it, and is able to change the `category` from a picker, individually
 ///
 /// - Remove the drag & drop functionality
