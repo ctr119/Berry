@@ -16,10 +16,10 @@ struct ScannerView: UIViewControllerRepresentable {
     func updateUIViewController(_ uiViewController: UINavigationController, context: Context) {}
     
     func makeCoordinator() -> Coordinator {
-        let itemsAnalyser = ItemsAnalyser(algorithmProvider: { grocery in
+        let itemsAnalyser = ItemsAnalyser(processorProvider: { grocery in
             switch grocery {
             case .rewe:
-                return RewaAlgorithm()
+                return RewaItemsProcessor()
             }
         })
         

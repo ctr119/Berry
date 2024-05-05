@@ -1,5 +1,5 @@
 import Foundation
 
-protocol TicketAlgorithm {
+protocol ItemsProcessor {
     func process(lines: [String]) -> [Ticket.Item]
 }

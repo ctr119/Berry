@@ -34,7 +34,7 @@ struct Scanner {
         self.itemsAnalyser = itemsAnalyser
     }
     
-    func ticket(from cgImage: CGImage) async throws -> Ticket {
+    func scanTicket(from cgImage: CGImage) async throws -> Ticket {
         let requestHandler = VNImageRequestHandler(cgImage: cgImage)
         
         return try await withCheckedThrowingContinuation { continuation in
@@ -63,7 +63,7 @@ struct Scanner {
                     return
                 }
                 
-                let items = itemsAnalyser.process(observations: sortedObservations, for: grocery)
+                let items = itemsAnalyser.analyse(observations: sortedObservations, for: grocery)
                 let ticket = Ticket(groceryName: grocery.rawValue, items: items)
                 
                 continuation.resume(returning: ticket)

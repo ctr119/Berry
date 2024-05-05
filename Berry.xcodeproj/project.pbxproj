@@ -38,8 +38,8 @@
 		20E542FC2BE8313400CD7E52 /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E542FB2BE8313400CD7E52 /* Ticket.swift */; };
 		20F950D22B74418F00386876 /* GroceryAnalyser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F950D12B74418F00386876 /* GroceryAnalyser.swift */; };
 		20F950D42B7442B300386876 /* Grocery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F950D32B7442B300386876 /* Grocery.swift */; };
-		20F950D82B74499D00386876 /* RewaAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F950D72B74499D00386876 /* RewaAlgorithm.swift */; };
-		20F950DA2B7449BB00386876 /* TicketAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F950D92B7449BB00386876 /* TicketAlgorithm.swift */; };
+		20F950D82B74499D00386876 /* RewaItemsProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F950D72B74499D00386876 /* RewaItemsProcessor.swift */; };
+		20F950DA2B7449BB00386876 /* ItemsProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F950D92B7449BB00386876 /* ItemsProcessor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,8 +95,8 @@
 		20E542FB2BE8313400CD7E52 /* Ticket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
 		20F950D12B74418F00386876 /* GroceryAnalyser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryAnalyser.swift; sourceTree = "<group>"; };
 		20F950D32B7442B300386876 /* Grocery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grocery.swift; sourceTree = "<group>"; };
-		20F950D72B74499D00386876 /* RewaAlgorithm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewaAlgorithm.swift; sourceTree = "<group>"; };
-		20F950D92B7449BB00386876 /* TicketAlgorithm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketAlgorithm.swift; sourceTree = "<group>"; };
+		20F950D72B74499D00386876 /* RewaItemsProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewaItemsProcessor.swift; sourceTree = "<group>"; };
+		20F950D92B7449BB00386876 /* ItemsProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsProcessor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -298,7 +298,6 @@
 			children = (
 				206CC3B52B70582A002D0511 /* Scanner.swift */,
 				206BB0A92B7ED65400F01604 /* VNRecognizedTextObservation+Baseline.swift */,
-				20F950D62B74481100386876 /* Algorithms */,
 				20ABEE672BE2F1F400AD23E7 /* Analysers */,
 			);
 			path = Engine;
@@ -322,6 +321,7 @@
 			children = (
 				20F950D12B74418F00386876 /* GroceryAnalyser.swift */,
 				206CC3B92B706462002D0511 /* ItemsAnalyser.swift */,
+				20F950D62B74481100386876 /* Processors */,
 			);
 			path = Analysers;
 			sourceTree = "<group>";
@@ -342,13 +342,13 @@
 			path = Scanner;
 			sourceTree = "<group>";
 		};
-		20F950D62B74481100386876 /* Algorithms */ = {
+		20F950D62B74481100386876 /* Processors */ = {
 			isa = PBXGroup;
 			children = (
-				20F950D92B7449BB00386876 /* TicketAlgorithm.swift */,
-				20F950D72B74499D00386876 /* RewaAlgorithm.swift */,
+				20F950D92B7449BB00386876 /* ItemsProcessor.swift */,
+				20F950D72B74499D00386876 /* RewaItemsProcessor.swift */,
 			);
-			path = Algorithms;
+			path = Processors;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -488,7 +488,7 @@
 				201D7F1D2BA85CE20062954E /* CompactedItemRow.swift in Sources */,
 				206CC37C2B6DB51E002D0511 /* ContentView.swift in Sources */,
 				20F950D22B74418F00386876 /* GroceryAnalyser.swift in Sources */,
-				20F950D82B74499D00386876 /* RewaAlgorithm.swift in Sources */,
+				20F950D82B74499D00386876 /* RewaItemsProcessor.swift in Sources */,
 				202E87AE2B95AE11008DC53A /* CategoryBoxView.swift in Sources */,
 				206BB0AF2B93EDBD00F01604 /* Food.swift in Sources */,
 				206CC3BD2B719798002D0511 /* ResultsView.swift in Sources */,
@@ -506,7 +506,7 @@
 				206CC3B62B70582A002D0511 /* Scanner.swift in Sources */,
 				20E542982BE3AA2C00CD7E52 /* ResultsViewFactory.swift in Sources */,
 				206BB0AA2B7ED65400F01604 /* VNRecognizedTextObservation+Baseline.swift in Sources */,
-				20F950DA2B7449BB00386876 /* TicketAlgorithm.swift in Sources */,
+				20F950DA2B7449BB00386876 /* ItemsProcessor.swift in Sources */,
 				202E87AC2B95384B008DC53A /* ResultsView+ViewModel.swift in Sources */,
 				206CC3B02B7052CB002D0511 /* TicketDisplay.swift in Sources */,
 			);

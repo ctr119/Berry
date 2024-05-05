@@ -3,9 +3,9 @@ import VisionKit
 import Vision
 
 struct ItemsAnalyser {
-    let algorithmProvider: (Grocery) -> TicketAlgorithm
+    let processorProvider: (Grocery) -> ItemsProcessor
     
-    func process(observations: [VNRecognizedTextObservation], for grocery: Grocery) -> [Ticket.Item] {
+    func analyse(observations: [VNRecognizedTextObservation], for grocery: Grocery) -> [Ticket.Item] {
         let maximumCandidates = 1
         
         var previousObservation: VNRecognizedTextObservation?
@@ -28,7 +28,7 @@ struct ItemsAnalyser {
             previousObservation = observation
         }
         
-        let algorithm = algorithmProvider(grocery)
-        return algorithm.process(lines: lines)
+        let itemsProcessor = processorProvider(grocery)
+        return itemsProcessor.process(lines: lines)
     }
 }
