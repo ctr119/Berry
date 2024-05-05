@@ -37,6 +37,9 @@
 		20E542982BE3AA2C00CD7E52 /* ResultsViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E542972BE3AA2C00CD7E52 /* ResultsViewFactory.swift */; };
 		20E542FC2BE8313400CD7E52 /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E542FB2BE8313400CD7E52 /* Ticket.swift */; };
 		20E542FE2BE837C300CD7E52 /* Ticket+TicketDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E542FD2BE837C300CD7E52 /* Ticket+TicketDisplay.swift */; };
+		20E543032BE840BE00CD7E52 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E543022BE840BE00CD7E52 /* NetworkClient.swift */; };
+		20E543052BE840E800CD7E52 /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E543042BE840E800CD7E52 /* NetworkRequest.swift */; };
+		20E543072BE8413D00CD7E52 /* DataError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E543062BE8413D00CD7E52 /* DataError.swift */; };
 		20F950D22B74418F00386876 /* GroceryAnalyser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F950D12B74418F00386876 /* GroceryAnalyser.swift */; };
 		20F950D42B7442B300386876 /* Grocery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F950D32B7442B300386876 /* Grocery.swift */; };
 		20F950D82B74499D00386876 /* RewaItemsProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F950D72B74499D00386876 /* RewaItemsProcessor.swift */; };
@@ -95,6 +98,9 @@
 		20E542972BE3AA2C00CD7E52 /* ResultsViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewFactory.swift; sourceTree = "<group>"; };
 		20E542FB2BE8313400CD7E52 /* Ticket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
 		20E542FD2BE837C300CD7E52 /* Ticket+TicketDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ticket+TicketDisplay.swift"; sourceTree = "<group>"; };
+		20E543022BE840BE00CD7E52 /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
+		20E543042BE840E800CD7E52 /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
+		20E543062BE8413D00CD7E52 /* DataError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataError.swift; sourceTree = "<group>"; };
 		20F950D12B74418F00386876 /* GroceryAnalyser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryAnalyser.swift; sourceTree = "<group>"; };
 		20F950D32B7442B300386876 /* Grocery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grocery.swift; sourceTree = "<group>"; };
 		20F950D72B74499D00386876 /* RewaItemsProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewaItemsProcessor.swift; sourceTree = "<group>"; };
@@ -231,6 +237,7 @@
 		206CC3A42B7041DF002D0511 /* Clean */ = {
 			isa = PBXGroup;
 			children = (
+				20E542FF2BE8402400CD7E52 /* Data */,
 				206CC3B12B7054D6002D0511 /* Domain */,
 				206CC3A52B7041EE002D0511 /* Presentation */,
 			);
@@ -335,6 +342,40 @@
 				20ABEE672BE2F1F400AD23E7 /* Engine */,
 			);
 			path = Scanner;
+			sourceTree = "<group>";
+		};
+		20E542FF2BE8402400CD7E52 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				20E543062BE8413D00CD7E52 /* DataError.swift */,
+				20E543082BE8420100CD7E52 /* DataSources */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		20E543002BE8409300CD7E52 /* REST */ = {
+			isa = PBXGroup;
+			children = (
+				20E543012BE840A200CD7E52 /* Networking */,
+			);
+			path = REST;
+			sourceTree = "<group>";
+		};
+		20E543012BE840A200CD7E52 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				20E543022BE840BE00CD7E52 /* NetworkClient.swift */,
+				20E543042BE840E800CD7E52 /* NetworkRequest.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		20E543082BE8420100CD7E52 /* DataSources */ = {
+			isa = PBXGroup;
+			children = (
+				20E543002BE8409300CD7E52 /* REST */,
+			);
+			path = DataSources;
 			sourceTree = "<group>";
 		};
 		20F950D62B74481100386876 /* Processors */ = {
@@ -480,6 +521,7 @@
 				202E87B12B9858E3008DC53A /* TicketItem+Transferable.swift in Sources */,
 				206CC3C12B71A565002D0511 /* TicketsListView+Factory.swift in Sources */,
 				201D7F232BA885F70062954E /* FoodCategory+Color.swift in Sources */,
+				20E543052BE840E800CD7E52 /* NetworkRequest.swift in Sources */,
 				201D7F1D2BA85CE20062954E /* CompactedItemRow.swift in Sources */,
 				206CC37C2B6DB51E002D0511 /* ContentView.swift in Sources */,
 				20E542FE2BE837C300CD7E52 /* Ticket+TicketDisplay.swift in Sources */,
@@ -487,7 +529,9 @@
 				20F950D82B74499D00386876 /* RewaItemsProcessor.swift in Sources */,
 				202E87AE2B95AE11008DC53A /* CategoryBoxView.swift in Sources */,
 				206BB0AF2B93EDBD00F01604 /* Food.swift in Sources */,
+				20E543032BE840BE00CD7E52 /* NetworkClient.swift in Sources */,
 				206CC3BD2B719798002D0511 /* ResultsView.swift in Sources */,
+				20E543072BE8413D00CD7E52 /* DataError.swift in Sources */,
 				201D7F1F2BA882800062954E /* CategoryRow.swift in Sources */,
 				206CC3BA2B706462002D0511 /* ItemsAnalyser.swift in Sources */,
 				206CC3AB2B704838002D0511 /* ScannerView.swift in Sources */,
