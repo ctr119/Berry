@@ -27,11 +27,6 @@ struct ItemsAnalyser {
             currentLine = text
             previousObservation = observation
         }
-        print("*** TICKET ***\n")
-        for line in lines {
-            print(line)
-        }
-        print("\n*** END ***")
         
         let algorithm = algorithmProvider(grocery)
         return algorithm.process(lines: lines)

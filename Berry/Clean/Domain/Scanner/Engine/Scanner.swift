@@ -10,7 +10,6 @@ import Vision
 ///
 /// NEW IDEA:
 ///
-/// - Make the scanner to work with this and return the Domain object instead
 /// - The ViewModel should parse the data to the Display the view needs
 /// - The simply uses it, and is able to change the `category` from a picker, individually
 ///

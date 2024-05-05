@@ -262,7 +262,6 @@
 				206CC3AA2B704838002D0511 /* ScannerView.swift */,
 				206CC3AC2B704EE3002D0511 /* ScannerViewModel.swift */,
 				206CC3BB2B7194B3002D0511 /* Results */,
-				206CC3B42B70580F002D0511 /* Engine */,
 			);
 			path = Scanner;
 			sourceTree = "<group>";
@@ -271,7 +270,7 @@
 			isa = PBXGroup;
 			children = (
 				206BB0AB2B93E7A300F01604 /* Food */,
-				20E542992BE3F8FB00CD7E52 /* ScannerEngine */,
+				20E542992BE3F8FB00CD7E52 /* Scanner */,
 				206CC3B22B7054DE002D0511 /* Tickets */,
 			);
 			path = Domain;
@@ -335,11 +334,12 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		20E542992BE3F8FB00CD7E52 /* ScannerEngine */ = {
+		20E542992BE3F8FB00CD7E52 /* Scanner */ = {
 			isa = PBXGroup;
 			children = (
+				206CC3B42B70580F002D0511 /* Engine */,
 			);
-			path = ScannerEngine;
+			path = Scanner;
 			sourceTree = "<group>";
 		};
 		20F950D62B74481100386876 /* Algorithms */ = {
