@@ -10,13 +10,11 @@ import Vision
 ///
 /// NEW IDEA:
 ///
-/// - Create a replica of the TicketDisplay without all the SwiftUI stuff
 /// - Make the scanner to work with this and return the Domain object instead
 /// - The ViewModel should parse the data to the Display the view needs
 /// - The simply uses it, and is able to change the `category` from a picker, individually
 ///
 /// - Remove the drag & drop functionality
-/// - and move it possibily to another repo (DONE)
 ///
 /// TODO: Add another step into this use case: classify the items
 
@@ -37,7 +35,7 @@ struct Scanner {
         self.itemsAnalyser = itemsAnalyser
     }
     
-    func ticket(from cgImage: CGImage) async throws -> TicketDisplay {
+    func ticket(from cgImage: CGImage) async throws -> Ticket {
         let requestHandler = VNImageRequestHandler(cgImage: cgImage)
         
         return try await withCheckedThrowingContinuation { continuation in
@@ -67,7 +65,7 @@ struct Scanner {
                 }
                 
                 let items = itemsAnalyser.process(observations: sortedObservations, for: grocery)
-                let ticket = TicketDisplay(groceryName: grocery.rawValue, items: items)
+                let ticket = Ticket(groceryName: grocery.rawValue, items: items)
                 
                 continuation.resume(returning: ticket)
             }

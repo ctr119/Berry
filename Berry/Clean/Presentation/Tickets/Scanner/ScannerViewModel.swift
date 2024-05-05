@@ -11,6 +11,9 @@ class ScannerViewModel {
     
     func generateTicket(from images: [CGImage]) async -> TicketDisplay? {
         guard let image = images.first else { return nil }
-        return try? await scanner.ticket(from: image)
+        let ticket = try? await scanner.ticket(from: image)
+        
+        // TODO: Convert to TicketDisplay
+        return nil
     }
 }
