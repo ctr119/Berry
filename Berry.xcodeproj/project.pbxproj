@@ -295,16 +295,6 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		206CC3B42B70580F002D0511 /* Engine */ = {
-			isa = PBXGroup;
-			children = (
-				206CC3B52B70582A002D0511 /* Scanner.swift */,
-				206BB0A92B7ED65400F01604 /* VNRecognizedTextObservation+Baseline.swift */,
-				20ABEE672BE2F1F400AD23E7 /* Analysers */,
-			);
-			path = Engine;
-			sourceTree = "<group>";
-		};
 		206CC3BB2B7194B3002D0511 /* Results */ = {
 			isa = PBXGroup;
 			children = (
@@ -318,14 +308,15 @@
 			path = Results;
 			sourceTree = "<group>";
 		};
-		20ABEE672BE2F1F400AD23E7 /* Analysers */ = {
+		20ABEE672BE2F1F400AD23E7 /* Engine */ = {
 			isa = PBXGroup;
 			children = (
 				20F950D12B74418F00386876 /* GroceryAnalyser.swift */,
 				206CC3B92B706462002D0511 /* ItemsAnalyser.swift */,
+				206BB0A92B7ED65400F01604 /* VNRecognizedTextObservation+Baseline.swift */,
 				20F950D62B74481100386876 /* Processors */,
 			);
-			path = Analysers;
+			path = Engine;
 			sourceTree = "<group>";
 		};
 		20E542962BE398AD00CD7E52 /* Model */ = {
@@ -340,7 +331,8 @@
 		20E542992BE3F8FB00CD7E52 /* Scanner */ = {
 			isa = PBXGroup;
 			children = (
-				206CC3B42B70580F002D0511 /* Engine */,
+				206CC3B52B70582A002D0511 /* Scanner.swift */,
+				20ABEE672BE2F1F400AD23E7 /* Engine */,
 			);
 			path = Scanner;
 			sourceTree = "<group>";
