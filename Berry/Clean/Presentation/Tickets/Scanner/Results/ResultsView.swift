@@ -4,6 +4,8 @@ struct ResultsView: View {
     @State var viewModel: ViewModel
     @State private var showCategorySheet = false
     
+    // TODO: Remove the drag & drop functionality by a picker
+    
     var body: some View {
         NavigationStack {
             /// TODO: If the width of the Boxes is not ideal,

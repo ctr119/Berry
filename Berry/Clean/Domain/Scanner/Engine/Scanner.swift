@@ -2,20 +2,6 @@ import Foundation
 import VisionKit
 import Vision
 
-/// TODO: Everything related to the Engine can be migrated to Domain
-/// as it is basically a business logic: scanning & analysing the ticket.
-///
-/// However, the Object it returns, it's not a domain one...Let's start by
-/// creating one! .... But the domain object should contain a category field!"!!!!!
-///
-/// NEW IDEA:
-///
-/// - The simply uses it, and is able to change the `category` from a picker, individually
-///
-/// - Remove the drag & drop functionality
-///
-/// TODO: Add another step into this use case: classify the items
-
 struct Scanner {
     enum ScannerError: Error {
         case failToCastObservations
@@ -63,6 +49,7 @@ struct Scanner {
                 }
                 
                 let items = itemsAnalyser.analyse(observations: sortedObservations, for: grocery)
+                // TODO: Classify the items
                 let ticket = Ticket(groceryName: grocery.rawValue, items: items)
                 
                 continuation.resume(returning: ticket)

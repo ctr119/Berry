@@ -12,5 +12,6 @@ extension Ticket {
         let weight: String?
         let price: Double
         let totalPrice: Double
+        // TODO: Add a category field - something to fill from Spoonacular
     }
 }
