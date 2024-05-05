@@ -1,9 +1,6 @@
 import SwiftUI
 
 struct ResultsView: View {
-    @Environment(\.dynamicTypeSize) var dynamicTypeSize
-    private let dynamicTypeSizeThreshold: DynamicTypeSize = .xxLarge
-    
     @State var viewModel: ViewModel
     @State private var showCategorySheet = false
     
