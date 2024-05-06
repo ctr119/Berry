@@ -26,6 +26,9 @@ struct Scanner {
         let (items, grocery) = try await analyse(cgImage)
         let classifiedItems = await classify(items: items)
         
+        /// TODO: Locally store the categories for later suggest them to the user,
+        /// in case the category of one product couldn't be classified by the API
+        
         return Ticket(groceryName: grocery.rawValue, items: classifiedItems)
     }
     

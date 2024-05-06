@@ -13,6 +13,7 @@ class ScannerViewModel {
         guard let image = images.first,
               let ticket = try? await scanner.scanTicket(from: image) else { return nil }
         
+        // TODO: Add `category` to the parsing process
         return ticket.toDisplay
     }
 }
