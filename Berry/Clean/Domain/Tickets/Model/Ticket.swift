@@ -6,12 +6,28 @@ struct Ticket {
 }
 
 extension Ticket {
-    struct Item {
+    class Item {
         let name: String
         let quantity: Int?
         let weight: String?
         let price: Double
         let totalPrice: Double
-        // TODO: Add a category field - something to fill from Spoonacular
+        var category: String?
+        
+        init(
+            name: String,
+            quantity: Int?,
+            weight: String?,
+            price: Double,
+            totalPrice: Double,
+            category: String?
+        ) {
+            self.name = name
+            self.quantity = quantity
+            self.weight = weight
+            self.price = price
+            self.totalPrice = totalPrice
+            self.category = category
+        }
     }
 }

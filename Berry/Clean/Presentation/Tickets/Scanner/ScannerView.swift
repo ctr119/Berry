@@ -24,7 +24,11 @@ struct ScannerView: UIViewControllerRepresentable {
         })
         
         let groceryAnalyser = GroceryAnalyser()
-        let scanner = Scanner(groceryAnalyser: groceryAnalyser, itemsAnalyser: itemsAnalyser)
+        let scanner = Scanner(
+            groceryAnalyser: groceryAnalyser,
+            itemsAnalyser: itemsAnalyser,
+            groceryProductsRepository: GroceryProductsRepositoryFactory.make()
+        )
         let viewModel = ScannerViewModel(scanner: scanner)
         
         return Coordinator(viewModel: viewModel, parent: self)

@@ -10,16 +10,26 @@ struct Scanner {
     
     private let groceryAnalyser: GroceryAnalyser
     private let itemsAnalyser: ItemsAnalyser
+    private let groceryProductsRepository: GroceryProductsRepository
     
     init(
         groceryAnalyser: GroceryAnalyser,
-        itemsAnalyser: ItemsAnalyser
+        itemsAnalyser: ItemsAnalyser,
+        groceryProductsRepository: GroceryProductsRepository
     ) {
         self.groceryAnalyser = groceryAnalyser
         self.itemsAnalyser = itemsAnalyser
+        self.groceryProductsRepository = groceryProductsRepository
     }
     
     func scanTicket(from cgImage: CGImage) async throws -> Ticket {
+        let (items, grocery) = try await analyse(cgImage)
+        let classifiedItems = await classify(items: items)
+        
+        return Ticket(groceryName: grocery.rawValue, items: classifiedItems)
+    }
+    
+    private func analyse(_ cgImage: CGImage) async throws -> (items: [Ticket.Item], grocery: Grocery) {
         let requestHandler = VNImageRequestHandler(cgImage: cgImage)
         
         return try await withCheckedThrowingContinuation { continuation in
@@ -47,12 +57,9 @@ struct Scanner {
                     continuation.resume(throwing: ScannerError.nonSupportedGrocery)
                     return
                 }
-                
                 let items = itemsAnalyser.analyse(observations: sortedObservations, for: grocery)
-                // TODO: Classify the items
-                let ticket = Ticket(groceryName: grocery.rawValue, items: items)
                 
-                continuation.resume(returning: ticket)
+                continuation.resume(returning: (items: items, grocery: grocery))
             }
             
             request.recognitionLevel = .accurate
@@ -64,5 +71,24 @@ struct Scanner {
                 continuation.resume(throwing: error)
             }
         }
-    }    
+    }
+    
+    private func classify(items: [Ticket.Item]) async -> [Ticket.Item] {
+        var products: [String: Ticket.Item] = items.reduce(into: [:]) { partialResult, item in
+            partialResult[item.name] = item
+        }
+        let productNames = Array(products.keys)
+        
+        guard let classifiedProducts = try? await groceryProductsRepository.classify(products: productNames) else {
+            return items
+        }
+        
+        for classifiedProduct in classifiedProducts {
+            guard let product = products[classifiedProduct.productName] else { continue }
+            product.category = classifiedProduct.category
+            products[classifiedProduct.productName] = product
+        }
+        
+        return Array(products.values)
+    }
 }
