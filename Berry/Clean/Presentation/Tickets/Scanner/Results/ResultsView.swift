@@ -21,7 +21,7 @@ struct ResultsView: View {
                     }
                 }
             }
-            .navigationTitle(viewModel.groceryName)
+            .navigationTitle(viewModel.ticket.groceryName)
             .toolbar {
                 // TODO: Replace for a "SAVE" button
                 ToolbarItem(id: "add-category-item", placement: .primaryAction) {
@@ -47,7 +47,7 @@ struct ResultsView: View {
                     count: geometryProxy.size.width >= 900 ? 2 : 1
                 )
             ) {
-                ForEach(viewModel.ticketItems, id: \.name) {
+                ForEach(viewModel.ticket.items, id: \.name) {
                     DetailedItemRow(item: $0)
                 }
             }
