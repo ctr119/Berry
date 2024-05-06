@@ -22,7 +22,7 @@ enum DataError: Error {
     }
     
     case dataDecoding(_ error: Error)
-    case malformedUrl
+    case invalidRequest
     case network(_ network: Network)
     case noHTTPProtocol
     case unexpectedFailure

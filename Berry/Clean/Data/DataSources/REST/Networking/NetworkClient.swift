@@ -12,11 +12,11 @@ struct RESTClient: NetworkClient {
     }
     
     func perform<T: Decodable>(request: NetworkRequest) async throws -> T {
-        guard let url = request.url else {
-            throw DataError.malformedUrl
+        guard let urlRequest = request.urlRequest else {
+            throw DataError.invalidRequest
         }
         
-        let (data, response) = try await session.data(from: url)
+        let (data, response) = try await session.data(for: urlRequest)
         
         guard let httpResponse = response as? HTTPURLResponse else {
             throw DataError.noHTTPProtocol
