@@ -1,5 +1,6 @@
 import Foundation
 
+// TODO: Remove
 extension Food {
     enum Category: Hashable, CaseIterable {
         case bakery

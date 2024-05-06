@@ -1,5 +1,6 @@
 import SwiftUI
 
+// TODO: Remove
 struct FoodCategoryListView: View {
     let title: String
     let onTappedCategory: (Food.Category) -> Void

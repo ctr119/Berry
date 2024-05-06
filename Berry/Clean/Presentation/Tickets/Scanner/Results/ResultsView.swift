@@ -2,7 +2,6 @@ import SwiftUI
 
 struct ResultsView: View {
     @State var viewModel: ViewModel
-    @State private var showCategorySheet = false
     
     // TODO: Remove the drag & drop functionality by a picker
     
@@ -17,10 +16,6 @@ struct ResultsView: View {
                     .ignoresSafeArea()
                 
                 VStack {
-                    categoriesSection()
-                    
-                    Divider()
-                    
                     GeometryReader { proxy in
                         ticketListItems(geometryProxy: proxy)
                     }
@@ -28,9 +23,10 @@ struct ResultsView: View {
             }
             .navigationTitle(viewModel.groceryName)
             .toolbar {
+                // TODO: Replace for a "SAVE" button
                 ToolbarItem(id: "add-category-item", placement: .primaryAction) {
                     Button(action: {
-                        showCategorySheet = true
+                        // TODO: Define the action
                     }, label: {
                         Image(systemName: "plus.square.on.square")
                             .rotationEffect(.degrees(90))
@@ -39,42 +35,6 @@ struct ResultsView: View {
                     })
                 }
             }
-            .sheet(isPresented: $showCategorySheet) {
-                FoodCategoryListView(
-                    title: "Add a category...",
-                    onTappedCategory: { category in
-                        viewModel.add(category: category)
-                        showCategorySheet = false
-                    }
-                )
-                .padding(.top, 15)
-                .presentationDetents([.medium, .fraction(0.85)])
-                .presentationDragIndicator(.visible)
-                .ignoresSafeArea(.container, edges: .bottom)
-            }
-        }
-    }
-    
-    @ViewBuilder
-    private func categoriesSection() -> some View {
-        ScrollView(.horizontal) {
-            HStack(spacing: 18) {
-                ForEach(viewModel.categories, id: \.code) { category in
-                    CategoryBoxView(category: category, items: viewModel.itemsPerCategory[category] ?? []) { item in
-                        CompactedItemRow(item: item, category: category)
-                            .draggable(item)
-                    }
-                    .dropDestination(for: TicketDisplay.Item.self) { items, location in
-                        withAnimation {
-                            guard let droppedItem = items.first else { return false }
-                            viewModel.move(item: droppedItem, to: category)
-                            return true
-                        }
-                    }
-                }
-            }
-            .padding()
-            .animation(.easeInOut, value: viewModel.categories)
         }
     }
     
@@ -89,7 +49,6 @@ struct ResultsView: View {
             ) {
                 ForEach(viewModel.ticketItems, id: \.name) {
                     DetailedItemRow(item: $0)
-                        .draggable($0)
                 }
             }
             .padding()

@@ -1,7 +1,7 @@
 import Foundation
 
 struct TicketDisplay {
-    struct Item: Hashable, Codable {
+    struct Item: Hashable {
         let name: String
         let quantity: Int?
         let weight: String?
