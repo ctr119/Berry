@@ -34,7 +34,8 @@ class RewaItemsProcessor: ItemsProcessor {
                 quantity: auxQuantity,
                 weight: auxWeight,
                 price: auxPrice ?? auxTotalPrice,
-                totalPrice: auxTotalPrice
+                totalPrice: auxTotalPrice,
+                category: nil
             )
             
             items.append(item)
