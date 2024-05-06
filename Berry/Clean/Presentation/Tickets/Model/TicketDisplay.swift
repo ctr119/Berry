@@ -1,12 +1,13 @@
 import Foundation
 
-class TicketDisplay {
+struct TicketDisplay {
     struct Item: Hashable, Codable {
         let name: String
         let quantity: Int?
         let weight: String?
         let price: Double
         let totalPrice: Double
+        let category: String?
         
         static func == (lhs: Item, rhs: Item) -> Bool {
             return lhs.name == rhs.name
@@ -26,12 +27,7 @@ class TicketDisplay {
     }
     
     let groceryName: String
-    private(set) var items: [Item] = []
-    
-    init(groceryName: String, items: [Item]) {
-        self.groceryName = groceryName
-        self.items = items
-    }
+    let items: [Item]
 }
 
 #if DEBUG
@@ -45,28 +41,32 @@ extension TicketDisplay {
                     quantity: 1,
                     weight: nil,
                     price: 6.45,
-                    totalPrice: 6.45
+                    totalPrice: 6.45, 
+                    category: "Dairy"
                 ),
                 .init(
                     name: "Chocolate",
                     quantity: 3,
                     weight: nil,
                     price: 1.99,
-                    totalPrice: 5.97
+                    totalPrice: 5.97,
+                    category: "Sweet"
                 ),
                 .init(
                     name: "Tomato sauce",
                     quantity: 3,
                     weight: nil,
                     price: 1.75,
-                    totalPrice: 5.25
+                    totalPrice: 5.25,
+                    category: nil
                 ),
                 .init(
                     name: "Oranges",
                     quantity: nil,
                     weight: "1,00 Kg",
                     price: 2.99,
-                    totalPrice: 5.98
+                    totalPrice: 5.98,
+                    category: "Fruit"
                 )
             ]
         )
@@ -79,7 +79,8 @@ extension TicketDisplay.Item {
         quantity: 1,
         weight: nil,
         price: 6.45,
-        totalPrice: 6.45
+        totalPrice: 6.45,
+        category: "Dairy"
     )
 }
 #endif

@@ -16,7 +16,8 @@ extension Ticket.Item {
             quantity: self.quantity,
             weight: self.weight,
             price: self.price,
-            totalPrice: self.totalPrice
+            totalPrice: self.totalPrice,
+            category: self.category
         )
     }
 }
