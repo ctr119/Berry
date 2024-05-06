@@ -2,9 +2,7 @@ import SwiftUI
 
 struct ResultsView: View {
     @State var viewModel: ViewModel
-    
-    // TODO: Remove the drag & drop functionality by a picker
-    
+        
     var body: some View {
         NavigationStack {
             /// TODO: If the width of the Boxes is not ideal,
