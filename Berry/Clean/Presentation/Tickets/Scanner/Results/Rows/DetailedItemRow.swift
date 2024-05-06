@@ -4,60 +4,56 @@ struct DetailedItemRow: View {
     @Environment(\.dynamicTypeSize) var dynamicTypeSize
     
     private let dynamicTypeSizeThreshold: DynamicTypeSize = .xxxLarge
+    private let verticalSpacing: CGFloat = 8
     let item: TicketDisplay.Item
     
     var body: some View {
-        VStack(alignment: .leading) {
-            Text(item.name)
-                .font(.headline)
+        HStack(alignment: .center) {
+            textSection(for: item)
+            
+            Spacer()
             
             priceSection(for: item)
-                .font(.subheadline)
-                .frame(maxWidth: 400)
         }
         .monospaced()
+        .frame(maxWidth: 400)
         .padding()
         .background(.white)
         .clipShape(RoundedRectangle(cornerRadius: 10))
     }
     
-    @ViewBuilder
-    private func priceSection(for item: TicketDisplay.Item) -> some View {
-        HStack {
-            Spacer()
+    private func textSection(for item: TicketDisplay.Item) -> some View {
+        VStack(alignment: .leading, spacing: verticalSpacing) {
+            Text(item.name)
+                .font(.headline)
             
-            if dynamicTypeSize >= dynamicTypeSizeThreshold {
-                VStack(alignment: .trailing) {
-                    priceRow(for: item)
-                }
-            } else {
-                priceRow(for: item)
-            }
+            Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+                Text((item.category ?? "unknown").capitalized)
+                    .font(.caption.lowercaseSmallCaps())
+                    .fontWeight(.regular)
+                    .underline()
+            })
+            .buttonStyle(.plain)
         }
     }
     
-    @ViewBuilder
-    private func priceRow(for item: TicketDisplay.Item) -> some View {
-        Text(item.price, format: .currency(code: "EUR").precision(.fractionLength(2)))
-        
-        if dynamicTypeSize >= dynamicTypeSizeThreshold {
+    private func priceSection(for item: TicketDisplay.Item) -> some View {
+        VStack(alignment: .trailing, spacing: verticalSpacing) {
+            Text(item.totalPrice, format: .currency(code: "EUR").precision(.fractionLength(2)))
+                .font(.headline)
+                .padding(.horizontal, 8)
+                .padding(.vertical, 4)
+                .background(Color.gray.opacity(0.4))
+                .clipShape(RoundedRectangle(cornerRadius: 10))
+            
             HStack {
+                Text(item.price, format: .currency(code: "EUR").precision(.fractionLength(2)))
                 Text("x")
-                Spacer()
                 Text(quantityOrWeight(item: item))
             }
-            Divider()
-        } else {
-            Text("x")
-            Text(quantityOrWeight(item: item))
-            Text("=")
+            .font(.caption)
+            .fontWeight(.light)
         }
-        
-        Text(item.totalPrice, format: .currency(code: "EUR").precision(.fractionLength(2)))
-            .fontWeight(.bold)
-            .padding(10)
-            .background(Color.gray.opacity(0.4))
-            .clipShape(RoundedRectangle(cornerRadius: 10))
     }
     
     private func quantityOrWeight(item: TicketDisplay.Item) -> String {
@@ -79,7 +75,6 @@ struct DetailedItemRow: View {
         Color.gray.opacity(0.3).ignoresSafeArea()
         
         DetailedItemRow(item: .previewMock)
-            .padding()
     }
 }
 #endif
