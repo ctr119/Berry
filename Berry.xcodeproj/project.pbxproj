@@ -43,6 +43,8 @@
 		20E5430B2BE844C900CD7E52 /* GroceryProductsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E5430A2BE844C900CD7E52 /* GroceryProductsDataSource.swift */; };
 		20E5430E2BE8456400CD7E52 /* ClassifiedProductDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E5430D2BE8456400CD7E52 /* ClassifiedProductDTO.swift */; };
 		20E543112BE846C800CD7E52 /* ClassifyProductsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E543102BE846C800CD7E52 /* ClassifyProductsRequest.swift */; };
+		20E543152BE8C66600CD7E52 /* GroceryProductsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E543142BE8C66600CD7E52 /* GroceryProductsRepository.swift */; };
+		20E543172BE8D47400CD7E52 /* GroceryProductsRepositoryFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E543162BE8D47400CD7E52 /* GroceryProductsRepositoryFactory.swift */; };
 		20F950D22B74418F00386876 /* GroceryAnalyser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F950D12B74418F00386876 /* GroceryAnalyser.swift */; };
 		20F950D42B7442B300386876 /* Grocery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F950D32B7442B300386876 /* Grocery.swift */; };
 		20F950D82B74499D00386876 /* RewaItemsProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F950D72B74499D00386876 /* RewaItemsProcessor.swift */; };
@@ -107,6 +109,8 @@
 		20E5430A2BE844C900CD7E52 /* GroceryProductsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryProductsDataSource.swift; sourceTree = "<group>"; };
 		20E5430D2BE8456400CD7E52 /* ClassifiedProductDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassifiedProductDTO.swift; sourceTree = "<group>"; };
 		20E543102BE846C800CD7E52 /* ClassifyProductsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassifyProductsRequest.swift; sourceTree = "<group>"; };
+		20E543142BE8C66600CD7E52 /* GroceryProductsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryProductsRepository.swift; sourceTree = "<group>"; };
+		20E543162BE8D47400CD7E52 /* GroceryProductsRepositoryFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryProductsRepositoryFactory.swift; sourceTree = "<group>"; };
 		20F950D12B74418F00386876 /* GroceryAnalyser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryAnalyser.swift; sourceTree = "<group>"; };
 		20F950D32B7442B300386876 /* Grocery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grocery.swift; sourceTree = "<group>"; };
 		20F950D72B74499D00386876 /* RewaItemsProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewaItemsProcessor.swift; sourceTree = "<group>"; };
@@ -355,6 +359,7 @@
 			children = (
 				20E543062BE8413D00CD7E52 /* DataError.swift */,
 				20E543082BE8420100CD7E52 /* DataSources */,
+				20E543122BE8C62900CD7E52 /* Repositories */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -409,6 +414,23 @@
 				20E543102BE846C800CD7E52 /* ClassifyProductsRequest.swift */,
 			);
 			path = Requests;
+			sourceTree = "<group>";
+		};
+		20E543122BE8C62900CD7E52 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				20E543132BE8C65600CD7E52 /* GroceryProducts */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		20E543132BE8C65600CD7E52 /* GroceryProducts */ = {
+			isa = PBXGroup;
+			children = (
+				20E543142BE8C66600CD7E52 /* GroceryProductsRepository.swift */,
+				20E543162BE8D47400CD7E52 /* GroceryProductsRepositoryFactory.swift */,
+			);
+			path = GroceryProducts;
 			sourceTree = "<group>";
 		};
 		20F950D62B74481100386876 /* Processors */ = {
@@ -572,9 +594,11 @@
 				20E543112BE846C800CD7E52 /* ClassifyProductsRequest.swift in Sources */,
 				202E87AA2B953512008DC53A /* DetailedItemRow.swift in Sources */,
 				206CC3BF2B71A331002D0511 /* TicketsListView+ViewModel.swift in Sources */,
+				20E543172BE8D47400CD7E52 /* GroceryProductsRepositoryFactory.swift in Sources */,
 				201D7F262BA88A1F0062954E /* FoodCategoryListView.swift in Sources */,
 				206CC3A82B704222002D0511 /* TicketsListView.swift in Sources */,
 				20F950D42B7442B300386876 /* Grocery.swift in Sources */,
+				20E543152BE8C66600CD7E52 /* GroceryProductsRepository.swift in Sources */,
 				20E542FC2BE8313400CD7E52 /* Ticket.swift in Sources */,
 				206BB0AD2B93E7B600F01604 /* Food+Category.swift in Sources */,
 				206CC37A2B6DB51E002D0511 /* BerryApp.swift in Sources */,
