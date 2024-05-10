@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct DetailedItemRow: View {
+    @State private var selectedCategory: String = ""
+    private let categories = ["Meat", "Fish"]
     private let verticalSpacing: CGFloat = 8
     
     // TODO: Make this a @Binding
@@ -26,17 +28,26 @@ struct DetailedItemRow: View {
             Text(item.name)
                 .font(.headline)
             
-            Button(action: {
-                // TODO: Turn into a picker
-                // TODO: Update the Item through the Binding
-            }, label: {
-                Text((item.category ?? "unknown").capitalized)
+            // TODO: Update the Item through the Binding
+            Menu {
+                Picker("", selection: $selectedCategory) {
+                    ForEach(categories, id: \.self) {
+                        Text($0)
+                    }
+                }
+                .pickerStyle(.inline)
+            } label: {
+                Text(categoryString)
                     .font(.caption.lowercaseSmallCaps())
                     .fontWeight(.regular)
                     .underline()
-            })
-            .buttonStyle(.plain)
+            }
         }
+        .pickerStyle(.menu)
+    }
+    
+    private var categoryString: String {
+        selectedCategory.isEmpty ? (item.category ?? "unknown").capitalized : selectedCategory
     }
     
     private func priceSection(for item: TicketDisplay.Item) -> some View {
