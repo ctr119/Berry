@@ -1,10 +1,9 @@
 import SwiftUI
 
 struct DetailedItemRow: View {
-    @Environment(\.dynamicTypeSize) var dynamicTypeSize
-    
-    private let dynamicTypeSizeThreshold: DynamicTypeSize = .xxxLarge
     private let verticalSpacing: CGFloat = 8
+    
+    // TODO: Make this a @Binding
     let item: TicketDisplay.Item
     
     var body: some View {
@@ -27,7 +26,10 @@ struct DetailedItemRow: View {
             Text(item.name)
                 .font(.headline)
             
-            Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+            Button(action: {
+                // TODO: Turn into a picker
+                // TODO: Update the Item through the Binding
+            }, label: {
                 Text((item.category ?? "unknown").capitalized)
                     .font(.caption.lowercaseSmallCaps())
                     .fontWeight(.regular)
