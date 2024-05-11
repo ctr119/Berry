@@ -42,8 +42,8 @@ struct ResultsView: View {
                     count: geometryProxy.size.width >= 900 ? 2 : 1
                 )
             ) {
-                ForEach(viewModel.ticket.items, id: \.name) {
-                    DetailedItemRow(item: $0)
+                ForEach($viewModel.ticket.items, id: \.name) { item in
+                    DetailedItemRow(item: item)
                 }
             }
             .padding()

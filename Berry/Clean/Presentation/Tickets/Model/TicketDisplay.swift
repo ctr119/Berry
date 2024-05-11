@@ -7,7 +7,7 @@ struct TicketDisplay {
         let weight: String?
         let price: Double
         let totalPrice: Double
-        let category: String?
+        var category: String?
         
         static func == (lhs: Item, rhs: Item) -> Bool {
             return lhs.name == rhs.name
@@ -27,7 +27,7 @@ struct TicketDisplay {
     }
     
     let groceryName: String
-    let items: [Item]
+    var items: [Item]
 }
 
 #if DEBUG

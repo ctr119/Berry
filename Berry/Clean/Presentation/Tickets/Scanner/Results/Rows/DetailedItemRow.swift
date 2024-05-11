@@ -5,8 +5,7 @@ struct DetailedItemRow: View {
     private let categories = ["Meat", "Fish"]
     private let verticalSpacing: CGFloat = 8
     
-    // TODO: Make this a @Binding
-    let item: TicketDisplay.Item
+    @Binding var item: TicketDisplay.Item
     
     var body: some View {
         HStack(alignment: .center) {
@@ -24,13 +23,22 @@ struct DetailedItemRow: View {
     }
     
     private func textSection(for item: TicketDisplay.Item) -> some View {
-        VStack(alignment: .leading, spacing: verticalSpacing) {
+        let binding = Binding(
+            get: {
+                return selectedCategory
+            },
+            set: {
+                selectedCategory = $0
+                self.item.category = $0
+            }
+        )
+        
+        return VStack(alignment: .leading, spacing: verticalSpacing) {
             Text(item.name)
                 .font(.headline)
             
-            // TODO: Update the Item through the Binding
             Menu {
-                Picker("", selection: $selectedCategory) {
+                Picker("", selection: binding) {
                     ForEach(categories, id: \.self) {
                         Text($0)
                     }
@@ -47,7 +55,7 @@ struct DetailedItemRow: View {
     }
     
     private var categoryString: String {
-        selectedCategory.isEmpty ? (item.category ?? "unknown").capitalized : selectedCategory
+        (item.category ?? "unknown").capitalized
     }
     
     private func priceSection(for item: TicketDisplay.Item) -> some View {
@@ -84,10 +92,12 @@ struct DetailedItemRow: View {
 
 #if DEBUG
 #Preview {
-    ZStack {
+    @State var item: TicketDisplay.Item = .previewMock
+    
+    return ZStack {
         Color.gray.opacity(0.3).ignoresSafeArea()
         
-        DetailedItemRow(item: .previewMock)
+        DetailedItemRow(item: $item)
     }
 }
 #endif
