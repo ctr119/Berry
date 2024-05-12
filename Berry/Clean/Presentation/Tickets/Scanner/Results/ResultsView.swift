@@ -43,7 +43,7 @@ struct ResultsView: View {
                 )
             ) {
                 ForEach($viewModel.ticket.items, id: \.name) { item in
-                    DetailedItemRow(item: item)
+                    DetailedItemRow(item: item, categories: $viewModel.existingCategories)
                 }
             }
             .padding()

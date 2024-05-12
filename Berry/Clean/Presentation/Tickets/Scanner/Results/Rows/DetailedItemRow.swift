@@ -4,10 +4,10 @@ struct DetailedItemRow: View {
     @State private var selectedCategory: String = ""
     @State private var showNewCategoryAlert = false
     @State private var newCategory = ""
-    private let categories = ["Meat", "Fish"]
     private let verticalSpacing: CGFloat = 8
     
     @Binding var item: TicketDisplay.Item
+    @Binding var categories: [String]
     
     var body: some View {
         HStack(alignment: .center) {
@@ -28,6 +28,7 @@ struct DetailedItemRow: View {
             Button("Cancel", role: .cancel) {}
             Button("Add") {
                 self.item.category = newCategory
+                self.categories.append(newCategory)
                 newCategory = ""
             }
         }
@@ -112,7 +113,7 @@ struct DetailedItemRow: View {
     return ZStack {
         Color.gray.opacity(0.3).ignoresSafeArea()
         
-        DetailedItemRow(item: $item)
+        DetailedItemRow(item: $item, categories: .constant(["Fish", "Meat"]))
     }
 }
 #endif
