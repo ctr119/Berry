@@ -2,6 +2,8 @@ import SwiftUI
 
 struct DetailedItemRow: View {
     @State private var selectedCategory: String = ""
+    @State private var showNewCategoryAlert = false
+    @State private var newCategory = ""
     private let categories = ["Meat", "Fish"]
     private let verticalSpacing: CGFloat = 8
     
@@ -20,6 +22,15 @@ struct DetailedItemRow: View {
         .padding()
         .background(.white)
         .clipShape(RoundedRectangle(cornerRadius: 10))
+        .alert("New category", isPresented: $showNewCategoryAlert) {
+            TextField("Enter your category...", text: $newCategory)
+                
+            Button("Cancel", role: .cancel) {}
+            Button("Add") {
+                self.item.category = newCategory
+                newCategory = ""
+            }
+        }
     }
     
     private func textSection(for item: TicketDisplay.Item) -> some View {
@@ -44,6 +55,10 @@ struct DetailedItemRow: View {
                     }
                 }
                 .pickerStyle(.inline)
+                
+                Button("Add a new category...", systemImage: "plus.app") {
+                    showNewCategoryAlert = true
+                }
             } label: {
                 Text(categoryString)
                     .font(.caption.lowercaseSmallCaps())
