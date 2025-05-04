@@ -6,8 +6,8 @@ class RewaItemsPattern: ItemsPattern {
     private let itemsSectionEnd = "-------"
     private var inItemsSection = false
     
-    func parse(lines: [String]) -> [Ticket.Item] {
-        var items = [Ticket.Item]()
+    func parse(lines: [String]) -> [ScannedItemDTO] {
+        var items = [ScannedItemDTO]()
         
         var auxName: String?
         var auxTotalPrice: Double?
@@ -29,13 +29,12 @@ class RewaItemsPattern: ItemsPattern {
                 return
             }
             
-            let item = Ticket.Item(
+            let item = ScannedItemDTO(
                 name: auxName,
                 quantity: auxQuantity,
                 weight: auxWeight,
                 price: auxPrice ?? auxTotalPrice,
-                totalPrice: auxTotalPrice,
-                category: nil
+                totalPrice: auxTotalPrice
             )
             
             items.append(item)

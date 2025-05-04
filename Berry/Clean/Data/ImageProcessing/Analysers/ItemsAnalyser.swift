@@ -5,7 +5,7 @@ import Vision
 struct ItemsAnalyser {
     let itemsPatternProvider: (Grocery) -> ItemsPattern
     
-    func analyse(observations: [VNRecognizedTextObservation], for grocery: Grocery) -> [Ticket.Item] {
+    func analyse(observations: [VNRecognizedTextObservation], for grocery: Grocery) -> [ScannedItemDTO] {
         let maximumCandidates = 1
         
         var previousObservation: VNRecognizedTextObservation?

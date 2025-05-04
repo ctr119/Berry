@@ -9,6 +9,7 @@ protocol ImageProcessingRepository {
 class ImageProcessingRepositoryImplementation: ImageProcessingRepository {
     private let groceryAnalyser: GroceryAnalyser
     private let itemsAnalyser: ItemsAnalyser
+    private let ticketItemConverter: TicketItemConverter = .init()
     
     init(groceryAnalyser: GroceryAnalyser, itemsAnalyser: ItemsAnalyser) {
         self.groceryAnalyser = groceryAnalyser
@@ -18,7 +19,6 @@ class ImageProcessingRepositoryImplementation: ImageProcessingRepository {
     func process(image cgImage: CGImage) async throws -> Ticket {
         let requestHandler = VNImageRequestHandler(cgImage: cgImage)
         
-        // TODO: 1. Recognise text -> observations
         return try await withCheckedThrowingContinuation { continuation in
             let request = VNRecognizeTextRequest { request, error in
                 if let error {
@@ -53,11 +53,12 @@ class ImageProcessingRepositoryImplementation: ImageProcessingRepository {
                 // TODO: Locally store the categories for later suggest them to the user,
                 // in case the category of one product couldn't be classified by the API
                 
-                // TODO: 4. Compose the final Ticket object
+                let items = scannedItemDtos.map { self.ticketItemConverter.convert(scannedItemDto: $0) }
+                
                 continuation.resume(
                     returning: Ticket(
                         groceryName: grocery.rawValue, // TODO: Refactor. Grocery enum instead of String
-                        items: scannedItemDtos
+                        items: items
                     )
                 )
             }
