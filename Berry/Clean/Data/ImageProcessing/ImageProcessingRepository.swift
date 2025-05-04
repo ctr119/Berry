@@ -9,14 +9,34 @@ protocol ImageProcessingRepository {
 class ImageProcessingRepositoryImplementation: ImageProcessingRepository {
     private let groceryAnalyser: GroceryAnalyser
     private let itemsAnalyser: ItemsAnalyser
+    private let productsRepository: ProductsRepository
     private let ticketItemConverter: TicketItemConverter = .init()
     
-    init(groceryAnalyser: GroceryAnalyser, itemsAnalyser: ItemsAnalyser) {
+    init(
+        groceryAnalyser: GroceryAnalyser,
+        itemsAnalyser: ItemsAnalyser,
+        productsRepository: ProductsRepository
+    ) {
         self.groceryAnalyser = groceryAnalyser
         self.itemsAnalyser = itemsAnalyser
+        self.productsRepository = productsRepository
     }
     
     func process(image cgImage: CGImage) async throws -> Ticket {
+        let (grocery, scannedItems) = try await recogniseText(in: cgImage)
+        let itemNames = scannedItems.map { $0.name }
+        
+        let classifiedProducts = try await self.productsRepository.classify(products: itemNames)
+        
+        let items: [Ticket.Item] = scannedItems.compactMap {
+            guard let category = classifiedProducts[$0.name] else { return nil }
+            return self.ticketItemConverter.convert(scannedItemDto: $0, category: category)
+        }
+        
+        return Ticket(grocery: grocery, items: items)
+    }
+    
+    private func recogniseText(in cgImage: CGImage) async throws -> (grocery: Grocery, items: [ScannedItemDTO]) {
         let requestHandler = VNImageRequestHandler(cgImage: cgImage)
         
         return try await withCheckedThrowingContinuation { continuation in
@@ -46,15 +66,7 @@ class ImageProcessingRepositoryImplementation: ImageProcessingRepository {
                 }
                 
                 let scannedItemDtos = self.itemsAnalyser.analyse(observations: sortedObservations, for: grocery)
-                
-                // TODO: 3. Classify scanned items -> Ticket.Item
-                // TODO: NEXT: Create a local DDBB with SwiftData <-
-                // TODO: Locally store the categories for later suggest them to the user,
-                // in case the category of one product couldn't be classified by the API
-                
-                let items = scannedItemDtos.map { self.ticketItemConverter.convert(scannedItemDto: $0) }
-                
-                continuation.resume(returning: Ticket(grocery: grocery, items: items))
+                continuation.resume(returning: (grocery, scannedItemDtos))
             }
             
             request.recognitionLevel = .accurate
@@ -67,24 +79,4 @@ class ImageProcessingRepositoryImplementation: ImageProcessingRepository {
             }
         }
     }
-    
-    // TODO: Left here for later
-//    private func classify(items: [Ticket.Item]) async -> [Ticket.Item] {
-//        var products: [String: Ticket.Item] = items.reduce(into: [:]) { partialResult, item in
-//            partialResult[item.name] = item
-//        }
-//        let productNames = Array(products.keys)
-//        
-//        guard let classifiedProducts = try? await groceryProductsRepository.classify(products: productNames) else {
-//            return items
-//        }
-//        
-//        for classifiedProduct in classifiedProducts {
-//            guard let product = products[classifiedProduct.productName] else { continue }
-//            product.category = classifiedProduct.category
-//            products[classifiedProduct.productName] = product
-//        }
-//        
-//        return Array(products.values)
-//    }
 }

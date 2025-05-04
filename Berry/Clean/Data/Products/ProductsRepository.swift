@@ -1,7 +1,7 @@
 import Foundation
 
 protocol ProductsRepository {
-    func classify(products: [String]) async throws -> [(productName: String, category: String)]
+    func classify(products: [String]) async throws -> [String: String]
 }
 
 struct ProductsRepositoryImplementation: ProductsRepository {
@@ -11,8 +11,15 @@ struct ProductsRepositoryImplementation: ProductsRepository {
         self.productsDataSource = productsDataSource
     }
     
-    func classify(products: [String]) async throws -> [(productName: String, category: String)] {
+    func classify(products: [String]) async throws -> [String: String] {
+        // TODO: NEXT: Create a local DDBB with SwiftData <-
+        // TODO: Locally store the categories for later suggest them to the user,
+        // in case the category of one product couldn't be classified by the API
+        
         let classifiedProducts = try await productsDataSource.classify(productNames: products)
-        return classifiedProducts.map { (productName: $0.title, category: $0.category) }
+        
+        return classifiedProducts.reduce(into: [:]) { partialResult, classifiedProductDto in
+            partialResult[classifiedProductDto.title] = classifiedProductDto.category
+        }
     }
 }

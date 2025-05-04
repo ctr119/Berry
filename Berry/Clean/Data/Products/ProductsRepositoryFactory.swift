@@ -1,6 +1,6 @@
 import Foundation
 
-enum GroceryProductsRepositoryFactory {
+enum ProductsRepositoryFactory {
     static func make() -> ProductsRepository {
         let restClient = RESTClient()
         let dataSource = ProductsDataSourceImplementation(networkClient: restClient)

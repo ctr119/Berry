@@ -9,7 +9,8 @@ enum ImageProcessingRepositoryFactory {
         
         return ImageProcessingRepositoryImplementation(
             groceryAnalyser: GroceryAnalyser(),
-            itemsAnalyser: itemsAnalyser
+            itemsAnalyser: itemsAnalyser,
+            productsRepository: ProductsRepositoryFactory.make()
         )
     }
 }
