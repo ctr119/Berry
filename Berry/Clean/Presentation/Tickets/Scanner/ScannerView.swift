@@ -16,18 +16,8 @@ struct ScannerView: UIViewControllerRepresentable {
     func updateUIViewController(_ uiViewController: UINavigationController, context: Context) {}
     
     func makeCoordinator() -> Coordinator {
-        let itemsAnalyser = ItemsAnalyser(processorProvider: { grocery in
-            switch grocery {
-            case .rewe:
-                return RewaItemsProcessor()
-            }
-        })
-        
-        let groceryAnalyser = GroceryAnalyser()
         let scanner = Scanner(
-            groceryAnalyser: groceryAnalyser,
-            itemsAnalyser: itemsAnalyser,
-            groceryProductsRepository: GroceryProductsRepositoryFactory.make()
+            imageProcessingRepository: ImageProcessingRepositoryFactory.make()
         )
         let viewModel = ScannerViewModel(scanner: scanner)
         

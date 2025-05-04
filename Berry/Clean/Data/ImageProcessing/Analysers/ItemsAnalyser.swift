@@ -3,7 +3,7 @@ import VisionKit
 import Vision
 
 struct ItemsAnalyser {
-    let processorProvider: (Grocery) -> ItemsProcessor
+    let itemsPatternProvider: (Grocery) -> ItemsPattern
     
     func analyse(observations: [VNRecognizedTextObservation], for grocery: Grocery) -> [Ticket.Item] {
         let maximumCandidates = 1
@@ -28,7 +28,7 @@ struct ItemsAnalyser {
             previousObservation = observation
         }
         
-        let itemsProcessor = processorProvider(grocery)
-        return itemsProcessor.process(lines: lines)
+        let itemsPattern = itemsPatternProvider(grocery)
+        return itemsPattern.parse(lines: lines)
     }
 }

@@ -1,12 +1,12 @@
 import Foundation
 import Vision
 
-class RewaItemsProcessor: ItemsProcessor {
+class RewaItemsPattern: ItemsPattern {
     private let itemsSectionStart = "EUR"
     private let itemsSectionEnd = "-------"
     private var inItemsSection = false
     
-    func process(lines: [String]) -> [Ticket.Item] {
+    func parse(lines: [String]) -> [Ticket.Item] {
         var items = [Ticket.Item]()
         
         var auxName: String?

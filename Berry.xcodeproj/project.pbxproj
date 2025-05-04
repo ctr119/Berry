@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		202E87AA2B953512008DC53A /* DetailedItemRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202E87A92B953512008DC53A /* DetailedItemRow.swift */; };
 		202E87AC2B95384B008DC53A /* ResultsView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 202E87AB2B95384B008DC53A /* ResultsView+ViewModel.swift */; };
+		2055AB542DC757EC00B4C3C8 /* ImageProcessingRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2055AB532DC757E500B4C3C8 /* ImageProcessingRepository.swift */; };
+		2055AB582DC7926500B4C3C8 /* ImageProcessingRepositoryFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2055AB572DC7926200B4C3C8 /* ImageProcessingRepositoryFactory.swift */; };
 		206BB0AA2B7ED65400F01604 /* VNRecognizedTextObservation+Baseline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206BB0A92B7ED65400F01604 /* VNRecognizedTextObservation+Baseline.swift */; };
 		206CC37A2B6DB51E002D0511 /* BerryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206CC3792B6DB51E002D0511 /* BerryApp.swift */; };
 		206CC37C2B6DB51E002D0511 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206CC37B2B6DB51E002D0511 /* ContentView.swift */; };
@@ -39,8 +41,8 @@
 		20E543172BE8D47400CD7E52 /* GroceryProductsRepositoryFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E543162BE8D47400CD7E52 /* GroceryProductsRepositoryFactory.swift */; };
 		20F950D22B74418F00386876 /* GroceryAnalyser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F950D12B74418F00386876 /* GroceryAnalyser.swift */; };
 		20F950D42B7442B300386876 /* Grocery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F950D32B7442B300386876 /* Grocery.swift */; };
-		20F950D82B74499D00386876 /* RewaItemsProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F950D72B74499D00386876 /* RewaItemsProcessor.swift */; };
-		20F950DA2B7449BB00386876 /* ItemsProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F950D92B7449BB00386876 /* ItemsProcessor.swift */; };
+		20F950D82B74499D00386876 /* RewaItemsPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F950D72B74499D00386876 /* RewaItemsPattern.swift */; };
+		20F950DA2B7449BB00386876 /* ItemsPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F950D92B7449BB00386876 /* ItemsPattern.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +65,8 @@
 /* Begin PBXFileReference section */
 		202E87A92B953512008DC53A /* DetailedItemRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedItemRow.swift; sourceTree = "<group>"; };
 		202E87AB2B95384B008DC53A /* ResultsView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ResultsView+ViewModel.swift"; sourceTree = "<group>"; };
+		2055AB532DC757E500B4C3C8 /* ImageProcessingRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageProcessingRepository.swift; sourceTree = "<group>"; };
+		2055AB572DC7926200B4C3C8 /* ImageProcessingRepositoryFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageProcessingRepositoryFactory.swift; sourceTree = "<group>"; };
 		206BB0A92B7ED65400F01604 /* VNRecognizedTextObservation+Baseline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VNRecognizedTextObservation+Baseline.swift"; sourceTree = "<group>"; };
 		206CC3762B6DB51E002D0511 /* Berry.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Berry.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		206CC3792B6DB51E002D0511 /* BerryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BerryApp.swift; sourceTree = "<group>"; };
@@ -97,8 +101,8 @@
 		20E543162BE8D47400CD7E52 /* GroceryProductsRepositoryFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryProductsRepositoryFactory.swift; sourceTree = "<group>"; };
 		20F950D12B74418F00386876 /* GroceryAnalyser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryAnalyser.swift; sourceTree = "<group>"; };
 		20F950D32B7442B300386876 /* Grocery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grocery.swift; sourceTree = "<group>"; };
-		20F950D72B74499D00386876 /* RewaItemsProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewaItemsProcessor.swift; sourceTree = "<group>"; };
-		20F950D92B7449BB00386876 /* ItemsProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsProcessor.swift; sourceTree = "<group>"; };
+		20F950D72B74499D00386876 /* RewaItemsPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewaItemsPattern.swift; sourceTree = "<group>"; };
+		20F950D92B7449BB00386876 /* ItemsPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsPattern.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +136,36 @@
 				202E87A92B953512008DC53A /* DetailedItemRow.swift */,
 			);
 			path = Rows;
+			sourceTree = "<group>";
+		};
+		2055AB512DC757D000B4C3C8 /* ImageProcessing */ = {
+			isa = PBXGroup;
+			children = (
+				2055AB532DC757E500B4C3C8 /* ImageProcessingRepository.swift */,
+				2055AB572DC7926200B4C3C8 /* ImageProcessingRepositoryFactory.swift */,
+				206BB0A92B7ED65400F01604 /* VNRecognizedTextObservation+Baseline.swift */,
+				2055AB552DC7871000B4C3C8 /* Analysers */,
+				2055AB562DC7914A00B4C3C8 /* ItemsPatterns */,
+			);
+			path = ImageProcessing;
+			sourceTree = "<group>";
+		};
+		2055AB552DC7871000B4C3C8 /* Analysers */ = {
+			isa = PBXGroup;
+			children = (
+				20F950D12B74418F00386876 /* GroceryAnalyser.swift */,
+				206CC3B92B706462002D0511 /* ItemsAnalyser.swift */,
+			);
+			path = Analysers;
+			sourceTree = "<group>";
+		};
+		2055AB562DC7914A00B4C3C8 /* ItemsPatterns */ = {
+			isa = PBXGroup;
+			children = (
+				20F950D92B7449BB00386876 /* ItemsPattern.swift */,
+				20F950D72B74499D00386876 /* RewaItemsPattern.swift */,
+			);
+			path = ItemsPatterns;
 			sourceTree = "<group>";
 		};
 		206CC36D2B6DB51E002D0511 = {
@@ -269,15 +303,9 @@
 			path = Results;
 			sourceTree = "<group>";
 		};
-		20ABEE672BE2F1F400AD23E7 /* Engine */ = {
 			isa = PBXGroup;
 			children = (
-				20F950D12B74418F00386876 /* GroceryAnalyser.swift */,
-				206CC3B92B706462002D0511 /* ItemsAnalyser.swift */,
-				206BB0A92B7ED65400F01604 /* VNRecognizedTextObservation+Baseline.swift */,
-				20F950D62B74481100386876 /* Processors */,
 			);
-			path = Engine;
 			sourceTree = "<group>";
 		};
 		20E542962BE398AD00CD7E52 /* Model */ = {
@@ -293,7 +321,6 @@
 			isa = PBXGroup;
 			children = (
 				206CC3B52B70582A002D0511 /* Scanner.swift */,
-				20ABEE672BE2F1F400AD23E7 /* Engine */,
 			);
 			path = Scanner;
 			sourceTree = "<group>";
@@ -303,6 +330,7 @@
 			children = (
 				20E543062BE8413D00CD7E52 /* DataError.swift */,
 				20E543082BE8420100CD7E52 /* DataSources */,
+				2055AB512DC757D000B4C3C8 /* ImageProcessing */,
 				20E543122BE8C62900CD7E52 /* Repositories */,
 			);
 			path = Data;
@@ -375,15 +403,6 @@
 				20E543162BE8D47400CD7E52 /* GroceryProductsRepositoryFactory.swift */,
 			);
 			path = GroceryProducts;
-			sourceTree = "<group>";
-		};
-		20F950D62B74481100386876 /* Processors */ = {
-			isa = PBXGroup;
-			children = (
-				20F950D92B7449BB00386876 /* ItemsProcessor.swift */,
-				20F950D72B74499D00386876 /* RewaItemsProcessor.swift */,
-			);
-			path = Processors;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -523,7 +542,7 @@
 				206CC37C2B6DB51E002D0511 /* ContentView.swift in Sources */,
 				20E542FE2BE837C300CD7E52 /* Ticket+TicketDisplay.swift in Sources */,
 				20F950D22B74418F00386876 /* GroceryAnalyser.swift in Sources */,
-				20F950D82B74499D00386876 /* RewaItemsProcessor.swift in Sources */,
+				20F950D82B74499D00386876 /* RewaItemsPattern.swift in Sources */,
 				20E543032BE840BE00CD7E52 /* NetworkClient.swift in Sources */,
 				206CC3BD2B719798002D0511 /* ResultsView.swift in Sources */,
 				20E543072BE8413D00CD7E52 /* DataError.swift in Sources */,
@@ -540,9 +559,11 @@
 				206CC37A2B6DB51E002D0511 /* BerryApp.swift in Sources */,
 				206CC3B62B70582A002D0511 /* Scanner.swift in Sources */,
 				20E542982BE3AA2C00CD7E52 /* ResultsViewFactory.swift in Sources */,
+				2055AB542DC757EC00B4C3C8 /* ImageProcessingRepository.swift in Sources */,
+				2055AB582DC7926500B4C3C8 /* ImageProcessingRepositoryFactory.swift in Sources */,
 				206BB0AA2B7ED65400F01604 /* VNRecognizedTextObservation+Baseline.swift in Sources */,
 				20E5430E2BE8456400CD7E52 /* ClassifiedProductDTO.swift in Sources */,
-				20F950DA2B7449BB00386876 /* ItemsProcessor.swift in Sources */,
+				20F950DA2B7449BB00386876 /* ItemsPattern.swift in Sources */,
 				202E87AC2B95384B008DC53A /* ResultsView+ViewModel.swift in Sources */,
 				206CC3B02B7052CB002D0511 /* TicketDisplay.swift in Sources */,
 			);
