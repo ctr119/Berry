@@ -1,10 +1,10 @@
 import Foundation
 
-protocol GroceryProductsDataSource {
+protocol ProductsDataSource {
     func classify(productNames: [String]) async throws -> [ClassifiedProductDTO]
 }
 
-struct GroceryProductsDataSourceImplementation: GroceryProductsDataSource {
+struct ProductsDataSourceImplementation: ProductsDataSource {
     private let networkClient: NetworkClient
     
     init(networkClient: NetworkClient) {
