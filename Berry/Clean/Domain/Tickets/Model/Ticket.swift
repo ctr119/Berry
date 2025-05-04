@@ -1,7 +1,7 @@
 import Foundation
 
 struct Ticket {
-    let groceryName: String
+    let grocery: Grocery
     let items: [Item]
 }
 

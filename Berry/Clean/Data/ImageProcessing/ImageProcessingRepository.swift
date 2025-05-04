@@ -45,7 +45,6 @@ class ImageProcessingRepositoryImplementation: ImageProcessingRepository {
                     return
                 }
                 
-                // TODO: 2. Analyse observations -> ScannedItemDTO
                 let scannedItemDtos = self.itemsAnalyser.analyse(observations: sortedObservations, for: grocery)
                 
                 // TODO: 3. Classify scanned items -> Ticket.Item
@@ -55,12 +54,7 @@ class ImageProcessingRepositoryImplementation: ImageProcessingRepository {
                 
                 let items = scannedItemDtos.map { self.ticketItemConverter.convert(scannedItemDto: $0) }
                 
-                continuation.resume(
-                    returning: Ticket(
-                        groceryName: grocery.rawValue, // TODO: Refactor. Grocery enum instead of String
-                        items: items
-                    )
-                )
+                continuation.resume(returning: Ticket(grocery: grocery, items: items))
             }
             
             request.recognitionLevel = .accurate

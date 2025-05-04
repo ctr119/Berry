@@ -3,7 +3,7 @@ import Foundation
 extension Ticket {
     var toDisplay: TicketDisplay {
         .init(
-            groceryName: self.groceryName,
+            groceryName: self.grocery.rawValue,
             items: self.items.map { $0.toDisplay }
         )
     }
