@@ -12,7 +12,7 @@ extension Ticket {
         let weight: String?
         let price: Double
         let totalPrice: Double
-        var category: String?
+        let category: String?
         
         init(
             name: String,
