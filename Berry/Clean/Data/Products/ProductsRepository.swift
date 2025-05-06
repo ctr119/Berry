@@ -12,7 +12,6 @@ struct ProductsRepositoryImplementation: ProductsRepository {
     }
     
     func classify(products: [String]) async throws -> [String: String] {
-        // TODO: NEXT: Create a local DDBB with SwiftData <-
         // TODO: Locally store the categories for later suggest them to the user,
         // in case the category of one product couldn't be classified by the API
         

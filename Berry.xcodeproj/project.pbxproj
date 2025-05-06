@@ -30,6 +30,8 @@
 		206CC3BD2B719798002D0511 /* ResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206CC3BC2B719798002D0511 /* ResultsView.swift */; };
 		206CC3BF2B71A331002D0511 /* TicketsListView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206CC3BE2B71A331002D0511 /* TicketsListView+ViewModel.swift */; };
 		206CC3C12B71A565002D0511 /* TicketsListView+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206CC3C02B71A565002D0511 /* TicketsListView+Factory.swift */; };
+		2089702C2C00F5B30063FCD2 /* CategoryDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2089702B2C00F5B30063FCD2 /* CategoryDTO.swift */; };
+		2089702E2C00F7B40063FCD2 /* DatabaseContainerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2089702D2C00F7B40063FCD2 /* DatabaseContainerFactory.swift */; };
 		20E542982BE3AA2C00CD7E52 /* ResultsViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E542972BE3AA2C00CD7E52 /* ResultsViewFactory.swift */; };
 		20E542FC2BE8313400CD7E52 /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E542FB2BE8313400CD7E52 /* Ticket.swift */; };
 		20E542FE2BE837C300CD7E52 /* Ticket+TicketDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E542FD2BE837C300CD7E52 /* Ticket+TicketDisplay.swift */; };
@@ -92,6 +94,8 @@
 		206CC3BC2B719798002D0511 /* ResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsView.swift; sourceTree = "<group>"; };
 		206CC3BE2B71A331002D0511 /* TicketsListView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TicketsListView+ViewModel.swift"; sourceTree = "<group>"; };
 		206CC3C02B71A565002D0511 /* TicketsListView+Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TicketsListView+Factory.swift"; sourceTree = "<group>"; };
+		2089702B2C00F5B30063FCD2 /* CategoryDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDTO.swift; sourceTree = "<group>"; };
+		2089702D2C00F7B40063FCD2 /* DatabaseContainerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseContainerFactory.swift; sourceTree = "<group>"; };
 		20E542972BE3AA2C00CD7E52 /* ResultsViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewFactory.swift; sourceTree = "<group>"; };
 		20E542FB2BE8313400CD7E52 /* Ticket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
 		20E542FD2BE837C300CD7E52 /* Ticket+TicketDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ticket+TicketDisplay.swift"; sourceTree = "<group>"; };
@@ -195,9 +199,9 @@
 		2055AB5F2DC80FBD00B4C3C8 /* DataSources */ = {
 			isa = PBXGroup;
 			children = (
-				20E5430F2BE846B000CD7E52 /* Requests */,
-				20E5430C2BE8455200CD7E52 /* DTOs */,
 				20E5430A2BE844C900CD7E52 /* ProductsDataSource.swift */,
+				20E5430C2BE8455200CD7E52 /* DTOs */,
+				20E5430F2BE846B000CD7E52 /* Requests */,
 			);
 			path = DataSources;
 			sourceTree = "<group>";
@@ -337,9 +341,29 @@
 			path = Results;
 			sourceTree = "<group>";
 		};
+		208970272C00F5830063FCD2 /* LocalDDBB */ = {
 			isa = PBXGroup;
 			children = (
+				208970282C00F5920063FCD2 /* Categories */,
+				2089702D2C00F7B40063FCD2 /* DatabaseContainerFactory.swift */,
 			);
+			path = LocalDDBB;
+			sourceTree = "<group>";
+		};
+		208970282C00F5920063FCD2 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				2089702A2C00F5A80063FCD2 /* DTOs */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		2089702A2C00F5A80063FCD2 /* DTOs */ = {
+			isa = PBXGroup;
+			children = (
+				2089702B2C00F5B30063FCD2 /* CategoryDTO.swift */,
+			);
+			path = DTOs;
 			sourceTree = "<group>";
 		};
 		20E542962BE398AD00CD7E52 /* Model */ = {
@@ -363,7 +387,7 @@
 			isa = PBXGroup;
 			children = (
 				20E543062BE8413D00CD7E52 /* DataError.swift */,
-				20E543082BE8420100CD7E52 /* DataSources */,
+				20E543082BE8420100CD7E52 /* Tooling */,
 				2055AB512DC757D000B4C3C8 /* ImageProcessing */,
 				2055AB5E2DC80F2100B4C3C8 /* Products */,
 			);
@@ -379,13 +403,13 @@
 			path = Networking;
 			sourceTree = "<group>";
 		};
-		20E543082BE8420100CD7E52 /* DataSources */ = {
+		20E543082BE8420100CD7E52 /* Tooling */ = {
 			isa = PBXGroup;
 			children = (
-				208970272C00F5830063FCD2 /* Local */,
+				208970272C00F5830063FCD2 /* LocalDDBB */,
 				20E543012BE840A200CD7E52 /* Networking */,
 			);
-			path = DataSources;
+			path = Tooling;
 			sourceTree = "<group>";
 		};
 		20E5430C2BE8455200CD7E52 /* DTOs */ = {
@@ -543,6 +567,7 @@
 				20F950D22B74418F00386876 /* GroceryAnalyser.swift in Sources */,
 				20F950D82B74499D00386876 /* RewaItemsPattern.swift in Sources */,
 				20E543032BE840BE00CD7E52 /* NetworkClient.swift in Sources */,
+				2089702C2C00F5B30063FCD2 /* CategoryDTO.swift in Sources */,
 				206CC3BD2B719798002D0511 /* ResultsView.swift in Sources */,
 				20E543072BE8413D00CD7E52 /* DataError.swift in Sources */,
 				206CC3BA2B706462002D0511 /* ItemsAnalyser.swift in Sources */,
@@ -553,6 +578,7 @@
 				20E543172BE8D47400CD7E52 /* ProductsRepositoryFactory.swift in Sources */,
 				206CC3A82B704222002D0511 /* TicketsListView.swift in Sources */,
 				2055AB5B2DC7DDAD00B4C3C8 /* ScannedItemDTO.swift in Sources */,
+				2089702E2C00F7B40063FCD2 /* DatabaseContainerFactory.swift in Sources */,
 				20F950D42B7442B300386876 /* Grocery.swift in Sources */,
 				20E543152BE8C66600CD7E52 /* ProductsRepository.swift in Sources */,
 				20E542FC2BE8313400CD7E52 /* Ticket.swift in Sources */,
